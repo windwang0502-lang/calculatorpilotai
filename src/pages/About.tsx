@@ -4,7 +4,7 @@ import Breadcrumb from '@/components/common/Breadcrumb';
 import { generateOrganizationSchema } from '@/lib/schema';
 
 export default function AboutPage() {
-  const canonicalUrl = 'https://toolfactory.ai/about';
+  const canonicalUrl = 'https://www.calculatorpilotai.com/about';
   const orgSchema = generateOrganizationSchema();
 
   return (
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 mb-3">Get in Touch</h2>
               <p>
-                We value your feedback, suggestions, and questions. Whether you have found a bug, want to request a new calculator, or simply want to say hello, we would love to hear from you. Reach out to us via email at <a href="mailto:support@toolfactory.ai" className="text-primary font-semibold hover:underline">support@toolfactory.ai</a> and we will respond as soon as possible.
+                We value your feedback, suggestions, and questions. Whether you have found a bug, want to request a new calculator, or simply want to say hello, we would love to hear from you. Reach out to us via email at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@www.calculatorpilotai.com</a> and we will respond as soon as possible.
               </p>
               <p>
                 Thank you for using CalcWise AI. We are honored to be part of your decision-making process, and we remain committed to delivering the best free AI-powered calculators on the web.

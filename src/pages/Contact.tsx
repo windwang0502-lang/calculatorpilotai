@@ -37,7 +37,7 @@ export default function ContactPage() {
       <PageMeta
         title="Contact Us - CalcWise AI"
         description="Get in touch with the CalcWise AI team. Send us feedback, report a bug, or request a new calculator."
-        canonical="https://toolfactory.ai/contact"
+        canonical="https://www.calculatorpilotai.com/contact"
       />
       <div className="min-h-screen bg-slate-50">
         <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
@@ -58,8 +58,8 @@ export default function ContactPage() {
             <div className="md:col-span-1 space-y-6">
               <div className="bg-white border rounded-lg p-5 shadow-sm">
                 <h3 className="font-bold text-slate-900 text-sm uppercase tracking-widest mb-3">Email</h3>
-                <a href="mailto:support@toolfactory.ai" className="text-primary font-semibold hover:underline text-sm break-all">
-                  support@toolfactory.ai
+                <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline text-sm break-all">
+                  support@www.calculatorpilotai.com
                 </a>
                 <p className="text-slate-500 text-xs mt-2">We typically respond within 1–2 business days.</p>
               </div>

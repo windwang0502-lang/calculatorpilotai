@@ -7,7 +7,7 @@ export default function TermsPage() {
       <PageMeta
         title="Terms of Use - CalcWise AI"
         description="Read the Terms of Use for CalcWise AI. All calculator results are for informational purposes only and do not constitute financial, health, or legal advice."
-        canonical="https://toolfactory.ai/terms"
+        canonical="https://www.calculatorpilotai.com/terms"
       />
       <div className="min-h-screen bg-slate-50">
         <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
@@ -31,7 +31,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-widest text-sm">1. Acceptance of Terms</h2>
               <p>
-                These Terms of Use govern your access to and use of <strong>toolfactory.ai</strong> (the "Site"), operated by CalcWise AI ("we", "us", or "our"). By using the Site, you represent that you are at least 13 years of age and have the legal capacity to agree to these terms.
+                These Terms of Use govern your access to and use of <strong>www.calculatorpilotai.com</strong> (the "Site"), operated by CalcWise AI ("we", "us", or "our"). By using the Site, you represent that you are at least 13 years of age and have the legal capacity to agree to these terms.
               </p>
             </section>
 
@@ -113,7 +113,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-widest text-sm">10. Contact</h2>
               <p>
-                For questions regarding these Terms of Use, contact us at <a href="mailto:support@toolfactory.ai" className="text-primary font-semibold hover:underline">support@toolfactory.ai</a>.
+                For questions regarding these Terms of Use, contact us at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@www.calculatorpilotai.com</a>.
               </p>
             </section>
           </div>

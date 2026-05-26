@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toolfactory.ai/sitemap.xml
+Sitemap: https://www.calculatorpilotai.com/sitemap.xml

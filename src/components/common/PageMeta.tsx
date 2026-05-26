@@ -14,7 +14,7 @@ const PageMeta = ({
   title,
   description,
   canonical,
-  ogImage = "https://toolfactory.ai/og-image.png",
+  ogImage = "https://www.calculatorpilotai.com/og-image.png",
   ogType = "website",
   jsonLd,
 }: PageMetaProps) => (

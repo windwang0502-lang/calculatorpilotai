@@ -39,7 +39,7 @@ if (!existsSync(robotsPath)) {
 if (existsSync(sitemapPath)) {
   const sitemap = readFileSync(sitemapPath, 'utf-8');
   const requiredUrls = [
-    'https://toolfactory.ai/',
+    'https://www.calculatorpilotai.com/',
     '/tools/finance/mortgage-calculator',
     '/tools/health/bmi-calorie-calculator',
     '/tools/time/age-calculator',

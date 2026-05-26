@@ -56,6 +56,6 @@ export const generateOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "CalcWise AI",
-  url: "https://toolfactory.ai",
-  logo: "https://toolfactory.ai/logo.png",
+  url: "https://www.calculatorpilotai.com",
+  logo: "https://www.calculatorpilotai.com/logo.png",
 });

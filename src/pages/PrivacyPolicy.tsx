@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
       <PageMeta
         title="Privacy Policy - CalcWise AI"
         description="Read our privacy policy to understand how CalcWise AI collects, uses, and protects your data including cookies, analytics, and advertising."
-        canonical="https://toolfactory.ai/privacy-policy"
+        canonical="https://www.calculatorpilotai.com/privacy-policy"
       />
       <div className="min-h-screen bg-slate-50">
         <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
           <div className="space-y-8 text-slate-700 leading-relaxed">
             <section>
               <p className="text-base text-slate-600">
-                CalcWise AI ("we", "us", or "our") operates the website located at <strong>toolfactory.ai</strong> (the "Site"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Site. We are committed to protecting your privacy and handling your data in an open and transparent manner.
+                CalcWise AI ("we", "us", or "our") operates the website located at <strong>www.calculatorpilotai.com</strong> (the "Site"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Site. We are committed to protecting your privacy and handling your data in an open and transparent manner.
               </p>
             </section>
 
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
                 <li>The right to withdraw consent where processing is consent-based</li>
               </ul>
               <p className="mt-3">
-                To exercise any of these rights, please contact us at <a href="mailto:support@toolfactory.ai" className="text-primary hover:underline">support@toolfactory.ai</a>.
+                To exercise any of these rights, please contact us at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary hover:underline">support@www.calculatorpilotai.com</a>.
               </p>
             </section>
 
@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-widest text-sm">10. Contact Us</h2>
               <p>
-                If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@toolfactory.ai" className="text-primary font-semibold hover:underline">support@toolfactory.ai</a>.
+                If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@www.calculatorpilotai.com</a>.
               </p>
             </section>
           </div>

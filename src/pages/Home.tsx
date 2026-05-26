@@ -72,7 +72,7 @@ const homeFaqs = [
 ];
 
 export default function HomePage() {
-  const canonicalUrl = 'https://toolfactory.ai/';
+  const canonicalUrl = 'https://www.calculatorpilotai.com/';
   const faqSchema = generateFAQSchema(homeFaqs.map(f => ({ question: f.q, answer: f.a })));
 
   return (

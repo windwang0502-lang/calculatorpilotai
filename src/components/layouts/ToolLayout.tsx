@@ -15,7 +15,7 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
   const content = getSEOContent(toolId);
   const related = getRelatedTools(category);
   const location = useLocation();
-  const canonicalUrl = `https://toolfactory.ai${location.pathname}`;
+  const canonicalUrl = `https://www.calculatorpilotai.com${location.pathname}`;
 
   const faqSchema = generateFAQSchema(content.faqs);
   const webAppSchema = generateWebAppSchema({
@@ -24,9 +24,9 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
     url: canonicalUrl,
   });
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://toolfactory.ai/' },
-    { name: 'Tools', url: 'https://toolfactory.ai/tools' },
-    { name: category.charAt(0).toUpperCase() + category.slice(1), url: `https://toolfactory.ai/tools/${category}` },
+    { name: 'Home', url: 'https://www.calculatorpilotai.com/' },
+    { name: 'Tools', url: 'https://www.calculatorpilotai.com/tools' },
+    { name: category.charAt(0).toUpperCase() + category.slice(1), url: `https://www.calculatorpilotai.com/tools/${category}` },
     { name: content.title.split(' - ')[0], url: canonicalUrl },
   ]);
 
