@@ -1,5 +1,6 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 interface PageMetaProps {
   title: string;
@@ -46,6 +47,7 @@ const PageMeta = ({
 export const AppWrapper = ({ children }: { children: React.ReactNode }) => (
   <HelmetProvider>
     <TooltipProvider>
+      <SpeedInsights />
       {children}
     </TooltipProvider>
   </HelmetProvider>
