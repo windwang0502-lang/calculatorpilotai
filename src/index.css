@@ -1,3 +1,6 @@
+/* CLS Optimization - must be first */
+@import './styles/cls-optimization.css';
+
 /* stylelint-disable */
 @tailwind base;
 @tailwind components;

@@ -128,7 +128,7 @@ export default function HomePage() {
       <div className="min-h-screen bg-slate-50">
         <main>
           {/* Hero Section with subtle gradient background */}
-          <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-white to-slate-50">
+          <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-white to-slate-50 hero-section">
             {/* Decorative shapes */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
@@ -145,30 +145,30 @@ export default function HomePage() {
                   Professional-grade calculators and detectors enhanced with AI insights. Built for US users who need fast, accurate, and free tools for finance, health, shipping, and more.
                 </p>
                 <div className="mt-8 flex flex-wrap justify-center gap-4">
-                  <Link to="/tools/finance/mortgage-calculator" className="bg-slate-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 text-sm">
+                  <Link to="/tools/finance/mortgage-calculator" className="bg-slate-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 text-sm min-h-[48px] min-w-[180px] inline-flex items-center justify-center cta-button">
                     Try Mortgage Calculator
                   </Link>
-                  <Link to="/tools/health/bmi-calorie-calculator" className="bg-white border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 rounded-lg hover:bg-slate-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 text-sm">
+                  <Link to="/tools/health/bmi-calorie-calculator" className="bg-white border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 rounded-lg hover:bg-slate-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 text-sm min-h-[48px] min-w-[180px] inline-flex items-center justify-center cta-button">
                     Try BMI Calculator
                   </Link>
                 </div>
               </div>
 
               {/* Trust Badges */}
-              <div className="mt-16 flex flex-wrap justify-center gap-4 md:gap-6">
+              <div className="mt-16 flex flex-wrap justify-center gap-4 md:gap-6 trust-badges">
                 {trustBadges.map((badge, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm">
-                    <badge.icon className="w-4 h-4 text-primary" />
+                  <div key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm trust-badge">
+                    <badge.icon className="w-4 h-4 min-w-4 min-h-4 text-primary" />
                     <span className="text-sm font-medium text-slate-600">{badge.text}</span>
                   </div>
                 ))}
               </div>
 
               {/* Stats */}
-              <div className="mt-12 grid grid-cols-3 gap-4 max-w-xl mx-auto">
+              <div className="mt-12 grid grid-cols-3 gap-4 max-w-xl mx-auto stats-grid">
                 {stats.map((stat, i) => (
                   <div key={i} className="text-center">
-                    <div className="text-2xl md:text-3xl font-black text-slate-900">{stat.value}</div>
+                    <div className="text-2xl md:text-3xl font-black text-slate-900 stat-value">{stat.value}</div>
                     <div className="text-xs md:text-sm text-slate-500 font-medium">{stat.label}</div>
                   </div>
                 ))}
@@ -187,18 +187,18 @@ export default function HomePage() {
                 View All Tools <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 popular-tools-grid">
               {popularTools.map((tool, i) => (
-                <Link key={i} to={tool.path} className="group bg-white p-6 md:p-8 border border-slate-200 hover:border-primary transition-all duration-300 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
+                <Link key={i} to={tool.path} className="group bg-white p-6 md:p-8 border border-slate-200 hover:border-primary transition-all duration-300 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col tool-card">
                   <div className="flex items-start justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full card-badge">
                       {tool.cat}
                     </span>
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors icon-container-10">
                       <tool.icon className="w-5 h-5 text-slate-600 group-hover:text-primary transition-colors" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-slate-900">{tool.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-slate-900 tool-card-title">{tool.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1">{tool.desc}</p>
                   <div className="flex items-center text-sm font-semibold text-primary">
                     {tool.cta} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -219,10 +219,10 @@ export default function HomePage() {
               <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Categories</p>
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Browse by Category</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 categories-grid">
               {categories.map((cat, i) => (
-                <Link key={i} to={cat.path} className="group bg-slate-50 p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-4 group-hover:border-primary group-hover:bg-primary/5 transition-colors">
+                <Link key={i} to={cat.path} className="group bg-slate-50 p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center category-card">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-4 group-hover:border-primary group-hover:bg-primary/5 transition-colors icon-container-14">
                     <cat.icon className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
                   </div>
                   <h3 className="font-bold text-slate-900 mb-1 group-hover:text-primary transition-colors">{cat.name}</h3>
@@ -240,7 +240,7 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {howItWorks.map((item, i) => (
-                <div key={i} className="text-center bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div key={i} className="text-center bg-white p-8 rounded-2xl border border-slate-200 shadow-sm card-stabilize">
                   <div className="text-5xl font-black text-primary/20 mb-4">{item.step}</div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
@@ -288,22 +288,22 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Discover Our Resources</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link to="/guides" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+              <Link to="/guides" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center card-stabilize">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors icon-container-14">
                   <Calculator className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">Guides & Tutorials</h3>
                 <p className="text-slate-500 text-sm">In-depth articles on mortgages, BMI, shipping costs, and more.</p>
               </Link>
-              <Link to="/compare" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+              <Link to="/compare" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center card-stabilize">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors icon-container-14">
                   <TrendingUp className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">Comparison Tools</h3>
                 <p className="text-slate-500 text-sm">Side-by-side analysis to help you make informed decisions.</p>
               </Link>
-              <Link to="/about" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+              <Link to="/about" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center card-stabilize">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors icon-container-14">
                   <Sparkles className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">About CalcWise AI</h3>
@@ -364,7 +364,7 @@ export default function HomePage() {
                 <p className="text-slate-400 max-w-xl mx-auto mb-8">
                   Join thousands of users who rely on CalcWise AI for fast, accurate, and free calculations. No sign-up required.
                 </p>
-                <Link to="/tools" className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+                <Link to="/tools" className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 min-h-[48px] min-w-[180px] justify-center cta-button">
                   Explore All Tools <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

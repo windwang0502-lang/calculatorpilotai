@@ -165,7 +165,7 @@ export default function GuidesPage() {
       />
       <div className="min-h-screen bg-slate-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-slate-100 via-white to-slate-50 relative overflow-hidden">
+        <section className="bg-gradient-to-b from-slate-100 via-white to-slate-50 relative overflow-hidden hero-section">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
@@ -173,7 +173,7 @@ export default function GuidesPage() {
           <div className="relative max-w-4xl mx-auto px-4 py-16 md:py-24">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm mb-6">
-                <BookOpen className="w-4 h-4 text-primary" />
+                <BookOpen className="w-4 h-4 min-w-4 min-h-4 text-primary" />
                 <span className="text-sm font-medium text-slate-600">Guides & Insights</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 mb-6 leading-tight">
@@ -200,14 +200,14 @@ export default function GuidesPage() {
                   <Link
                     key={i}
                     to={`/guides/${guide.slug}`}
-                    className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 card-stabilize-lg"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors icon-container-12">
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded-full mb-2">
+                        <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded-full mb-2 card-badge">
                           {guide.cat}
                         </span>
                         <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
@@ -237,7 +237,7 @@ export default function GuidesPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 min-h-[2.25rem] min-w-[4rem] ${
                     activeCategory === cat
                       ? 'bg-primary text-white shadow-lg shadow-primary/25'
                       : 'bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary'
@@ -258,17 +258,17 @@ export default function GuidesPage() {
                   <Link
                     key={i}
                     to={`/guides/${guide.slug}`}
-                    className="group bg-white p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                    className="group bg-white p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col guide-card"
                   >
                     <div className="flex items-center justify-between mb-4">
-                      <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded-full">
+                      <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded-full card-badge">
                         {guide.cat}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors icon-container-10">
                         <Icon className="w-5 h-5 text-slate-500 group-hover:text-primary transition-colors" />
                       </div>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 tool-card-title">
                       {guide.title}
                     </h3>
                     <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1 line-clamp-2">

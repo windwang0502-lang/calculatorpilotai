@@ -1,0 +1,363 @@
+/**
+ * CLS (Cumulative Layout Shift) Optimization
+ *
+ * This file contains fixes for layout shift issues identified during audit.
+ * Target: Reduce CLS from 0.42 to < 0.1
+ */
+
+/* ============================================
+   1. FONT DISPLAY OPTIMIZATION
+   ============================================ */
+
+/* Apply font-display: optional to prevent FOIT and minimize CLS from font swaps */
+*,
+*::before,
+*::after {
+  font-display: optional;
+}
+
+/* System font stack for consistent rendering with zero CLS */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mono font stack */
+code, pre, kbd {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Ensure consistent text rendering */
+html {
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================
+   2. HERO SECTION STABILIZATION
+   ============================================ */
+
+/* Hero sections need minimum height to prevent shift when content loads */
+.hero-section {
+  min-height: 600px;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: 800px;
+  }
+}
+
+/* ============================================
+   3. ICON CONTAINER STABILIZATION
+   ============================================ */
+
+/* Fixed icon containers prevent layout shift when icons load */
+.icon-container-10 {
+  width: 2.5rem;  /* 10 = 40px */
+  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}
+
+.icon-container-12 {
+  width: 3rem;  /* 12 = 48px */
+  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+}
+
+.icon-container-14 {
+  width: 3.5rem;  /* 14 = 56px */
+  height: 3.5rem;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+}
+
+/* ============================================
+   4. CARD STABILIZATION
+   ============================================ */
+
+/* Ensure cards have consistent minimum heights */
+.card-stabilize {
+  min-height: 280px;
+}
+
+.card-stabilize-lg {
+  min-height: 360px;
+}
+
+.card-stabilize-xl {
+  min-height: 420px;
+}
+
+/* Tool card specific fixes */
+.tool-card {
+  min-height: 260px;
+}
+
+/* Guide card specific fixes */
+.guide-card {
+  min-height: 240px;
+}
+
+/* Compare card specific fixes */
+.compare-card {
+  min-height: 320px;
+}
+
+/* Category card fixes */
+.category-card {
+  min-height: 160px;
+}
+
+/* ============================================
+   5. GRID LAYOUT STABILIZATION
+   ============================================ */
+
+/* Ensure grid items have consistent minimum heights */
+.grid-stabilize > * {
+  min-height: 200px;
+}
+
+/* Popular tools grid stabilization */
+.popular-tools-grid > * {
+  min-height: 260px;
+}
+
+/* Categories grid stabilization */
+.categories-grid > * {
+  min-height: 140px;
+}
+
+/* ============================================
+   6. MEGA MENU STABILIZATION
+   ============================================ */
+
+/* Mega menu should not cause layout shift */
+.mega-menu-trigger {
+  position: relative;
+}
+
+.mega-menu-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Reserve space to prevent layout shift */
+  min-width: 900px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 50;
+}
+
+.mega-menu-trigger:hover .mega-menu-content,
+.mega-menu-trigger:focus-within .mega-menu-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ============================================
+   7. BUTTON STABILIZATION
+   ============================================ */
+
+/* Prevent button size changes on hover */
+.btn-stabilize {
+  min-height: 2.75rem; /* h-11 equivalent */
+  min-width: 120px;
+}
+
+.btn-stabilize-sm {
+  min-height: 2rem; /* h-8 equivalent */
+  min-width: 80px;
+}
+
+.btn-stabilize-lg {
+  min-height: 3rem; /* h-12 equivalent */
+  min-width: 160px;
+}
+
+/* ============================================
+   8. STATS SECTION STABILIZATION
+   ============================================ */
+
+/* Stats should have fixed minimum height */
+.stats-grid > * {
+  min-height: 60px;
+}
+
+/* ============================================
+   9. TRUST BADGES STABILIZATION
+   ============================================ */
+
+/* Trust badges should not shift */
+.trust-badges {
+  min-height: 48px;
+}
+
+.trust-badge {
+  min-height: 40px;
+  min-width: 120px;
+}
+
+/* ============================================
+   10. DECORATIVE ELEMENTS
+   ============================================ */
+
+/* Reserve space for decorative gradient blurs */
+.gradient-blur-top {
+  min-height: 320px;
+}
+
+.gradient-blur-bottom {
+  min-height: 320px;
+}
+
+/* ============================================
+   11. TEXT CONTENT STABILIZATION
+   ============================================ */
+
+/* Prevent text size changes from causing shifts */
+h1, h2, h3, h4, h5, h6 {
+  min-height: 0.01em; /* Forces line-height calculation */
+}
+
+/* ============================================
+   12. ASPECT RATIO PRESERVATION
+   ============================================ */
+
+/* Preserve aspect ratios for visual elements */
+.aspect-icon {
+  aspect-ratio: 1 / 1;
+}
+
+/* ============================================
+   13. BACKDROP BLUR PREVENTION
+   ============================================ */
+
+/* Backdrop blur can cause paint issues - use isolation */
+.has-backdrop-blur {
+  isolation: isolate;
+}
+
+/* ============================================
+   14. CONTENT VISIBILITY
+   ============================================ */
+
+/* Use content-visibility for below-fold content */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* ============================================
+   15. TRANSITION PRESERVATION
+   ============================================ */
+
+/* Prevent transitions from causing layout shifts */
+.no-transition-shift {
+  transition-property: opacity, color, background-color, border-color, text-decoration-color, box-shadow, transform, filter;
+  transform: translateZ(0);
+}
+
+/* ============================================
+   16. STICKY HEADER OFFSET
+   ============================================ */
+
+/* Reserve space for sticky header */
+.sticky-header-space {
+  scroll-margin-top: 80px;
+}
+
+/* ============================================
+   17. LOADING STATE PLACEHOLDERS
+   ============================================ */
+
+/* Skeleton placeholders for dynamic content */
+.skeleton-box {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--muted) / 0.5) 50%,
+    hsl(var(--muted)) 100%
+  );
+  background-size: 200% 100%;
+}
+
+.skeleton-text {
+  height: 1em;
+  border-radius: 0.25rem;
+}
+
+.skeleton-heading {
+  height: 1.5em;
+  border-radius: 0.25rem;
+}
+
+.skeleton-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+}
+
+/* ============================================
+   18. CRITICAL CLS FIXES
+   ============================================ */
+
+/* Fix for category filter buttons */
+.filter-button {
+  min-height: 2.25rem;
+  min-width: 4rem;
+}
+
+/* Fix for card badges */
+.card-badge {
+  min-height: 1.5rem;
+  min-width: 3rem;
+}
+
+/* Fix for stats values */
+.stat-value {
+  min-height: 2.5rem;
+  line-height: 1.2;
+}
+
+/* Fix for tool titles in cards */
+.tool-card-title {
+  min-height: 1.5rem;
+}
+
+/* Fix for CTA buttons */
+.cta-button {
+  min-height: 3rem; /* py-3 px-6 = 48px */
+  min-width: 160px;
+}
+
+/* ============================================
+   19. MOBILE-SPECIFIC FIXES
+   ============================================ */
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 500px;
+  }
+
+  .card-stabilize {
+    min-height: 220px;
+  }
+
+  .card-stabilize-lg {
+    min-height: 300px;
+  }
+}

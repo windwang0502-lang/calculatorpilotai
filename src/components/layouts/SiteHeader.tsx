@@ -98,7 +98,7 @@ export default function SiteHeader() {
               </svg>
             </Link>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <div className="bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 w-[900px]">
+              <div className="bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 w-[900px] min-w-[900px]">
                 <div className="grid grid-cols-5 gap-6">
                   {toolCategories.map((cat) => (
                     <div key={cat.category}>
@@ -106,7 +106,7 @@ export default function SiteHeader() {
                         to={cat.path}
                         className="text-xs font-semibold text-slate-500 hover:text-primary transition-colors flex items-center gap-2 mb-3 group/link"
                       >
-                        <cat.icon className="w-4 h-4 group-hover/link:text-primary transition-colors" />
+                        <cat.icon className="w-4 h-4 min-w-4 min-h-4 group-hover/link:text-primary transition-colors" />
                         {cat.category}
                       </Link>
                       <ul className="space-y-1">
@@ -176,25 +176,25 @@ export default function SiteHeader() {
                 {mobileCategoryOpen && (
                   <div className="bg-slate-50">
                     <Link to="/tools/finance" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 hover:text-primary hover:bg-white transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                      <CreditCard className="w-4 h-4" /> Finance Tools
+                      <CreditCard className="w-4 h-4 min-w-4 min-h-4" /> Finance Tools
                     </Link>
                     <Link to="/tools/health" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 hover:text-primary hover:bg-white transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                      <Heart className="w-4 h-4" /> Health Tools
+                      <Heart className="w-4 h-4 min-w-4 min-h-4" /> Health Tools
                     </Link>
                     <Link to="/tools/time" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 hover:text-primary hover:bg-white transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                      <Clock className="w-4 h-4" /> Time Tools
+                      <Clock className="w-4 h-4 min-w-4 min-h-4" /> Time Tools
                     </Link>
                     <Link to="/tools/ai" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 hover:text-primary hover:bg-white transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                      <Bot className="w-4 h-4" /> AI Tools
+                      <Bot className="w-4 h-4 min-w-4 min-h-4" /> AI Tools
                     </Link>
                     <Link to="/tools/shipping" className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 hover:text-primary hover:bg-white transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                      <Truck className="w-4 h-4" /> Shipping Tools
+                      <Truck className="w-4 h-4 min-w-4 min-h-4" /> Shipping Tools
                     </Link>
                   </div>
                 )}
               </div>
               <Link to="/tools" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-slate-50 transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                <Calculator className="w-4 h-4" /> All Tools
+                <Calculator className="w-4 h-4 min-w-4 min-h-4" /> All Tools
               </Link>
               <Link to="/guides" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-slate-50 transition-colors" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/compare" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-slate-50 transition-colors" onClick={() => setMobileMenuOpen(false)}>Compare</Link>

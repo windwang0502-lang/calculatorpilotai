@@ -106,7 +106,7 @@ export default function ComparePage() {
       />
       <div className="min-h-screen bg-slate-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-slate-100 via-white to-slate-50 relative overflow-hidden">
+        <section className="bg-gradient-to-b from-slate-100 via-white to-slate-50 relative overflow-hidden hero-section">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
@@ -114,7 +114,7 @@ export default function ComparePage() {
           <div className="relative max-w-4xl mx-auto px-4 py-16 md:py-24">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm mb-6">
-                <GitCompare className="w-4 h-4 text-primary" />
+                <GitCompare className="w-4 h-4 min-w-4 min-h-4 text-primary" />
                 <span className="text-sm font-medium text-slate-600">Comparison Tools</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 mb-6 leading-tight">
@@ -135,7 +135,7 @@ export default function ComparePage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 min-h-[2.25rem] min-w-[4rem] ${
                     activeCategory === cat
                       ? 'bg-primary text-white shadow-lg shadow-primary/25'
                       : 'bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary'
@@ -156,13 +156,13 @@ export default function ComparePage() {
                   <Link
                     key={i}
                     to={`/compare/${item.slug}`}
-                    className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 compare-card"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded-full">
+                      <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded-full card-badge">
                         {item.cat}
                       </span>
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors icon-container-12">
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
                     </div>
@@ -205,10 +205,10 @@ export default function ComparePage() {
                 Use our comparison tools alongside our calculators to get a complete picture before making important financial, health, or business decisions.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/tools" className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+                <Link to="/tools" className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 min-h-[48px] min-w-[180px] justify-center cta-button">
                   Explore Calculators <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link to="/guides" className="inline-flex items-center gap-2 bg-white/10 text-white font-bold py-3 px-6 rounded-lg hover:bg-white/20 transition-all duration-200">
+                <Link to="/guides" className="inline-flex items-center gap-2 bg-white/10 text-white font-bold py-3 px-6 rounded-lg hover:bg-white/20 transition-all duration-200 min-h-[48px] min-w-[160px] justify-center">
                   Read Guides <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
