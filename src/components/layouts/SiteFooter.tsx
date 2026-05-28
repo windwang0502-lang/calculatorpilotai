@@ -30,6 +30,9 @@ export default function SiteFooter() {
             <div className="space-y-2">
               <Link to="/guides" className="block text-sm text-slate-500 hover:text-primary transition-colors">Guides</Link>
               <Link to="/compare" className="block text-sm text-slate-500 hover:text-primary transition-colors">Compare</Link>
+              <Link to="/guides/what-is-mortgage" className="block text-sm text-slate-500 hover:text-primary transition-colors">Mortgage Guide</Link>
+              <Link to="/guides/understanding-bmi" className="block text-sm text-slate-500 hover:text-primary transition-colors">BMI Guide</Link>
+              <Link to="/guides/understanding-shipping-dim-weight" className="block text-sm text-slate-500 hover:text-primary transition-colors">Shipping Guide</Link>
             </div>
           </div>
           <div>
@@ -39,6 +42,8 @@ export default function SiteFooter() {
               <Link to="/contact" className="block text-sm text-slate-500 hover:text-primary transition-colors">Contact</Link>
               <Link to="/privacy-policy" className="block text-sm text-slate-500 hover:text-primary transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="block text-sm text-slate-500 hover:text-primary transition-colors">Terms of Use</Link>
+              <Link to="/ai-disclosure" className="block text-sm text-slate-500 hover:text-primary transition-colors">AI Disclosure</Link>
+              <Link to="/editorial-policy" className="block text-sm text-slate-500 hover:text-primary transition-colors">Editorial Policy</Link>
             </div>
           </div>
           <div>

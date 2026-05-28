@@ -1,5 +1,5 @@
-import { HelmetProvider, Helmet } from "react-helmet-async";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface PageMetaProps {
   title: string;
@@ -14,8 +14,8 @@ const PageMeta = ({
   title,
   description,
   canonical,
-  ogImage = "https://www.calculatorpilotai.com/og-image.png",
-  ogType = "website",
+  ogImage = 'https://www.calculatorpilotai.com/og-image.png',
+  ogType = 'website',
   jsonLd,
 }: PageMetaProps) => (
   <Helmet>

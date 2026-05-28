@@ -3,6 +3,7 @@ import { ToolLayout } from '@/components/layouts/ToolLayout';
 import { calculateMortgage, MortgageResult, AmortizationRow } from '@/lib/engines';
 import { generateMortgageInsight, AIInsight } from '@/lib/ai';
 import { AIInsightPanel } from '@/components/AIInsightPanel';
+import { formatCurrency, formatPercent, getResultTextSize, validateNumberInput } from '@/lib/utils';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
@@ -37,57 +38,78 @@ export default function MortgageCalculator() {
     setInsight(generateMortgageInsight(res, monthlyIncome));
   };
 
+  const clearError = (key: string) => {
+    setErrors(prev => {
+      const n = { ...prev };
+      delete n[key];
+      return n;
+    });
+  };
+
   return (
     <ToolLayout toolId="mortgage" category="finance">
       <section className="space-y-8">
-        <div className="bg-white p-8 border rounded-lg shadow-sm">
+        <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Mortgage Calculator</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Loan Amount ($)</label>
+              <label htmlFor="mortgage-amount" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Loan Amount ($)</label>
               <input
+                id="mortgage-amount"
                 type="number"
+                min="0"
+                step="1000"
                 value={loanAmount}
-                onChange={(e) => { setLoanAmount(Number(e.target.value)); setErrors(prev => { const n = { ...prev }; delete n.loanAmount; return n; }); }}
-                className={`w-full p-3 border rounded focus:ring-2 focus:ring-primary outline-none transition-all ${errors.loanAmount ? 'border-rose-500' : ''}`}
+                onChange={(e) => { setLoanAmount(validateNumberInput(e.target.value, { min: 0 })); clearError('loanAmount'); }}
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-mono text-lg ${errors.loanAmount ? 'border-rose-500' : 'border-slate-200'}`}
               />
               {errors.loanAmount && <p className="text-xs text-rose-500">{errors.loanAmount}</p>}
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Interest Rate (%)</label>
+              <label htmlFor="mortgage-rate" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Interest Rate (%)</label>
               <input
+                id="mortgage-rate"
                 type="number"
+                min="0"
+                max="100"
                 step="0.1"
                 value={interestRate}
-                onChange={(e) => { setInterestRate(Number(e.target.value)); setErrors(prev => { const n = { ...prev }; delete n.interestRate; return n; }); }}
-                className={`w-full p-3 border rounded focus:ring-2 focus:ring-primary outline-none transition-all ${errors.interestRate ? 'border-rose-500' : ''}`}
+                onChange={(e) => { setInterestRate(validateNumberInput(e.target.value, { min: 0, max: 100 })); clearError('interestRate'); }}
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-mono text-lg ${errors.interestRate ? 'border-rose-500' : 'border-slate-200'}`}
               />
               {errors.interestRate && <p className="text-xs text-rose-500">{errors.interestRate}</p>}
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Loan Term (Years)</label>
+              <label htmlFor="mortgage-years" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Loan Term (Years)</label>
               <input
+                id="mortgage-years"
                 type="number"
+                min="1"
+                max="100"
+                step="1"
                 value={years}
-                onChange={(e) => { setYears(Number(e.target.value)); setErrors(prev => { const n = { ...prev }; delete n.years; return n; }); }}
-                className={`w-full p-3 border rounded focus:ring-2 focus:ring-primary outline-none transition-all ${errors.years ? 'border-rose-500' : ''}`}
+                onChange={(e) => { setYears(validateNumberInput(e.target.value, { min: 1, max: 100 })); clearError('years'); }}
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-mono text-lg ${errors.years ? 'border-rose-500' : 'border-slate-200'}`}
               />
               {errors.years && <p className="text-xs text-rose-500">{errors.years}</p>}
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Monthly Income ($)</label>
+              <label htmlFor="mortgage-income" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Monthly Income ($)</label>
               <input
+                id="mortgage-income"
                 type="number"
+                min="0"
+                step="100"
                 value={monthlyIncome}
-                onChange={(e) => { setMonthlyIncome(Number(e.target.value)); setErrors(prev => { const n = { ...prev }; delete n.monthlyIncome; return n; }); }}
-                className={`w-full p-3 border rounded focus:ring-2 focus:ring-primary outline-none transition-all ${errors.monthlyIncome ? 'border-rose-500' : ''}`}
+                onChange={(e) => { setMonthlyIncome(validateNumberInput(e.target.value, { min: 0 })); clearError('monthlyIncome'); }}
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-mono text-lg ${errors.monthlyIncome ? 'border-rose-500' : 'border-slate-200'}`}
               />
               {errors.monthlyIncome && <p className="text-xs text-rose-500">{errors.monthlyIncome}</p>}
             </div>
           </div>
           <button
             onClick={handleCalculate}
-            className="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded hover:bg-slate-800 transition-colors uppercase tracking-widest"
+            className="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
           >
             Calculate Payment
           </button>
@@ -95,18 +117,18 @@ export default function MortgageCalculator() {
 
         {result && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-6 bg-slate-50 border rounded-lg text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Monthly Payment</span>
-                <div className="text-3xl font-mono font-bold text-primary">${result.monthlyPayment.toFixed(2)}</div>
+                <div className={`${getResultTextSize(formatCurrency(result.monthlyPayment))} font-mono font-bold text-primary tabular-nums leading-tight tracking-tight`}>{formatCurrency(result.monthlyPayment)}</div>
               </div>
-              <div className="p-6 bg-slate-50 border rounded-lg text-center">
+              <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total Interest</span>
-                <div className="text-3xl font-mono font-bold">${result.totalInterest.toFixed(2)}</div>
+                <div className={`${getResultTextSize(formatCurrency(result.totalInterest))} font-mono font-bold tabular-nums leading-tight tracking-tight`}>{formatCurrency(result.totalInterest)}</div>
               </div>
-              <div className="p-6 bg-slate-50 border rounded-lg text-center">
+              <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total Payment</span>
-                <div className="text-3xl font-mono font-bold">${result.totalPayment.toFixed(2)}</div>
+                <div className={`${getResultTextSize(formatCurrency(result.totalPayment))} font-mono font-bold tabular-nums leading-tight tracking-tight`}>{formatCurrency(result.totalPayment)}</div>
               </div>
             </div>
 
@@ -139,7 +161,7 @@ function AmortizationChart({ data }: { data: AmortizationRow[] }) {
   }, [data]);
 
   return (
-    <div className="bg-white p-6 border rounded-lg shadow-sm">
+    <div className="bg-white p-6 border border-slate-200 rounded-xl shadow-sm">
       <h3 className="text-lg font-bold mb-4">Annual Principal vs Interest</h3>
       <div className="w-full h-72">
         <ResponsiveContainer width="100%" height="100%">
@@ -171,17 +193,17 @@ function AmortizationChart({ data }: { data: AmortizationRow[] }) {
 function AmortizationTable({ data, showAll, onToggle }: { data: AmortizationRow[]; showAll: boolean; onToggle: () => void }) {
   const displayData = showAll ? data : data.slice(0, 12);
   return (
-    <div className="bg-white p-6 border rounded-lg shadow-sm">
-      <div className="flex justify-between items-center mb-4">
+    <div className="bg-white p-6 border border-slate-200 rounded-xl shadow-sm">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
         <h3 className="text-lg font-bold">Amortization Schedule</h3>
-        <button onClick={onToggle} className="text-sm font-bold text-primary hover:underline">
+        <button onClick={onToggle} className="text-sm font-bold text-primary hover:underline whitespace-nowrap">
           {showAll ? 'Show First 12 Months' : `Show All ${data.length} Months`}
         </button>
       </div>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+        <table className="w-full text-sm min-w-[600px]">
           <thead>
-            <tr className="border-b text-muted-foreground uppercase tracking-widest text-xs">
+            <tr className="border-b border-slate-200 text-muted-foreground uppercase tracking-widest text-xs">
               <th className="text-left py-3 px-2">Month</th>
               <th className="text-right py-3 px-2">Payment</th>
               <th className="text-right py-3 px-2">Principal</th>
@@ -191,12 +213,12 @@ function AmortizationTable({ data, showAll, onToggle }: { data: AmortizationRow[
           </thead>
           <tbody>
             {displayData.map((row) => (
-              <tr key={row.month} className="border-b last:border-0 hover:bg-slate-50">
+              <tr key={row.month} className="border-b border-slate-100 last:border-0 hover:bg-slate-50">
                 <td className="py-2 px-2">{row.month}</td>
-                <td className="text-right py-2 px-2 font-mono">${row.payment.toFixed(2)}</td>
-                <td className="text-right py-2 px-2 font-mono text-emerald-600">${row.principal.toFixed(2)}</td>
-                <td className="text-right py-2 px-2 font-mono text-rose-500">${row.interest.toFixed(2)}</td>
-                <td className="text-right py-2 px-2 font-mono">${row.balance.toFixed(2)}</td>
+                <td className="text-right py-2 px-2 font-mono tabular-nums">{formatCurrency(row.payment)}</td>
+                <td className="text-right py-2 px-2 font-mono tabular-nums text-emerald-600">{formatCurrency(row.principal)}</td>
+                <td className="text-right py-2 px-2 font-mono tabular-nums text-rose-500">{formatCurrency(row.interest)}</td>
+                <td className="text-right py-2 px-2 font-mono tabular-nums">{formatCurrency(row.balance)}</td>
               </tr>
             ))}
           </tbody>

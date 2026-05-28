@@ -2,6 +2,60 @@ import { Link } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import { generateOrganizationSchema } from '@/lib/schema';
+import {
+  Sparkles,
+  CreditCard,
+  Heart,
+  Clock,
+  Bot,
+  Truck,
+  ArrowRight,
+  Mail,
+  Shield,
+  RefreshCw,
+  Eye,
+  CheckCircle,
+} from 'lucide-react';
+
+const offerings = [
+  {
+    title: 'Finance Tools',
+    desc: 'Mortgage calculators, loan amortization, interest calculations, and debt payoff planners to help you make smarter financial decisions.',
+    icon: CreditCard,
+    path: '/tools/finance',
+  },
+  {
+    title: 'Health Tools',
+    desc: 'BMI calculator, BMR calculator, body fat calculator, and protein calculator to track your health and fitness goals.',
+    icon: Heart,
+    path: '/tools/health',
+  },
+  {
+    title: 'Time Tools',
+    desc: 'Age calculator, date difference calculator, business days calculator, and countdown tools for precise time tracking.',
+    icon: Clock,
+    path: '/tools/time',
+  },
+  {
+    title: 'AI Tools',
+    desc: 'AI text detector, prompt generator, humanizer, image prompt generator, email generator, and title generator.',
+    icon: Bot,
+    path: '/tools/ai',
+  },
+  {
+    title: 'Shipping Tools',
+    desc: 'DIM weight calculator, freight class calculator, package volume calculator, and chargeable weight calculator for logistics.',
+    icon: Truck,
+    path: '/tools/shipping',
+  },
+];
+
+const trustPoints = [
+  { icon: CheckCircle, text: 'Free to use, always' },
+  { icon: Shield, text: 'Built for practical decisions' },
+  { icon: RefreshCw, text: 'Updated and improved regularly' },
+  { icon: Eye, text: 'Privacy-friendly, no tracking' },
+];
 
 export default function AboutPage() {
   const canonicalUrl = 'https://www.calculatorpilotai.com/about';
@@ -17,86 +71,193 @@ export default function AboutPage() {
         jsonLd={orgSchema}
       />
       <div className="min-h-screen bg-slate-50">
-        <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
+        <main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
           <Breadcrumb items={[
             { name: 'Home', url: '/' },
             { name: 'About Us' },
           ]} />
-          <h1 className="text-3xl md:text-4xl font-black text-slate-900 mb-8 tracking-tight">
-            About <span className="text-primary">CalcWise AI</span>
-          </h1>
 
-          <div className="prose prose-slate max-w-none space-y-6 text-slate-700 leading-relaxed">
-            <section>
-              <p className="text-lg text-slate-600 font-medium">
-                Free AI-powered calculators and tools for US users — built to help you make smarter financial, health, and logistics decisions without paying a dime.
+          {/* Hero Section */}
+          <section className="relative bg-gradient-to-b from-slate-100 via-white to-slate-50 rounded-3xl p-8 md:p-12 mb-12 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-blue-500/5 rounded-full blur-3xl" />
+            </div>
+            <div className="relative text-center max-w-2xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm mb-6">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-slate-600">About CalcWise AI</span>
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                Free AI-Powered Calculators<br/><span className="text-primary">for Everyone</span>
+              </h1>
+              <p className="text-lg text-slate-500 font-medium leading-relaxed">
+                Professional-grade calculators and detectors enhanced with AI insights. Built for US users who need fast, accurate, and free tools for finance, health, shipping, and more.
               </p>
-            </section>
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Our Mission</h2>
-              <p>
-                CalcWise AI was created with a clear mission: to make professional-grade calculators and analytical tools accessible to everyone, completely free of charge. We believe that powerful computational assistance should not be locked behind paywalls or require specialized software. Whether you are planning a major financial decision, tracking your health metrics, analyzing text content, or optimizing logistics operations, our platform provides the precision tools you need with the added intelligence of AI-driven insights.
-              </p>
-              <p>
+          {/* Mission Card */}
+          <section className="mb-12">
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 md:p-10 shadow-sm">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 mb-2">Our Mission</h2>
+                  <p className="text-slate-500 leading-relaxed">
+                    CalcWise AI was created with a clear mission: to make professional-grade calculators and analytical tools accessible to everyone, completely free of charge. We believe that powerful computational assistance should not be locked behind paywalls or require specialized software.
+                  </p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
                 In a world where information overload is common, we cut through the noise by delivering focused, accurate, and actionable results. Every tool on our platform is designed to solve real problems quickly and transparently, without unnecessary complexity or hidden fees.
               </p>
-            </section>
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">What We Offer</h2>
-              <p>
-                Our growing suite of calculators and detectors spans multiple categories to serve diverse needs. In <strong>Finance</strong>, our <Link to="/tools/finance/mortgage-calculator" className="text-primary font-semibold hover:underline">Mortgage Calculator</Link> helps you estimate monthly payments, total interest, and overall affordability — complete with a detailed amortization schedule and interactive charts that break down your principal versus interest over the life of the loan.
-              </p>
-              <p>
-                For <strong>Health and Wellness</strong>, our <Link to="/tools/health/bmi-calorie-calculator" className="text-primary font-semibold hover:underline">BMI and Calorie Calculator</Link> computes your Body Mass Index, classifies your health status, and estimates your daily caloric needs based on the scientifically validated Mifflin-St Jeor equation. With support for both metric and imperial units, it is accessible to users worldwide.
-              </p>
-              <p>
-                In <strong>Logistics and Shipping</strong>, our <Link to="/tools/shipping/dim-weight-calculator" className="text-primary font-semibold hover:underline">DIM Weight Calculator</Link> determines whether your package will be billed by actual weight or dimensional weight, helping you avoid unexpected shipping costs. It supports both US standard (inches/pounds) and international metric (centimeters/kilograms) measurements.
-              </p>
-              <p>
-                We also provide an <strong>Age Calculator</strong> for precise date difference calculations, and an <strong>AI Text Detector</strong> that analyzes writing patterns to estimate the probability of AI-generated content. Beyond standalone tools, our <Link to="/guides" className="text-primary font-semibold hover:underline">Guides</Link> section offers in-depth educational content, while our <Link to="/compare" className="text-primary font-semibold hover:underline">Compare</Link> section presents side-by-side analysis of important decisions such as fixed versus variable-rate mortgages.
-              </p>
-            </section>
+          {/* What We Offer */}
+          <section className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">What We Offer</h2>
+              <p className="text-slate-500 mt-2">Explore our growing suite of free tools</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {offerings.map((item, i) => (
+                <Link
+                  key={i}
+                  to={item.path}
+                  className="group bg-white p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <item.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                    {item.desc}
+                  </p>
+                  <span className="text-sm font-semibold text-primary flex items-center gap-1">
+                    Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Who We Serve</h2>
-              <p>
-                Our tools are built for a wide audience. Home buyers and real estate professionals rely on our mortgage calculator for quick payment estimates and financial planning. Fitness enthusiasts, nutritionists, and healthcare-conscious individuals use our BMI calculator to track body composition and caloric requirements. E-commerce sellers, warehouse managers, and small business owners depend on our shipping calculator to optimize packaging and control logistics costs. Writers, educators, and content creators utilize our AI detector to assess text authenticity. In short, if you need fast, accurate calculations with intelligent context, CalcWise AI is designed for you.
-              </p>
-            </section>
+          {/* Trust Section */}
+          <section className="mb-12">
+            <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-8 md:p-10">
+              <h2 className="text-xl font-bold mb-6 text-center">Why Choose CalcWise AI</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {trustPoints.map((point, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <point.icon className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="text-sm text-slate-300">{point.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">AI-Powered Insights</h2>
-              <p>
-                What sets CalcWise AI apart from traditional calculators is our integrated AI Insight engine. After every calculation, our system generates a contextual analysis that goes beyond raw numbers. For example, after calculating your mortgage payment, the AI evaluates your debt-to-income ratio and provides a risk assessment along with actionable suggestions for improvement. After a BMI calculation, it offers personalized health recommendations tailored to your specific results. These insights transform simple arithmetic into meaningful decision support, helping you understand not just what the numbers are, but what they mean for your situation.
+          {/* AI-Powered Section */}
+          <section className="mb-12">
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 md:p-10 shadow-sm">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 mb-2">AI-Powered Insights</h2>
+                  <p className="text-slate-500 leading-relaxed">
+                    What sets CalcWise AI apart from traditional calculators is our integrated AI Insight engine. After every calculation, our system generates a contextual analysis that goes beyond raw numbers.
+                  </p>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                For example, after calculating your mortgage payment, the AI evaluates your debt-to-income ratio and provides a risk assessment along with actionable suggestions for improvement. After a BMI calculation, it offers personalized health recommendations tailored to your specific results. These insights transform simple arithmetic into meaningful decision support.
               </p>
-            </section>
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Important Disclaimer</h2>
-              <p>
-                While we strive for accuracy and reliability in every tool we build, it is important to understand that all results generated on this platform are provided for informational and educational purposes only. They should not be construed as professional financial, medical, legal, or logistical advice. Always consult with qualified professionals — such as financial advisors, healthcare providers, or shipping specialists — before making decisions that could significantly impact your finances, health, or business operations. We make no warranties regarding the completeness or accuracy of any calculation, and we are not liable for any decisions made based on the information provided.
+          {/* Key Tools Highlight */}
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-slate-900 mb-6">Popular Tools</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link to="/tools/finance/mortgage-calculator" className="bg-white p-5 border border-slate-200 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                <CreditCard className="w-5 h-5 text-primary mb-2" />
+                <h3 className="font-semibold text-slate-900 mb-1">Mortgage Calculator</h3>
+                <p className="text-xs text-slate-500">Estimate monthly payments with detailed amortization.</p>
+              </Link>
+              <Link to="/tools/health/bmi-calorie-calculator" className="bg-white p-5 border border-slate-200 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                <Heart className="w-5 h-5 text-primary mb-2" />
+                <h3 className="font-semibold text-slate-900 mb-1">BMI & Calorie Calculator</h3>
+                <p className="text-xs text-slate-500">Track body composition and daily caloric needs.</p>
+              </Link>
+              <Link to="/tools/ai/ai-detector" className="bg-white p-5 border border-slate-200 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                <Bot className="w-5 h-5 text-primary mb-2" />
+                <h3 className="font-semibold text-slate-900 mb-1">AI Text Detector</h3>
+                <p className="text-xs text-slate-500">Analyze text to detect AI-generated content.</p>
+              </Link>
+            </div>
+          </section>
+
+          {/* Who We Serve */}
+          <section className="mb-12">
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 md:p-10 shadow-sm">
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Who We Serve</h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Our tools are built for a wide audience. Home buyers and real estate professionals rely on our mortgage calculator for quick payment estimates and financial planning. Fitness enthusiasts and healthcare-conscious individuals use our BMI calculator to track body composition. E-commerce sellers and small business owners depend on our shipping calculator to optimize packaging and control logistics costs. Writers, educators, and content creators utilize our AI detector to assess text authenticity.
               </p>
-            </section>
+              <p className="text-slate-600 leading-relaxed">
+                In short, if you need fast, accurate calculations with intelligent context, CalcWise AI is designed for you.
+              </p>
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Constantly Evolving</h2>
-              <p>
+          {/* Important Disclaimer */}
+          <section className="mb-12">
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-8">
+              <h2 className="text-lg font-bold text-amber-800 mb-3">Important Disclaimer</h2>
+              <p className="text-amber-700 text-sm leading-relaxed">
+                While we strive for accuracy and reliability in every tool we build, all results generated on this platform are provided for informational and educational purposes only. They should not be construed as professional financial, medical, legal, or logistical advice. Always consult with qualified professionals before making decisions that could significantly impact your finances, health, or business operations.
+              </p>
+            </div>
+          </section>
+
+          {/* Constantly Evolving */}
+          <section className="mb-12">
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 md:p-10 shadow-sm">
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Constantly Evolving</h2>
+              <p className="text-slate-600 leading-relaxed">
                 CalcWise AI is not a static platform. We are actively developing new calculators and tools to expand our coverage across additional domains including productivity, education, engineering, and data analysis. Our roadmap includes advanced financial planning tools, comprehensive health metric trackers, unit converters, password generators, and specialized calculators for developers and designers. We release updates regularly and welcome user feedback to help us prioritize which tools to build next.
               </p>
-            </section>
+            </div>
+          </section>
 
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Get in Touch</h2>
-              <p>
-                We value your feedback, suggestions, and questions. Whether you have found a bug, want to request a new calculator, or simply want to say hello, we would love to hear from you. Reach out to us via email at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@www.calculatorpilotai.com</a> and we will respond as soon as possible.
+          {/* Contact CTA */}
+          <section className="bg-slate-900 text-white rounded-2xl p-8 md:p-10 text-center">
+            <div className="max-w-xl mx-auto">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-6">
+                <Mail className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-xl font-bold mb-3">Questions or Feedback?</h2>
+              <p className="text-slate-400 mb-6">
+                We value your feedback, suggestions, and questions. Whether you have found a bug, want to request a new calculator, or simply want to say hello, we would love to hear from you.
               </p>
-              <p>
-                Thank you for using CalcWise AI. We are honored to be part of your decision-making process, and we remain committed to delivering the best free AI-powered calculators on the web.
-              </p>
-            </section>
-          </div>
+              <a
+                href="mailto:support@calculatorpilotai.com"
+                className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+              >
+                <Mail className="w-4 h-4" />
+                support@calculatorpilotai.com
+              </a>
+            </div>
+          </section>
         </main>
       </div>
     </>

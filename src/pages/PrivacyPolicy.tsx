@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
                 <li>The right to withdraw consent where processing is consent-based</li>
               </ul>
               <p className="mt-3">
-                To exercise any of these rights, please contact us at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary hover:underline">support@www.calculatorpilotai.com</a>.
+                To exercise any of these rights, please contact us at <a href="mailto:support@calculatorpilotai.com" className="text-primary hover:underline">support@calculatorpilotai.com</a>.
               </p>
             </section>
 
@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-widest text-sm">10. Contact Us</h2>
               <p>
-                If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@www.calculatorpilotai.com</a>.
+                If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@calculatorpilotai.com</a>.
               </p>
             </section>
           </div>

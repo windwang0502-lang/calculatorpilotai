@@ -44,12 +44,51 @@ export const generateWebAppSchema = ({
 export const generateBreadcrumbSchema = (items: { name: string; url: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": items.map((item, index) => ({
+  itemListElement: items.map((item, index) => ({
     "@type": "ListItem",
-    "position": index + 1,
-    "name": item.name,
-    "item": item.url,
+    position: index + 1,
+    name: item.name,
+    item: item.url,
   })),
+});
+
+export const generateArticleSchema = ({
+  headline,
+  description,
+  url,
+  image = "https://www.calculatorpilotai.com/og-image.png",
+  datePublished = "2026-05-27",
+  dateModified = "2026-05-27",
+  authorName = "CalcWise AI",
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+  authorName?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline,
+  description,
+  image,
+  datePublished,
+  dateModified,
+  author: {
+    "@type": "Organization",
+    name: authorName,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "CalcWise AI",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.calculatorpilotai.com/logo.png",
+    },
+  },
+  mainEntityOfPage: url,
 });
 
 export const generateOrganizationSchema = () => ({

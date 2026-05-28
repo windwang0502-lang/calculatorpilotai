@@ -50,7 +50,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-slate-600 text-base mb-10 max-w-xl">
-            We would love to hear from you. Whether you have found a bug, want to suggest a new tool, or simply have a question — send us a message and we will get back to you as soon as possible.
+            Have a question, found a bug, or want to suggest a new tool? We would love to hear from you. We typically respond within 24–48 business hours.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -58,10 +58,15 @@ export default function ContactPage() {
             <div className="md:col-span-1 space-y-6">
               <div className="bg-white border rounded-lg p-5 shadow-sm">
                 <h3 className="font-bold text-slate-900 text-sm uppercase tracking-widest mb-3">Email</h3>
-                <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline text-sm break-all">
-                  support@www.calculatorpilotai.com
+                <a href="mailto:support@calculatorpilotai.com" className="text-primary font-semibold hover:underline text-sm break-all">
+                  support@calculatorpilotai.com
                 </a>
-                <p className="text-slate-500 text-xs mt-2">We typically respond within 1–2 business days.</p>
+                <p className="text-slate-500 text-xs mt-2">We typically respond within 24–48 business hours.</p>
+              </div>
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h3 className="font-bold text-slate-900 text-sm uppercase tracking-widest mb-3">Support Hours</h3>
+                <p className="text-slate-500 text-sm">Monday–Friday, 9am–5pm EST</p>
+                <p className="text-slate-400 text-xs mt-1">Questions, partnerships, or feedback welcome.</p>
               </div>
               <div className="bg-white border rounded-lg p-5 shadow-sm">
                 <h3 className="font-bold text-slate-900 text-sm uppercase tracking-widest mb-3">Helpful Links</h3>
@@ -78,10 +83,10 @@ export default function ContactPage() {
             <div className="md:col-span-2">
               {submitted ? (
                 <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-8 text-center">
-                  <div className="text-4xl mb-4">✓</div>
+                  <div className="text-4xl mb-4 text-emerald-500">✓</div>
                   <h3 className="text-lg font-bold text-emerald-900 mb-2">Message Sent!</h3>
                   <p className="text-emerald-700 text-sm">
-                    Thank you for reaching out. We have received your message and will reply to <strong>{form.email}</strong> within 1–2 business days.
+                    Thanks for reaching out. We have received your message and will reply to <strong>{form.email}</strong> within 24–48 business hours.
                   </p>
                 </div>
               ) : (
@@ -104,7 +109,7 @@ export default function ContactPage() {
                         type="email"
                         value={form.email}
                         onChange={e => handleChange('email', e.target.value)}
-                        placeholder="you@example.com"
+                        placeholder="name@example.com"
                         className={`w-full px-3 py-2.5 border rounded outline-none focus:ring-2 focus:ring-primary text-sm transition-all ${errors.email ? 'border-rose-500' : 'border-slate-200'}`}
                       />
                       {errors.email && <p className="text-xs text-rose-500">{errors.email}</p>}

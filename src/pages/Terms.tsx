@@ -113,7 +113,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-widest text-sm">10. Contact</h2>
               <p>
-                For questions regarding these Terms of Use, contact us at <a href="mailto:support@www.calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@www.calculatorpilotai.com</a>.
+                For questions regarding these Terms of Use, contact us at <a href="mailto:support@calculatorpilotai.com" className="text-primary font-semibold hover:underline">support@calculatorpilotai.com</a>.
               </p>
             </section>
           </div>

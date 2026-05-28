@@ -1,51 +1,92 @@
 import { Link } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import { generateFAQSchema } from '@/lib/schema';
+import {
+  Calculator,
+  Sparkles,
+  UserCheck,
+  Flag,
+  TrendingUp,
+  Grid3X3,
+  Calendar,
+  ArrowRight,
+  CreditCard,
+  Heart,
+  Bot,
+  Truck,
+  Clock,
+} from 'lucide-react';
 
 const popularTools = [
   {
     title: 'Mortgage Calculator',
-    desc: 'Estimate your monthly mortgage payment, total interest, and total cost over the life of your loan. Includes a full amortization schedule and interactive charts showing principal vs interest breakdown.',
+    desc: 'Estimate your monthly mortgage payment, total interest, and total cost over the life of your loan.',
     cta: 'Calculate Now',
     path: '/tools/finance/mortgage-calculator',
     cat: 'Finance',
+    icon: CreditCard,
+  },
+  {
+    title: 'Loan Calculator',
+    desc: 'Calculate your loan monthly payment, total interest, and payoff date with flexible payment frequencies.',
+    cta: 'Calculate Now',
+    path: '/tools/finance/loan-calculator',
+    cat: 'Finance',
+    icon: CreditCard,
   },
   {
     title: 'BMI & Calorie Calculator',
-    desc: 'Calculate your Body Mass Index and daily caloric needs based on the scientifically validated Mifflin-St Jeor equation. Supports both metric (kg/cm) and imperial (lb/in) units for global accessibility.',
+    desc: 'Calculate your Body Mass Index and daily caloric needs based on the scientifically validated Mifflin-St Jeor equation.',
     cta: 'Check Health',
     path: '/tools/health/bmi-calorie-calculator',
     cat: 'Health',
+    icon: Heart,
   },
   {
     title: 'AI Text Detector',
-    desc: 'Analyze any text to estimate the probability of AI generation using deterministic heuristic features including lexical diversity, sentence burstiness, and AI marker phrase detection.',
+    desc: 'Analyze any text to estimate the probability of AI generation using deterministic heuristic features.',
     cta: 'Analyze Text',
     path: '/tools/ai/ai-detector',
     cat: 'AI',
+    icon: Bot,
   },
   {
     title: 'Shipping DIM Weight Calculator',
-    desc: 'Determine whether your package will be billed by actual weight or dimensional weight. Supports both US standard (divisor 139) and international metric (divisor 5000) shipping calculations.',
+    desc: 'Determine whether your package will be billed by actual weight or dimensional weight.',
     cta: 'Calculate Shipping',
     path: '/tools/shipping/dim-weight-calculator',
     cat: 'Shipping',
+    icon: Truck,
   },
   {
     title: 'Age Calculator',
-    desc: 'Calculate your exact age in years, months, and days from your birthdate. Also computes the total number of days between any two dates with leap-year-aware precision.',
+    desc: 'Calculate your exact age in years, months, and days from your birthdate with leap-year-aware precision.',
     cta: 'Calculate Age',
     path: '/tools/time/age-calculator',
     cat: 'Time',
+    icon: Calendar,
   },
 ];
 
 const categories = [
-  { name: 'Finance Tools', path: '/tools/finance', desc: 'Mortgage calculators, interest analyzers, and financial planning tools.', icon: '💰' },
-  { name: 'Health Tools', path: '/tools/health', desc: 'BMI, calorie, and body composition calculators with AI health insights.', icon: '🩺' },
-  { name: 'AI Tools', path: '/tools/ai', desc: 'AI text detection and content analysis powered by heuristic algorithms.', icon: '🤖' },
-  { name: 'Shipping Tools', path: '/tools/shipping', desc: 'Dimensional weight and billable weight calculators for logistics.', icon: '📦' },
-  { name: 'Time Tools', path: '/tools/time', desc: 'Age calculators and date difference tools with precision accuracy.', icon: '⏰' },
+  { name: 'Finance Tools', path: '/tools/finance', desc: 'Mortgage calculators, interest analyzers, and financial planning tools.', icon: CreditCard },
+  { name: 'Health Tools', path: '/tools/health', desc: 'BMI, calorie, and body composition calculators with AI health insights.', icon: Heart },
+  { name: 'AI Tools', path: '/tools/ai', desc: 'AI prompt generation, text humanization, image prompts, email and title generators.', icon: Bot },
+  { name: 'Shipping Tools', path: '/tools/shipping', desc: 'Dimensional weight and billable weight calculators for logistics.', icon: Truck },
+  { name: 'Time Tools', path: '/tools/time', desc: 'Age calculators and date difference tools with precision accuracy.', icon: Clock },
+];
+
+const trustBadges = [
+  { icon: UserCheck, text: 'Free to Use' },
+  { icon: Sparkles, text: 'AI-Powered Insights' },
+  { icon: Flag, text: 'No Signup Required' },
+  { icon: Flag, text: 'Built for US Users' },
+];
+
+const stats = [
+  { value: '30+', label: 'Free Tools' },
+  { value: '5', label: 'Tool Categories' },
+  { value: 'Weekly', label: 'Updated' },
 ];
 
 const howItWorks = [
@@ -85,56 +126,105 @@ export default function HomePage() {
         jsonLd={faqSchema}
       />
       <div className="min-h-screen bg-slate-50">
-        <main className="max-w-6xl mx-auto px-4 py-16 md:py-24">
-          {/* Hero */}
-          <section className="text-center mb-20 md:mb-28">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-tight text-balance">
-              Free AI Calculators<br/><span className="text-primary">and Online Tools</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-              Professional-grade calculators and detectors enhanced with AI insights. Built for US users who need fast, accurate, and free tools for finance, health, shipping, and more.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link to="/tools/finance/mortgage-calculator" className="bg-slate-900 text-white font-bold py-3 px-6 rounded hover:bg-slate-800 transition-colors uppercase tracking-widest text-sm">
-                Try Mortgage Calculator
-              </Link>
-              <Link to="/tools/health/bmi-calorie-calculator" className="bg-white border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 rounded hover:bg-slate-50 transition-colors uppercase tracking-widest text-sm">
-                Try BMI Calculator
-              </Link>
+        <main>
+          {/* Hero Section with subtle gradient background */}
+          <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-white to-slate-50">
+            {/* Decorative shapes */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+              <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/3 to-blue-500/3 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-32">
+              <div className="text-center">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-tight text-balance">
+                  Free AI Calculators<br/><span className="text-primary">and Online Tools</span>
+                </h1>
+                <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                  Professional-grade calculators and detectors enhanced with AI insights. Built for US users who need fast, accurate, and free tools for finance, health, shipping, and more.
+                </p>
+                <div className="mt-8 flex flex-wrap justify-center gap-4">
+                  <Link to="/tools/finance/mortgage-calculator" className="bg-slate-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-800 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 text-sm">
+                    Try Mortgage Calculator
+                  </Link>
+                  <Link to="/tools/health/bmi-calorie-calculator" className="bg-white border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 rounded-lg hover:bg-slate-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 text-sm">
+                    Try BMI Calculator
+                  </Link>
+                </div>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="mt-16 flex flex-wrap justify-center gap-4 md:gap-6">
+                {trustBadges.map((badge, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 shadow-sm">
+                    <badge.icon className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-medium text-slate-600">{badge.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stats */}
+              <div className="mt-12 grid grid-cols-3 gap-4 max-w-xl mx-auto">
+                {stats.map((stat, i) => (
+                  <div key={i} className="text-center">
+                    <div className="text-2xl md:text-3xl font-black text-slate-900">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-slate-500 font-medium">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
-          {/* Popular Tools */}
-          <section className="mb-20 md:mb-28">
+          {/* Popular Tools Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
             <div className="flex items-end justify-between mb-8">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Popular Tools</p>
                 <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Most Used Calculators</h2>
               </div>
-              <Link to="/tools/finance" className="hidden md:block text-sm font-bold text-primary hover:underline">View All Tools →</Link>
+              <Link to="/tools" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                View All Tools <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {popularTools.map((tool, i) => (
-                <Link key={i} to={tool.path} className="group bg-white p-6 md:p-8 border border-slate-200 hover:border-primary transition-all rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
-                  <span className="inline-block text-[10px] font-black uppercase tracking-widest bg-slate-100 px-2 py-1 rounded mb-3 text-slate-500 group-hover:bg-primary/10 group-hover:text-primary transition-colors">{tool.cat}</span>
+                <Link key={i} to={tool.path} className="group bg-white p-6 md:p-8 border border-slate-200 hover:border-primary transition-all duration-300 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                      {tool.cat}
+                    </span>
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                      <tool.icon className="w-5 h-5 text-slate-600 group-hover:text-primary transition-colors" />
+                    </div>
+                  </div>
                   <h3 className="text-xl font-bold mb-2 text-slate-900">{tool.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1">{tool.desc}</p>
-                  <div className="flex items-center text-sm font-bold text-primary group-hover:gap-2 transition-all mt-auto">
-                    {tool.cta} <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                  <div className="flex items-center text-sm font-semibold text-primary">
+                    {tool.cta} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
               ))}
             </div>
+            <div className="mt-8 text-center md:hidden">
+              <Link to="/tools" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                View All Tools <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </section>
 
-          {/* Categories */}
-          <section className="mb-20 md:mb-28">
-            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Categories</p>
-            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-8">Browse by Category</h2>
+          {/* Categories Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24 bg-white">
+            <div className="mb-12">
+              <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Categories</p>
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Browse by Category</h2>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {categories.map((cat, i) => (
-                <Link key={i} to={cat.path} className="group bg-white p-6 border border-slate-200 rounded-lg hover:border-primary transition-all text-center">
-                  <div className="text-3xl mb-3">{cat.icon}</div>
+                <Link key={i} to={cat.path} className="group bg-slate-50 p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-4 group-hover:border-primary group-hover:bg-primary/5 transition-colors">
+                    <cat.icon className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
+                  </div>
                   <h3 className="font-bold text-slate-900 mb-1 group-hover:text-primary transition-colors">{cat.name}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed">{cat.desc}</p>
                 </Link>
@@ -142,15 +232,15 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* How It Works */}
-          <section className="mb-20 md:mb-28 bg-white border rounded-2xl p-8 md:p-12">
-            <div className="text-center mb-10">
+          {/* How It Works Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+            <div className="text-center mb-12">
               <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">How It Works</p>
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Three Simple Steps</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {howItWorks.map((item, i) => (
-                <div key={i} className="text-center">
+                <div key={i} className="text-center bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                   <div className="text-5xl font-black text-primary/20 mb-4">{item.step}</div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
@@ -159,15 +249,15 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Why Use Our Tools */}
-          <section className="mb-20 md:mb-28">
-            <div className="text-center mb-10">
+          {/* Why Us Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24 bg-white">
+            <div className="text-center mb-12">
               <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Why CalcWise AI</p>
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Built for Users Like You</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {whyUs.map((item, i) => (
-                <div key={i} className="bg-white p-6 border rounded-lg text-center">
+                <div key={i} className="bg-slate-50 p-6 border border-slate-200 rounded-2xl text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -175,15 +265,15 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Homepage FAQ */}
-          <section className="mb-20 md:mb-28">
-            <div className="text-center mb-10">
+          {/* FAQ Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+            <div className="text-center mb-12">
               <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">FAQ</p>
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Frequently Asked Questions</h2>
             </div>
             <div className="max-w-3xl mx-auto space-y-6">
               {homeFaqs.map((faq, i) => (
-                <div key={i} className="bg-white p-6 border rounded-lg">
+                <div key={i} className="bg-white p-6 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow">
                   <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{faq.a}</p>
                 </div>
@@ -191,44 +281,94 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Internal Links */}
-          <section className="mb-20 md:mb-28">
-            <div className="text-center mb-10">
+          {/* Resources Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+            <div className="text-center mb-12">
               <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Explore More</p>
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Discover Our Resources</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link to="/guides" className="group bg-white p-8 border rounded-lg hover:border-primary transition-all text-center">
+              <Link to="/guides" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+                  <Calculator className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
+                </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">Guides & Tutorials</h3>
                 <p className="text-slate-500 text-sm">In-depth articles on mortgages, BMI, shipping costs, and more.</p>
               </Link>
-              <Link to="/compare" className="group bg-white p-8 border rounded-lg hover:border-primary transition-all text-center">
+              <Link to="/compare" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+                  <TrendingUp className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
+                </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">Comparison Tools</h3>
                 <p className="text-slate-500 text-sm">Side-by-side analysis to help you make informed decisions.</p>
               </Link>
-              <Link to="/about" className="group bg-white p-8 border rounded-lg hover:border-primary transition-all text-center">
+              <Link to="/about" className="group bg-white p-8 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+                  <Sparkles className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />
+                </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">About CalcWise AI</h3>
-                <p className="text-slate-500 text-sm">Learn about our mission, team, and commitment to free AI tools.</p>
+                <p className="text-slate-500 text-sm">Learn about our mission and commitment to free AI tools.</p>
               </Link>
-            </div>
-            <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-3">
-              <Link to="/tools/finance/mortgage-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Mortgage Calculator</Link>
-              <Link to="/tools/health/bmi-calorie-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">BMI Calculator</Link>
-              <Link to="/tools/shipping/dim-weight-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Shipping Calculator</Link>
-              <Link to="/tools/ai/ai-detector" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">AI Detector</Link>
-              <Link to="/tools/time/age-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Age Calculator</Link>
             </div>
           </section>
 
-          {/* CTA Banner */}
-          <section className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4">Start Calculating Today</h2>
-            <p className="text-slate-400 max-w-xl mx-auto mb-8">
-              Join thousands of users who rely on CalcWise AI for fast, accurate, and free calculations. No sign-up required.
-            </p>
-            <Link to="/tools/finance" className="inline-block bg-primary text-white font-bold py-3 px-8 rounded hover:bg-primary/90 transition-colors uppercase tracking-widest text-sm">
-              Explore All Tools
-            </Link>
+          {/* Quick Links Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24 bg-white">
+            <div className="text-center mb-10">
+              <h2 className="text-xl font-bold text-slate-900">Quick Links</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+              <Link to="/tools/finance/mortgage-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Mortgage Calculator</Link>
+              <Link to="/tools/finance/loan-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Loan Calculator</Link>
+              <Link to="/tools/finance/apr-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">APR Calculator</Link>
+              <Link to="/tools/finance/refinance-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Refinance Calculator</Link>
+              <Link to="/tools/finance/interest-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Interest Calculator</Link>
+              <Link to="/tools/finance/debt-payoff-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Debt Payoff</Link>
+              <Link to="/tools/health/bmi-calorie-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">BMI Calculator</Link>
+              <Link to="/tools/health/bmr-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">BMR Calculator</Link>
+              <Link to="/tools/health/body-fat-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Body Fat Calculator</Link>
+              <Link to="/tools/health/protein-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Protein Calculator</Link>
+              <Link to="/tools/health/ideal-weight-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Ideal Weight</Link>
+              <Link to="/tools/health/water-intake-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Water Intake</Link>
+              <Link to="/tools/shipping/dim-weight-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Shipping Calculator</Link>
+              <Link to="/tools/ai/ai-detector" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">AI Detector</Link>
+              <Link to="/tools/ai/prompt-generator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Prompt Generator</Link>
+              <Link to="/tools/ai/ai-humanizer" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">AI Humanizer</Link>
+              <Link to="/tools/ai/image-prompt-generator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Image Prompt</Link>
+              <Link to="/tools/ai/email-generator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Email Generator</Link>
+              <Link to="/tools/ai/title-generator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Title Generator</Link>
+              <Link to="/tools/time/age-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Age Calculator</Link>
+              <Link to="/tools/time/date-difference-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Date Difference</Link>
+              <Link to="/tools/time/business-days-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Business Days</Link>
+              <Link to="/tools/time/countdown-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Countdown</Link>
+              <Link to="/tools/time/time-duration-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Time Duration</Link>
+              <Link to="/tools/time/age-at-date-calculator" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Age At Date</Link>
+              <Link to="/guides/what-is-mortgage" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Mortgage Guide</Link>
+              <Link to="/guides/understanding-bmi" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">BMI Guide</Link>
+              <Link to="/guides/understanding-shipping-dim-weight" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Shipping Guide</Link>
+              <Link to="/compare/fixed-vs-variable-mortgage" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">Fixed vs Variable</Link>
+              <Link to="/compare/15-year-vs-30-year-mortgage" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">15 vs 30 Year</Link>
+              <Link to="/compare/bmi-vs-body-fat-percentage" className="text-center text-sm text-slate-500 hover:text-primary transition-colors py-2">BMI vs Body Fat</Link>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+            <div className="bg-slate-900 text-white rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/20 rounded-full blur-3xl" />
+                <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-blue-500/20 rounded-full blur-3xl" />
+              </div>
+              <div className="relative">
+                <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4">Start Calculating Today</h2>
+                <p className="text-slate-400 max-w-xl mx-auto mb-8">
+                  Join thousands of users who rely on CalcWise AI for fast, accurate, and free calculations. No sign-up required.
+                </p>
+                <Link to="/tools" className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+                  Explore All Tools <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
           </section>
         </main>
       </div>
