@@ -222,8 +222,7 @@ function NotFoundPage({ category }: { category: SEOCategory }) {
 }
 
 function ProgrammaticContent({ config }: { config: SEOPageConfig }) {
-  const faqs = generateProgrammaticFAQ(config);
-  const seoData = generateAllSEOData(config, faqs);
+  const seoData = generateAllSEOData(config, generateProgrammaticFAQ(config));
 
   let template;
   switch (config.pageType) {

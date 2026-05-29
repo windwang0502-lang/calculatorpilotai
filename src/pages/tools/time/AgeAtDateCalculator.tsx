@@ -46,8 +46,28 @@ export default function AgeAtDateCalculator() {
     return [];
   };
 
+  const faqs = [
+    { question: 'What is age-at-date used for?', answer: 'It helps determine exact age on a specific date for legal, eligibility, or planning purposes.' },
+    { question: 'Can I use future dates?', answer: 'Yes. You can calculate projected age for any future reference date.' },
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'SoftwareApplication', name: 'Age At Date Calculator', description: 'Calculate exact age on any reference date.', url: 'https://www.calculatorpilotai.com/tools/time/age-at-date-calculator', applicationCategory: 'UtilityApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ],
+  };
+
+  const relatedTools = [
+    { name: 'Age Calculator', path: '/tools/time/age-calculator', desc: 'Current age and total elapsed time' },
+    { name: 'Date Difference Calculator', path: '/tools/time/date-difference-calculator', desc: 'Difference between two dates' },
+    { name: 'Countdown Calculator', path: '/tools/time/countdown-calculator', desc: 'Future date countdown' },
+  ];
+
   return (
     <ToolLayout toolId="age-at-date" category="time">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border rounded-lg shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Calculate Age at Any Date</h2>
@@ -178,6 +198,9 @@ export default function AgeAtDateCalculator() {
           </div>
         )}
       </section>
+      <section className="py-12 bg-slate-50"><div className="max-w-3xl mx-auto space-y-6"><h2 className="text-3xl font-bold text-center">How to Use the Age At Date Calculator</h2><p className="text-slate-700">Enter birth date and a reference date to calculate exact age and milestone context.</p><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Results Interpretation</h3><p className="text-slate-700">Use exact years/months/days for eligibility and compliance checks.</p></div></div></section>
+      <section className="py-12"><div className="max-w-3xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2><div className="space-y-4">{faqs.map((faq, i) => <div key={i} className="bg-white border border-slate-200 rounded-lg p-6"><h3 className="font-bold text-lg mb-2">{faq.question}</h3><p className="text-slate-700">{faq.answer}</p></div>)}</div></div></section>
+      <section className="py-12 bg-slate-900 text-white"><div className="max-w-4xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Related Time Tools</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{relatedTools.map((tool, i) => <a key={i} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"><h3 className="font-bold text-lg mb-2">{tool.name}</h3><p className="text-slate-400 text-sm">{tool.desc}</p></a>)}</div></div></section>
     </ToolLayout>
   );
 }

@@ -42,8 +42,73 @@ export default function DebtPayoffCalculator() {
     });
   };
 
+  const faqs = [
+    {
+      question: 'How does extra payment reduce my debt faster?',
+      answer: 'When you make a payment on a debt, the interest for that month is calculated first, and the remainder goes to principal. By adding extra to your payment, that additional amount goes directly to reducing principal. This means the next month\'s interest is calculated on a smaller balance, so more of your payment goes to principal. This creates a compounding effect that accelerates your payoff dramatically.'
+    },
+    {
+      question: 'What is the avalanche method for debt payoff?',
+      answer: 'The avalanche method (also called debt stacking) involves paying minimums on all debts while putting every extra dollar toward the debt with the highest interest rate. This mathematically minimizes total interest paid. Our calculator compares payoff with and without extra payments to show the power of this approach.'
+    },
+    {
+      question: 'What is the snowball method?',
+      answer: 'The snowball method (popularized by Dave Ramsey) involves paying off debts from smallest to largest balance, regardless of interest rate. The psychological wins from eliminating small debts first provide motivation to keep going. While it may cost more in total interest, the behavioral benefits make it effective for many people.'
+    },
+    {
+      question: 'How much can extra payments save me?',
+      answer: 'The savings from extra payments can be substantial. On a $15,000 balance at 19.99% with $300 minimum payment, adding just $150/month saves over $6,000 in interest and cuts 4 years off your payoff time. The higher your interest rate, the more you save with extra payments.'
+    },
+    {
+      question: 'Should I pay off debt or invest first?',
+      answer: 'Generally, paying off high-interest debt (like credit cards) provides a guaranteed "return" equal to the interest rate. However, you should maintain an emergency fund first. For debts under 5-6% interest, minimum payments while investing may make sense, especially with employer 401k matching.'
+    },
+    {
+      question: 'What payment is too low to make progress?',
+      answer: 'If your monthly payment doesn\'t exceed the monthly interest accrual, your balance will never decrease. For example, a $15,000 balance at 19.99% APR accrues about $249 in monthly interest ($15,000 × 0.1999 ÷ 12). Any payment under $249 actually increases your debt. Our calculator alerts you when this happens.'
+    }
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'Debt Payoff Calculator',
+        description: 'Calculate how extra payments can accelerate your debt payoff and save thousands in interest.',
+        url: 'https://www.calculatorpilotai.com/tools/finance/debt-payoff-calculator',
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.calculatorpilotai.com' },
+          { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://www.calculatorpilotai.com/tools/finance' },
+          { '@type': 'ListItem', position: 3, name: 'Debt Payoff Calculator', item: 'https://www.calculatorpilotai.com/tools/finance/debt-payoff-calculator' }
+        ]
+      }
+    ]
+  };
+
+  const relatedTools = [
+    { name: 'Loan Calculator', path: '/tools/finance/loan-calculator', desc: 'Calculate loan payments and total costs' },
+    { name: 'Interest Calculator', path: '/tools/finance/interest-calculator', desc: 'Calculate simple and compound interest' },
+    { name: 'APR Calculator', path: '/tools/finance/apr-calculator', desc: 'Compare the true cost of loans' },
+  ];
+
   return (
     <ToolLayout toolId="debt-payoff" category="finance">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Debt Payoff Calculator</h2>
@@ -173,6 +238,96 @@ export default function DebtPayoffCalculator() {
             )}
           </div>
         )}
+      </section>
+
+      {/* SEO Explanation Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">How to Use the Debt Payoff Calculator</h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-3">What This Calculator Does</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The Debt Payoff Calculator helps you understand how extra payments can dramatically accelerate your path to being debt-free. It shows how much time and money you can save by paying more than the minimum each month. This tool is essential for planning your debt payoff strategy and staying motivated.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">How It Works</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The calculator tracks your balance month by month, applying interest and subtracting payments until the balance reaches zero. It calculates the total interest paid and how long it takes to become debt-free. By comparing scenarios with and without extra payments, you can see the power of accelerated payoff.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">The Math</h3>
+              <div className="bg-white border border-slate-200 rounded-lg p-4 font-mono text-sm">
+                <p className="mb-2"><strong>Monthly Interest = Balance × (APR ÷ 12)</strong></p>
+                <p className="mb-2"><strong>Principal Paid = Payment - Monthly Interest</strong></p>
+                <p className="text-xs text-slate-500">New Balance = Previous Balance - Principal Paid</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Understanding Your Results</h3>
+              <ul className="list-disc list-inside text-slate-700 space-y-2">
+                <li><strong>Months to Pay Off:</strong> Total time until debt-free.</li>
+                <li><strong>Total Interest:</strong> Money paid just for borrowing.</li>
+                <li><strong>Total Paid:</strong> Principal plus all interest.</li>
+                <li><strong>Time & Interest Saved:</strong> Benefits of extra payments.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Common Mistakes to Avoid</h3>
+              <div className="space-y-3 text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Making minimum payments only:</strong> This maximizes interest paid and time in debt.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Ignoring high-interest debt:</strong> Credit cards with 20%+ rates cost you heavily.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 font-bold">✓</span>
+                  <p><strong>Even small extra payments help</strong> — any amount above minimum reduces principal faster.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-2">{faq.question}</h3>
+                <p className="text-slate-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Tools */}
+      <section className="py-12 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Related Financial Calculators</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedTools.map((tool, index) => (
+              <a key={index} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+                <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
+                <p className="text-slate-400 text-sm">{tool.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
     </ToolLayout>
   );

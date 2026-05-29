@@ -21,15 +21,19 @@ const BusinessDaysCalculator = React.lazy(() => import('./pages/tools/time/Busin
 const CountdownCalculator = React.lazy(() => import('./pages/tools/time/CountdownCalculator'));
 const TimeDurationCalculator = React.lazy(() => import('./pages/tools/time/TimeDurationCalculator'));
 const AgeAtDateCalculator = React.lazy(() => import('./pages/tools/time/AgeAtDateCalculator'));
+const WorkHoursCalculator = React.lazy(() => import('./pages/tools/time/WorkHoursCalculator'));
 const AIDetector = React.lazy(() => import('./pages/tools/ai/AIDetector'));
 const PromptGenerator = React.lazy(() => import('./pages/tools/ai/PromptGenerator'));
 const AIHumanizer = React.lazy(() => import('./pages/tools/ai/AIHumanizer'));
 const ImagePromptGenerator = React.lazy(() => import('./pages/tools/ai/ImagePromptGenerator'));
 const EmailGenerator = React.lazy(() => import('./pages/tools/ai/EmailGenerator'));
 const TitleGenerator = React.lazy(() => import('./pages/tools/ai/TitleGenerator'));
+const TokenCalculator = React.lazy(() => import('./pages/tools/ai/TokenCalculator'));
+const CalorieCalculator = React.lazy(() => import('./pages/tools/health/CalorieCalculator'));
 const DimWeightCalculator = React.lazy(() => import('./pages/tools/shipping/DimWeightCalculator'));
 const FreightClassCalculator = React.lazy(() => import('./pages/tools/shipping/FreightClassCalculator'));
 const ShippingCostEstimator = React.lazy(() => import('./pages/tools/shipping/ShippingCostEstimator'));
+const ShippingCostCalculator = React.lazy(() => import('./pages/tools/shipping/ShippingCostCalculator'));
 const PackageVolumeCalculator = React.lazy(() => import('./pages/tools/shipping/PackageVolumeCalculator'));
 const ChargeableWeightCalculator = React.lazy(() => import('./pages/tools/shipping/ChargeableWeightCalculator'));
 const PalletCalculator = React.lazy(() => import('./pages/tools/shipping/PalletCalculator'));
@@ -82,15 +86,19 @@ export const routes: RouteConfig[] = [
   { name: 'Countdown Calculator', path: '/tools/time/countdown-calculator', element: LazyWrap(CountdownCalculator), public: true },
   { name: 'Time Duration Calculator', path: '/tools/time/time-duration-calculator', element: LazyWrap(TimeDurationCalculator), public: true },
   { name: 'Age At Date Calculator', path: '/tools/time/age-at-date-calculator', element: LazyWrap(AgeAtDateCalculator), public: true },
+  { name: 'Work Hours Calculator', path: '/tools/time/work-hours-calculator', element: LazyWrap(WorkHoursCalculator), public: true },
   { name: 'AI Detector', path: '/tools/ai/ai-detector', element: LazyWrap(AIDetector), public: true },
   { name: 'Prompt Generator', path: '/tools/ai/prompt-generator', element: LazyWrap(PromptGenerator), public: true },
   { name: 'AI Humanizer', path: '/tools/ai/ai-humanizer', element: LazyWrap(AIHumanizer), public: true },
   { name: 'Image Prompt Generator', path: '/tools/ai/image-prompt-generator', element: LazyWrap(ImagePromptGenerator), public: true },
   { name: 'Email Generator', path: '/tools/ai/email-generator', element: LazyWrap(EmailGenerator), public: true },
   { name: 'Title Generator', path: '/tools/ai/title-generator', element: LazyWrap(TitleGenerator), public: true },
+  { name: 'Token Calculator', path: '/tools/ai/token-calculator', element: LazyWrap(TokenCalculator), public: true },
+  { name: 'Calorie Calculator', path: '/tools/health/calorie-calculator', element: LazyWrap(CalorieCalculator), public: true },
   { name: 'Shipping Calculator', path: '/tools/shipping/dim-weight-calculator', element: LazyWrap(DimWeightCalculator), public: true },
   { name: 'Freight Class Calculator', path: '/tools/shipping/freight-class-calculator', element: LazyWrap(FreightClassCalculator), public: true },
   { name: 'Shipping Cost Estimator', path: '/tools/shipping/shipping-cost-estimator', element: LazyWrap(ShippingCostEstimator), public: true },
+  { name: 'Shipping Cost Calculator', path: '/tools/shipping/shipping-cost-calculator', element: LazyWrap(ShippingCostCalculator), public: true },
   { name: 'Package Volume Calculator', path: '/tools/shipping/package-volume-calculator', element: LazyWrap(PackageVolumeCalculator), public: true },
   { name: 'Chargeable Weight Calculator', path: '/tools/shipping/chargeable-weight-calculator', element: LazyWrap(ChargeableWeightCalculator), public: true },
   { name: 'Pallet Calculator', path: '/tools/shipping/pallet-calculator', element: LazyWrap(PalletCalculator), public: true },

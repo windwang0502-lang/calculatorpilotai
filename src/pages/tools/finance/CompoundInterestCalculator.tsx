@@ -137,8 +137,67 @@ export default function CompoundInterestCalculator() {
     ? ((result.finalBalance - result.totalContributions) / result.totalContributions * 100).toFixed(1)
     : '0';
 
+  const faqs = [
+    {
+      question: 'What is compound interest?',
+      answer: 'Compound interest is interest earned on both the initial principal and the accumulated interest from previous periods. Unlike simple interest (which only applies to the principal), compound interest allows your money to grow exponentially over time because you earn interest on your interest. This is why starting early is so powerful — even small contributions can grow significantly over decades.'
+    },
+    {
+      question: 'How does compounding frequency affect my returns?',
+      answer: 'The more frequently interest compounds, the more you\'ll earn. This is because interest is added to your balance more often, allowing the next period\'s interest to be calculated on a larger amount. Daily compounding earns more than monthly, which earns more than annually. While the difference may seem small for short periods, it becomes significant over decades of investing.'
+    },
+    {
+      question: 'What is the difference between nominal and effective interest rate?',
+      answer: 'The nominal rate is the stated annual interest rate (like 7% per year). The effective rate accounts for compounding frequency — for the same nominal rate, monthly compounding produces a slightly higher effective rate than annual compounding. Our calculator shows the effective rate so you can compare investments accurately regardless of how often they compound.'
+    },
+    {
+      question: 'Why do contributions matter so much with compound interest?',
+      answer: 'Contributions supercharge compound interest because you earn returns on every dollar you add. In the early years, your contributions make up most of your balance. Over time, however, compound interest on those contributions becomes the dominant force. This is why consistent monthly contributions, even small ones, can lead to substantial wealth over long periods.'
+    },
+    {
+      question: 'What is a realistic expected return for investments?',
+      answer: 'Historical stock market returns average about 7-10% annually over long periods, adjusted for inflation. Bond markets typically return 3-5%. High-yield savings accounts currently offer around 4-5%. Remember that past performance doesn\'t guarantee future results, and your actual returns will vary. It\'s wise to use conservative estimates for planning purposes.'
+    },
+    {
+      question: 'How do I use this calculator for retirement planning?',
+      answer: 'Enter your current savings as principal, your expected annual return, and how many years until retirement. Add your planned monthly contributions. The calculator shows your projected balance, how much came from contributions versus interest, and the percentage growth. Use this to understand if you\'re on track and how much more you might need to contribute.'
+    }
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'Compound Interest Calculator',
+        description: 'Calculate how your investments grow over time with compound interest and regular contributions.',
+        url: 'https://www.calculatorpilotai.com/tools/finance/compound-interest-calculator',
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.calculatorpilotai.com' },
+          { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://www.calculatorpilotai.com/tools/finance' },
+          { '@type': 'ListItem', position: 3, name: 'Compound Interest Calculator', item: 'https://www.calculatorpilotai.com/tools/finance/compound-interest-calculator' }
+        ]
+      }
+    ]
+  };
+
   return (
     <ToolLayout toolId="compound-interest" category="finance">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         {/* Calculator Input Section */}
         <div className="bg-white p-6 md:p-8 border border-slate-200 rounded-xl shadow-sm">
@@ -266,27 +325,27 @@ export default function CompoundInterestCalculator() {
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Key Metrics - Fixed grid for overflow */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="p-4 md:p-5 bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl text-center">
+              <div className="p-4 md:p-5 bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-2">Final Balance</span>
-                <div className="text-lg md:text-xl lg:text-2xl font-mono font-bold text-emerald-700 tabular-nums leading-tight break-all">
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-emerald-700 tabular-nums leading-none overflow-wrap-anywhere break-normal">
                   {formatCurrency(result.finalBalance)}
                 </div>
               </div>
-              <div className="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
+              <div className="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-2">Total Contributed</span>
-                <div className="text-lg md:text-xl lg:text-2xl font-mono font-bold text-slate-700 tabular-nums leading-tight break-all">
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-slate-700 tabular-nums leading-none overflow-wrap-anywhere break-normal">
                   {formatCurrency(result.totalContributions)}
                 </div>
               </div>
-              <div className="p-4 md:p-5 bg-amber-50 border border-amber-200 rounded-xl text-center">
+              <div className="p-4 md:p-5 bg-amber-50 border border-amber-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-2">Interest Earned</span>
-                <div className="text-lg md:text-xl lg:text-2xl font-mono font-bold text-amber-700 tabular-nums leading-tight break-all">
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-amber-700 tabular-nums leading-none overflow-wrap-anywhere break-normal">
                   {formatCurrency(result.totalInterest)}
                 </div>
               </div>
-              <div className="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
+              <div className="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-2">Growth</span>
-                <div className="text-lg md:text-xl lg:text-2xl font-mono font-bold text-slate-700 tabular-nums leading-tight">
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-slate-700 tabular-nums leading-none">
                   +{totalGrowthPercent}%
                 </div>
               </div>
@@ -537,6 +596,112 @@ export default function CompoundInterestCalculator() {
             </div>
           </div>
         )}
+      </section>
+
+      {/* SEO Explanation Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">How to Use the Compound Interest Calculator</h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-3">What This Calculator Does</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The Compound Interest Calculator helps you project the future value of your investments by showing how compound interest and regular contributions grow your money over time. It visualizes the power of compound growth, showing how your contributions stack up against the interest you earn. This tool is essential for retirement planning, investment comparisons, and understanding the time value of money.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">How It Works</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The calculator uses the compound interest formula with regular contributions. Each period, it adds your contributions, then applies the interest rate. Over time, you earn interest on increasingly larger balances, creating exponential growth. The chart and table show your balance year-by-year, clearly separating your contributions from the interest earned.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">The Formula</h3>
+              <div className="bg-white border border-slate-200 rounded-lg p-4 font-mono text-sm">
+                <p className="mb-2"><strong>A = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)]</strong></p>
+                <p className="mb-1">Where:</p>
+                <p className="mb-1">• A = Final balance</p>
+                <p className="mb-1">• P = Principal (initial investment)</p>
+                <p className="mb-1">• r = Annual interest rate (decimal)</p>
+                <p className="mb-1">• n = Compounding frequency per year</p>
+                <p className="mb-1">• t = Time in years</p>
+                <p className="mb-1">• PMT = Monthly contribution</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Understanding Your Results</h3>
+              <p className="text-slate-700 leading-relaxed mb-3">Your compound interest calculation shows:</p>
+              <ul className="list-disc list-inside text-slate-700 space-y-2">
+                <li><strong>Final Balance:</strong> Your projected total value at the end of the period.</li>
+                <li><strong>Total Contributed:</strong> Your initial principal plus all contributions.</li>
+                <li><strong>Interest Earned:</strong> The growth from compound interest — often exceeds your contributions.</li>
+                <li><strong>Growth Percentage:</strong> How much your money multiplied over the period.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Common Mistakes to Avoid</h3>
+              <div className="space-y-3 text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Using unrealistic returns:</strong> 15% annual returns are not realistic for most investments over long periods.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Ignoring inflation:</strong> A 7% return with 3% inflation is really only 4% in real terms.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Not starting early:</strong> Waiting 10 years to start investing means missing decades of compound growth.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 font-bold">✓</span>
+                  <p><strong>Increase contributions over time</strong> as your income grows to accelerate wealth building.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-2">{faq.question}</h3>
+                <p className="text-slate-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Tools */}
+      <section className="py-12 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Related Financial Calculators</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="/tools/finance/mortgage-calculator" className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+              <h3 className="font-bold text-lg mb-2">Mortgage Calculator</h3>
+              <p className="text-slate-400 text-sm">Calculate home loan payments and amortization</p>
+            </a>
+            <a href="/tools/finance/loan-calculator" className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+              <h3 className="font-bold text-lg mb-2">Loan Calculator</h3>
+              <p className="text-slate-400 text-sm">Calculate loan payments with different frequencies</p>
+            </a>
+            <a href="/tools/finance/apr-calculator" className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+              <h3 className="font-bold text-lg mb-2">APR Calculator</h3>
+              <p className="text-slate-400 text-sm">Compare the true cost of different loans</p>
+            </a>
+          </div>
+        </div>
       </section>
     </ToolLayout>
   );

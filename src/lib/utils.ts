@@ -127,13 +127,23 @@ export function formatDuration(months: number): string {
   return `${years} year${years !== 1 ? "s" : ""} ${remainingMonths} month${remainingMonths !== 1 ? "s" : ""}`;
 }
 
-// Responsive text size for large values
+// Responsive text size for large values with overflow protection
 export function getResultTextSize(value: string | number): string {
   const str = String(value);
-  if (str.length <= 8) return "text-4xl";
-  if (str.length <= 12) return "text-3xl";
-  if (str.length <= 16) return "text-2xl";
-  return "text-xl";
+  if (str.length <= 8) return "text-2xl md:text-3xl lg:text-4xl";
+  if (str.length <= 12) return "text-xl md:text-2xl lg:text-3xl";
+  if (str.length <= 16) return "text-lg md:text-xl lg:text-2xl";
+  return "text-base md:text-lg lg:text-xl";
+}
+
+// Result value styling classes - ensures numbers never overflow
+export function getResultValueClasses(): string {
+  return "font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere break-normal";
+}
+
+// Compact result value for grids
+export function getCompactResultValueClasses(): string {
+  return "font-mono font-bold tabular-nums text-sm md:text-base lg:text-lg overflow-wrap-anywhere break-normal";
 }
 
 // Validate safe number input

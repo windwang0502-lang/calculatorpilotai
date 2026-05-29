@@ -63,7 +63,7 @@ export default function ShippingCostEstimator() {
     }
   ];
 
-  const schemaJsonLd = result ? {
+  const schemaJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -92,7 +92,7 @@ export default function ShippingCostEstimator() {
         ]
       }
     ]
-  } : null;
+  };
 
   return (
     <ToolLayout toolId="shipping" category="shipping">

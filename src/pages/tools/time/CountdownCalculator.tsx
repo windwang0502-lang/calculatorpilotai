@@ -39,8 +39,28 @@ export default function CountdownCalculator() {
     return () => clearInterval(interval);
   }, [isLive, result, targetDate]);
 
+  const faqs = [
+    { question: 'Can countdown update in real time?', answer: 'Yes. Enable live mode to refresh every second.' },
+    { question: 'What if the date is in the past?', answer: 'The tool marks it as passed and still shows full breakdown values.' },
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'SoftwareApplication', name: 'Countdown Calculator', description: 'Countdown to any future date with live updates and time breakdown.', url: 'https://www.calculatorpilotai.com/tools/time/countdown-calculator', applicationCategory: 'UtilityApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ],
+  };
+
+  const relatedTools = [
+    { name: 'Time Duration Calculator', path: '/tools/time/time-duration-calculator', desc: 'Add/subtract date intervals' },
+    { name: 'Date Difference Calculator', path: '/tools/time/date-difference-calculator', desc: 'Exact date interval totals' },
+    { name: 'Age Calculator', path: '/tools/time/age-calculator', desc: 'Age and elapsed-time calculator' },
+  ];
+
   return (
     <ToolLayout toolId="countdown" category="time">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border rounded-lg shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Countdown to Future Date</h2>
@@ -151,6 +171,9 @@ export default function CountdownCalculator() {
           </div>
         )}
       </section>
+      <section className="py-12 bg-slate-50"><div className="max-w-3xl mx-auto space-y-6"><h2 className="text-3xl font-bold text-center">How to Use the Countdown Calculator</h2><p className="text-slate-700">Set a target date/time and start countdown. Use live mode for second-by-second tracking.</p><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Common Mistakes</h3><p className="text-slate-700">Use the correct local date-time and verify timezone context.</p></div></div></section>
+      <section className="py-12"><div className="max-w-3xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2><div className="space-y-4">{faqs.map((faq, i) => <div key={i} className="bg-white border border-slate-200 rounded-lg p-6"><h3 className="font-bold text-lg mb-2">{faq.question}</h3><p className="text-slate-700">{faq.answer}</p></div>)}</div></div></section>
+      <section className="py-12 bg-slate-900 text-white"><div className="max-w-4xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Related Time Tools</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{relatedTools.map((tool, i) => <a key={i} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"><h3 className="font-bold text-lg mb-2">{tool.name}</h3><p className="text-slate-400 text-sm">{tool.desc}</p></a>)}</div></div></section>
     </ToolLayout>
   );
 }

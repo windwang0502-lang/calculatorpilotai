@@ -165,8 +165,9 @@ export default {
                     '.border-r-dotted': {'border-right-style': 'dotted'},
                     '.border-b-dotted': {'border-bottom-style': 'dotted'},
                     '.border-l-dotted': {'border-left-style': 'dotted'},
+                    '.overflow-wrap-anywhere': {'overflow-wrap': 'anywhere'},
                 },
-                ['responsive']
+                ['responsive', 'hover', 'focus']
             );
         },
     ],

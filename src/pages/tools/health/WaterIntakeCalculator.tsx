@@ -57,8 +57,73 @@ export default function WaterIntakeCalculator() {
     }
   };
 
+  const faqs = [
+    {
+      question: 'How much water should I actually drink per day?',
+      answer: 'The classic advice of 8 glasses (64 oz) per day is a reasonable starting point, but actual needs vary significantly. Your water needs depend on body weight, activity level, climate, and overall health. A more personalized approach uses body weight: aim for 30-35ml per kg of body weight. For example, a 70kg person needs about 2.1-2.5 liters daily.'
+    },
+    {
+      question: 'Does water intake depend on my activity level?',
+      answer: 'Absolutely. Active individuals lose more water through sweat and need proportionally more hydration. Light exercise may add 200-400ml to daily needs, while intense exercise or endurance sports can double or triple water requirements. Always hydrate before, during, and after exercise to maintain performance and prevent dehydration.'
+    },
+    {
+      question: 'How does climate affect my water needs?',
+      answer: 'Hot and humid climates increase water loss through perspiration. Living in hot regions or experiencing summer heat requires additional hydration. Similarly, high altitudes increase breathing rate and water loss through respiration. Cold climates can also mask dehydration since you may not feel as thirsty.'
+    },
+    {
+      question: 'Can I get water from foods and other beverages?',
+      answer: 'Yes, about 20% of daily water intake typically comes from food, especially fruits and vegetables. Other beverages like tea, coffee, and milk contribute to hydration. However, sugary drinks and alcohol can have diuretic effects. Water remains the best choice for maintaining optimal hydration.'
+    },
+    {
+      question: 'How do I know if I\'m properly hydrated?',
+      answer: 'The simplest indicator is urine color: pale yellow (like lemonade) suggests good hydration, while dark yellow (like apple juice) indicates dehydration. Thirst is actually a late indicator of dehydration. Other signs include energy levels, headaches, and mental clarity. Chronic mild dehydration can affect mood and cognitive function.'
+    },
+    {
+      question: 'Can I drink too much water?',
+      answer: 'While rare, overhydration (hyponatremia) can occur, especially during endurance events. This happens when sodium levels become diluted from drinking excessive water. Symptoms include nausea, confusion, and in severe cases, seizures. For most people, drinking when thirsty and monitoring urine color is sufficient to maintain healthy hydration.'
+    }
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'Water Intake Calculator',
+        description: 'Calculate your daily water needs based on body weight, activity level, and climate for optimal hydration.',
+        url: 'https://www.calculatorpilotai.com/tools/health/water-intake-calculator',
+        applicationCategory: 'HealthApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.calculatorpilotai.com' },
+          { '@type': 'ListItem', position: 2, name: 'Health', item: 'https://www.calculatorpilotai.com/tools/health' },
+          { '@type': 'ListItem', position: 3, name: 'Water Intake Calculator', item: 'https://www.calculatorpilotai.com/tools/health/water-intake-calculator' }
+        ]
+      }
+    ]
+  };
+
+  const relatedTools = [
+    { name: 'Calorie Calculator', path: '/tools/health/calorie-calculator', desc: 'Calculate your daily calorie needs' },
+    { name: 'BMI Calculator', path: '/tools/health/bmi-calorie-calculator', desc: 'Calculate your body mass index' },
+    { name: 'Protein Calculator', path: '/tools/health/protein-calculator', desc: 'Calculate your daily protein needs' },
+  ];
+
   return (
     <ToolLayout toolId="water-intake" category="health">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
@@ -118,7 +183,7 @@ export default function WaterIntakeCalculator() {
           </div>
           <button
             onClick={handleCalculate}
-            className="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+            className="mt-8 w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:bg-primary/90 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             Calculate Water Intake
           </button>
@@ -190,6 +255,96 @@ export default function WaterIntakeCalculator() {
           </div>
         )}
       </section>
+
+      {/* SEO Explanation Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">How to Use the Water Intake Calculator</h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-3">What This Calculator Does</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The Water Intake Calculator estimates your daily hydration needs based on body weight, activity level, and climate. Proper hydration supports digestion, nutrient absorption, temperature regulation, cognitive function, and joint health. This tool helps you understand how much water your body needs to function optimally.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">How It Works</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The calculator starts with a base recommendation (35ml per kg of body weight) and adjusts for your activity level and climate. More exercise and hotter climates increase water needs. It also provides workout hydration guidelines to help you maintain hydration during physical activity.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">The Formula</h3>
+              <div className="bg-white border border-slate-200 rounded-lg p-4 font-mono text-sm">
+                <p className="mb-2"><strong>Base: Water = body weight(kg) × 35ml</strong></p>
+                <p className="mb-2"><strong>Activity multiplier: Sedentary 1.0, Moderate 1.1, Active 1.2, Very Active 1.3</strong></p>
+                <p className="mb-2"><strong>Climate multiplier: Cool 1.0, Moderate 1.1, Hot 1.2</strong></p>
+                <p className="text-xs text-slate-500">Example: 70kg, moderate activity, moderate climate = 2,695ml (2.7L)</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Understanding Your Results</h3>
+              <ul className="list-disc list-inside text-slate-700 space-y-2">
+                <li><strong>Daily Intake:</strong> Total water to drink each day.</li>
+                <li><strong>Liters/Cups:</strong> Both metric and common measurements.</li>
+                <li><strong>Workout Hydration:</strong> Pre, during, and post-workout guidelines.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Common Mistakes to Avoid</h3>
+              <div className="space-y-3 text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Waiting until thirsty:</strong> Thirst indicates you\'re already mildly dehydrated.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Ignoring exercise:</strong> You need extra water during and after workouts.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 font-bold">✓</span>
+                  <p><strong>Monitor urine color</strong> as a simple hydration check throughout the day.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-2">{faq.question}</h3>
+                <p className="text-slate-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Tools */}
+      <section className="py-12 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Related Health Calculators</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedTools.map((tool, index) => (
+              <a key={index} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+                <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
+                <p className="text-slate-400 text-sm">{tool.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </ToolLayout>
   );
 }
@@ -201,7 +356,7 @@ function UnitToggle({ value, onChange, options }: { value: string; onChange: (v:
         <button
           key={opt.value}
           onClick={() => onChange(opt.value)}
-          className={`px-3 py-1.5 uppercase tracking-wider transition-colors ${value === opt.value ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-800'}`}
+          className={`px-3 py-1.5 uppercase tracking-wider transition-colors ${value === opt.value ? 'bg-primary text-primary-foreground' : 'text-slate-500 hover:text-slate-800'}`}
         >
           {opt.label}
         </button>

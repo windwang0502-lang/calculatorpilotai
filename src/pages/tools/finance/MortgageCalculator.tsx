@@ -46,8 +46,73 @@ export default function MortgageCalculator() {
     });
   };
 
+  const faqs = [
+    {
+      question: 'How is my monthly mortgage payment calculated?',
+      answer: 'Your monthly payment is calculated using the standard amortization formula: M = P × [r(1+r)^n] / [(1+r)^n - 1], where P is the principal loan amount, r is the monthly interest rate (annual rate divided by 12), and n is the total number of payments. This formula spreads your loan evenly over the loan term, with early payments going mostly toward interest and later payments going mostly toward principal.'
+    },
+    {
+      question: 'What is an amortization schedule?',
+      answer: 'An amortization schedule is a table that shows how each payment is split between principal and interest over the life of your loan. It also displays your remaining loan balance after each payment. Early in the loan term, a larger portion of each payment goes toward interest. As the principal decreases, less interest accrues, so more of your payment goes toward reducing the principal.'
+    },
+    {
+      question: 'How does my interest rate affect my total cost?',
+      answer: 'Even a small difference in interest rate significantly impacts your total cost. For example, on a $300,000 30-year loan, a 0.5% rate difference can mean tens of thousands of dollars in additional interest paid over the life of the loan. Use our calculator to compare different rates and see how refinancing or making extra payments can save you money.'
+    },
+    {
+      question: 'Should I choose a 15-year or 30-year mortgage?',
+      answer: 'A 15-year mortgage typically offers a lower interest rate but higher monthly payments. While you\'ll pay less total interest with a 15-year loan, the higher payments may strain your budget. A 30-year mortgage offers lower monthly payments but more total interest paid. Choose based on your budget, long-term financial goals, and how long you plan to stay in the home.'
+    },
+    {
+      question: 'What is the 28/36 rule for mortgage qualification?',
+      answer: 'Lenders often use the 28/36 rule as a guideline for mortgage qualification: your housing expenses (including mortgage, property tax, and insurance) should not exceed 28% of your gross monthly income, and your total debt payments should not exceed 36%. Our calculator includes a monthly income field to help you understand if your mortgage fits these guidelines.'
+    },
+    {
+      question: 'How much should I put down on a house?',
+      answer: 'While a 20% down payment is ideal to avoid private mortgage insurance (PMI), many buyers put down 3-20% depending on their situation. A larger down payment reduces your monthly payment and total interest, but tying up more money in real estate reduces liquidity. Consider your emergency fund, other debts, and investment opportunities when deciding on a down payment amount.'
+    }
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'Mortgage Calculator',
+        description: 'Calculate your monthly mortgage payment, total interest, and view a complete amortization schedule for your home loan.',
+        url: 'https://www.calculatorpilotai.com/tools/finance/mortgage-calculator',
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.calculatorpilotai.com' },
+          { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://www.calculatorpilotai.com/tools/finance' },
+          { '@type': 'ListItem', position: 3, name: 'Mortgage Calculator', item: 'https://www.calculatorpilotai.com/tools/finance/mortgage-calculator' }
+        ]
+      }
+    ]
+  };
+
+  const relatedTools = [
+    { name: 'Loan Calculator', path: '/tools/finance/loan-calculator', desc: 'Calculate monthly payments for any type of loan' },
+    { name: 'APR Calculator', path: '/tools/finance/apr-calculator', desc: 'Calculate the true annual cost of borrowing' },
+    { name: 'Refinance Calculator', path: '/tools/finance/refinance-calculator', desc: 'Determine if refinancing makes sense for you' },
+  ];
+
   return (
     <ToolLayout toolId="mortgage" category="finance">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Mortgage Calculator</h2>
@@ -109,7 +174,7 @@ export default function MortgageCalculator() {
           </div>
           <button
             onClick={handleCalculate}
-            className="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+            className="mt-8 w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:bg-primary/90 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             Calculate Payment
           </button>
@@ -138,6 +203,104 @@ export default function MortgageCalculator() {
             <AIInsightPanel insight={insight} />
           </div>
         )}
+      </section>
+
+      {/* SEO Explanation Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">How to Use the Mortgage Calculator</h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-3">What This Calculator Does</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The Mortgage Calculator helps you estimate your monthly mortgage payment based on the loan amount, interest rate, and loan term. It generates a complete amortization schedule showing how each payment is split between principal and interest over the life of your loan. This tool is essential for budgeting your home purchase and understanding the true cost of your mortgage.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">How It Works</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The calculator uses the standard amortization formula to determine your monthly payment. It then creates an amortization schedule that tracks every payment throughout the loan term, showing the remaining balance after each payment. The chart visualizes how much of each year\'s payments go toward principal versus interest, helping you understand your loan\'s equity buildup over time.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">The Formula</h3>
+              <div className="bg-white border border-slate-200 rounded-lg p-4 font-mono text-sm">
+                <p className="mb-2"><strong>M = P × [r(1+r)^n] / [(1+r)^n - 1]</strong></p>
+                <p className="mb-1">Where:</p>
+                <p className="mb-1">• M = Monthly payment</p>
+                <p className="mb-1">• P = Principal loan amount</p>
+                <p className="mb-1">• r = Monthly interest rate (annual rate ÷ 12)</p>
+                <p className="mb-1">• n = Total number of payments (years × 12)</p>
+                <p className="mt-3 text-xs text-slate-500">Example: $300,000 at 5.5% for 30 years = $1,702/mo payment</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Understanding Your Results</h3>
+              <p className="text-slate-700 leading-relaxed mb-3">Your mortgage calculation provides three key figures:</p>
+              <ul className="list-disc list-inside text-slate-700 space-y-2">
+                <li><strong>Monthly Payment:</strong> Your fixed payment amount, including principal and interest (property tax and insurance not included).</li>
+                <li><strong>Total Interest:</strong> The sum of all interest paid over the loan term. This is the cost of borrowing.</li>
+                <li><strong>Total Payment:</strong> The total amount you\'ll pay over the life of the loan (principal + interest).</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Common Mistakes to Avoid</h3>
+              <div className="space-y-3 text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Ignoring total interest:</strong> Focus on the monthly payment but remember that a 30-year loan costs significantly more in interest than a 15-year loan.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Not accounting for extra costs:</strong> Your mortgage payment is just part of homeownership costs. Include property taxes, insurance, HOA fees, and maintenance.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Choosing the lowest rate without comparing fees:</strong> A slightly higher rate with lower fees may be better than the lowest advertised rate.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 font-bold">✓</span>
+                  <p><strong>Consider the full cost</strong> including PMI, taxes, and insurance before deciding on loan terms.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-2">{faq.question}</h3>
+                <p className="text-slate-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Tools */}
+      <section className="py-12 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Related Financial Calculators</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedTools.map((tool, index) => (
+              <a key={index} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+                <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
+                <p className="text-slate-400 text-sm">{tool.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
     </ToolLayout>
   );

@@ -26,8 +26,28 @@ export default function DateDifferenceCalculator() {
     setResult(res);
   };
 
+  const faqs = [
+    { question: 'How is date difference calculated?', answer: 'By subtracting start date from end date and converting the interval into years, months, days and total units.' },
+    { question: 'Does it include leap years?', answer: 'Yes, leap days are included when they fall within the date range.' },
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'SoftwareApplication', name: 'Date Difference Calculator', description: 'Calculate difference between two dates in multiple units.', url: 'https://www.calculatorpilotai.com/tools/time/date-difference-calculator', applicationCategory: 'UtilityApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ],
+  };
+
+  const relatedTools = [
+    { name: 'Age Calculator', path: '/tools/time/age-calculator', desc: 'Age from birth to target date' },
+    { name: 'Business Days Calculator', path: '/tools/time/business-days-calculator', desc: 'Working days between dates' },
+    { name: 'Time Duration Calculator', path: '/tools/time/time-duration-calculator', desc: 'Add/subtract time spans' },
+  ];
+
   return (
     <ToolLayout toolId="date-difference" category="time">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Calculate Date Difference</h2>
@@ -138,6 +158,9 @@ export default function DateDifferenceCalculator() {
           </div>
         )}
       </section>
+      <section className="py-12 bg-slate-50"><div className="max-w-3xl mx-auto space-y-6"><h2 className="text-3xl font-bold text-center">How to Use the Date Difference Calculator</h2><p className="text-slate-700">Select start and end dates to get exact elapsed time and totals in days/hours/minutes/seconds.</p><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Results Interpretation</h3><p className="text-slate-700">Use total days for planning, and year-month-day for human-readable reporting.</p></div><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Common Mistakes</h3><p className="text-slate-700">Ensure end date is after start date.</p></div></div></section>
+      <section className="py-12"><div className="max-w-3xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2><div className="space-y-4">{faqs.map((faq, i) => <div key={i} className="bg-white border border-slate-200 rounded-lg p-6"><h3 className="font-bold text-lg mb-2">{faq.question}</h3><p className="text-slate-700">{faq.answer}</p></div>)}</div></div></section>
+      <section className="py-12 bg-slate-900 text-white"><div className="max-w-4xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Related Time Tools</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{relatedTools.map((tool, i) => <a key={i} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"><h3 className="font-bold text-lg mb-2">{tool.name}</h3><p className="text-slate-400 text-sm">{tool.desc}</p></a>)}</div></div></section>
     </ToolLayout>
   );
 }

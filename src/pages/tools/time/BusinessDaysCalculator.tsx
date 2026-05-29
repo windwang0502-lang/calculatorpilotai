@@ -26,8 +26,28 @@ export default function BusinessDaysCalculator() {
     setResult(res);
   };
 
+  const faqs = [
+    { question: 'What counts as a business day?', answer: 'Business days usually mean Monday through Friday, excluding weekends and optionally holidays.' },
+    { question: 'Can I exclude holidays?', answer: 'Yes, enable the holiday exclusion toggle to remove US federal holidays from the count.' },
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'SoftwareApplication', name: 'Business Days Calculator', description: 'Calculate working days between two dates, with optional holiday exclusion.', url: 'https://www.calculatorpilotai.com/tools/time/business-days-calculator', applicationCategory: 'UtilityApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ],
+  };
+
+  const relatedTools = [
+    { name: 'Date Difference Calculator', path: '/tools/time/date-difference-calculator', desc: 'Calendar days between dates' },
+    { name: 'Work Hours Calculator', path: '/tools/time/work-hours-calculator', desc: 'Weekly and annual work-hour totals' },
+    { name: 'Countdown Calculator', path: '/tools/time/countdown-calculator', desc: 'Time remaining to a target date' },
+  ];
+
   return (
     <ToolLayout toolId="business-days" category="time">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border rounded-lg shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Calculate Business Days</h2>
@@ -72,7 +92,7 @@ export default function BusinessDaysCalculator() {
           </div>
           <button
             onClick={handleCalculate}
-            className="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded hover:bg-slate-800 transition-colors uppercase tracking-widest"
+            className="mt-8 w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:bg-primary/90 transition-colors uppercase tracking-widest"
           >
             Calculate Business Days
           </button>
@@ -135,6 +155,9 @@ export default function BusinessDaysCalculator() {
           </div>
         )}
       </section>
+      <section className="py-12 bg-slate-50"><div className="max-w-3xl mx-auto space-y-6"><h2 className="text-3xl font-bold text-center">How to Use the Business Days Calculator</h2><p className="text-slate-700">Choose start/end dates and optionally exclude holidays. The result shows business days, weekends, and totals.</p><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Results Interpretation</h3><p className="text-slate-700">Use business days for scheduling, SLA windows, and delivery estimates.</p></div></div></section>
+      <section className="py-12"><div className="max-w-3xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2><div className="space-y-4">{faqs.map((faq, i) => <div key={i} className="bg-white border border-slate-200 rounded-lg p-6"><h3 className="font-bold text-lg mb-2">{faq.question}</h3><p className="text-slate-700">{faq.answer}</p></div>)}</div></div></section>
+      <section className="py-12 bg-slate-900 text-white"><div className="max-w-4xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Related Time Tools</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{relatedTools.map((tool, i) => <a key={i} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"><h3 className="font-bold text-lg mb-2">{tool.name}</h3><p className="text-slate-400 text-sm">{tool.desc}</p></a>)}</div></div></section>
     </ToolLayout>
   );
 }

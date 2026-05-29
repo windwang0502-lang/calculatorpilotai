@@ -18,6 +18,7 @@ const allTools = [
       { title: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
       { title: 'Loan Calculator', path: '/tools/finance/loan-calculator' },
       { title: 'APR Calculator', path: '/tools/finance/apr-calculator' },
+      { title: 'Compound Interest Calculator', path: '/tools/finance/compound-interest-calculator' },
       { title: 'Refinance Calculator', path: '/tools/finance/refinance-calculator' },
       { title: 'Interest Calculator', path: '/tools/finance/interest-calculator' },
       { title: 'Debt Payoff Calculator', path: '/tools/finance/debt-payoff-calculator' },
@@ -29,6 +30,7 @@ const allTools = [
     icon: Heart,
     tools: [
       { title: 'BMI & Calorie Calculator', path: '/tools/health/bmi-calorie-calculator' },
+      { title: 'Calorie Calculator', path: '/tools/health/calorie-calculator' },
       { title: 'BMR Calculator', path: '/tools/health/bmr-calculator' },
       { title: 'Body Fat Calculator', path: '/tools/health/body-fat-calculator' },
       { title: 'Protein Calculator', path: '/tools/health/protein-calculator' },
@@ -47,6 +49,7 @@ const allTools = [
       { title: 'Countdown Calculator', path: '/tools/time/countdown-calculator' },
       { title: 'Time Duration Calculator', path: '/tools/time/time-duration-calculator' },
       { title: 'Age At Date Calculator', path: '/tools/time/age-at-date-calculator' },
+      { title: 'Work Hours Calculator', path: '/tools/time/work-hours-calculator' },
     ],
   },
   {
@@ -60,6 +63,7 @@ const allTools = [
       { title: 'Image Prompt Generator', path: '/tools/ai/image-prompt-generator' },
       { title: 'Email Generator', path: '/tools/ai/email-generator' },
       { title: 'Title Generator', path: '/tools/ai/title-generator' },
+      { title: 'Token Calculator', path: '/tools/ai/token-calculator' },
     ],
   },
   {
@@ -73,6 +77,7 @@ const allTools = [
       { title: 'Package Volume Calculator', path: '/tools/shipping/package-volume-calculator' },
       { title: 'Chargeable Weight Calculator', path: '/tools/shipping/chargeable-weight-calculator' },
       { title: 'Pallet Calculator', path: '/tools/shipping/pallet-calculator' },
+      { title: 'Shipping Cost Calculator', path: '/tools/shipping/shipping-cost-calculator' },
     ],
   },
 ];

@@ -31,8 +31,40 @@ export default function AgeCalculator() {
     setInsight(generateAgeInsight(res.years));
   };
 
+  const faqs = [
+    { question: 'How is age calculated?', answer: 'Age is calculated by comparing birth date and target date across years, months, and days, accounting for month lengths and leap years.' },
+    { question: 'Can I calculate age at a past or future date?', answer: 'Yes. Set any target date to see exact age on that day.' },
+    { question: 'Is this accurate for leap years?', answer: 'Yes. Calendar differences include leap days where applicable.' },
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        name: 'Age Calculator',
+        description: 'Calculate exact age between birth date and target date in years, months, and days.',
+        url: 'https://www.calculatorpilotai.com/tools/time/age-calculator',
+        applicationCategory: 'UtilityApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })),
+      },
+    ],
+  };
+
+  const relatedTools = [
+    { name: 'Age At Date Calculator', path: '/tools/time/age-at-date-calculator', desc: 'Age on any reference date' },
+    { name: 'Date Difference Calculator', path: '/tools/time/date-difference-calculator', desc: 'Difference between two dates' },
+    { name: 'Countdown Calculator', path: '/tools/time/countdown-calculator', desc: 'Time remaining to a target date' },
+  ];
+
   return (
     <ToolLayout toolId="age" category="time">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Age & Date Difference Calculator</h2>
@@ -82,6 +114,39 @@ export default function AgeCalculator() {
             <AIInsightPanel insight={insight} />
           </div>
         )}
+      </section>
+
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <h2 className="text-3xl font-bold text-center">How to Use the Age Calculator</h2>
+          <p className="text-slate-700">Enter birth date and target date, then calculate. The tool returns exact years, months, days, and total elapsed days.</p>
+          <div className="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 className="font-bold mb-2">Formula Explanation</h3>
+            <p className="text-slate-700">Calendar age is computed by date component subtraction with borrow/carry adjustments across month/day boundaries.</p>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 className="font-bold mb-2">Results Interpretation</h3>
+            <p className="text-slate-700">Use years-months-days for legal/personal contexts and total days for analytics/tracking.</p>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 className="font-bold mb-2">Common Mistakes</h3>
+            <p className="text-slate-700">Avoid swapping dates; target date must be after birth date.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">{faqs.map((faq, i) => <div key={i} className="bg-white border border-slate-200 rounded-lg p-6"><h3 className="font-bold text-lg mb-2">{faq.question}</h3><p className="text-slate-700">{faq.answer}</p></div>)}</div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Related Time Tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{relatedTools.map((tool, i) => <a key={i} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"><h3 className="font-bold text-lg mb-2">{tool.name}</h3><p className="text-slate-400 text-sm">{tool.desc}</p></a>)}</div>
+        </div>
       </section>
     </ToolLayout>
   );

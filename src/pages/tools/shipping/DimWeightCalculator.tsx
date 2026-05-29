@@ -40,15 +40,28 @@ export default function ShippingCalculator() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleCalculate = () => {
-    if (!validate()) return;
-    const res = calculateShipping(lengthIn, widthIn, heightIn, weightLb, unit === 'metric' ? metricDivisor * (1 / CM_PER_IN) ** 3 / KG_PER_LB : divisor);
-    setResult(res);
-    setInsight(generateShippingInsight(res.dimWeight, weightLb));
+  const faqs = [
+    { question: 'What is DIM weight?', answer: 'DIM (dimensional) weight is a carrier pricing method based on package volume, not just scale weight.' },
+    { question: 'Which weight is billed?', answer: 'Carriers bill the greater of actual weight and dimensional weight.' },
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'SoftwareApplication', name: 'DIM Weight Calculator', description: 'Calculate dimensional, actual, and billable shipping weight.', url: 'https://www.calculatorpilotai.com/tools/shipping/dim-weight-calculator', applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ],
   };
+
+  const relatedTools = [
+    { name: 'Freight Class Calculator', path: '/tools/shipping/freight-class-calculator', desc: 'Estimate freight class from density' },
+    { name: 'Package Volume Calculator', path: '/tools/shipping/package-volume-calculator', desc: 'Volume in multiple units' },
+    { name: 'Chargeable Weight Calculator', path: '/tools/shipping/chargeable-weight-calculator', desc: 'Air cargo chargeable-weight rules' },
+  ];
 
   return (
     <ToolLayout toolId="shipping" category="shipping">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
@@ -164,6 +177,9 @@ export default function ShippingCalculator() {
           </div>
         )}
       </section>
+      <section className="py-12 bg-slate-50"><div className="max-w-3xl mx-auto space-y-6"><h2 className="text-3xl font-bold text-center">How to Use the DIM Weight Calculator</h2><p className="text-slate-700">Enter package dimensions and actual weight, then calculate to get dimensional and billable weight.</p><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Formula Explanation</h3><p className="text-slate-700">DIM Weight = (L × W × H) / Divisor. Billable = max(DIM, Actual).</p></div><div className="bg-white border border-slate-200 rounded-lg p-4"><h3 className="font-bold mb-2">Common Mistakes</h3><p className="text-slate-700">Using wrong divisor for carrier/service type.</p></div></div></section>
+      <section className="py-12"><div className="max-w-3xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2><div className="space-y-4">{faqs.map((faq, i) => <div key={i} className="bg-white border border-slate-200 rounded-lg p-6"><h3 className="font-bold text-lg mb-2">{faq.question}</h3><p className="text-slate-700">{faq.answer}</p></div>)}</div></div></section>
+      <section className="py-12 bg-slate-900 text-white"><div className="max-w-4xl mx-auto"><h2 className="text-3xl font-bold mb-8 text-center">Related Shipping Tools</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{relatedTools.map((tool, i) => <a key={i} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"><h3 className="font-bold text-lg mb-2">{tool.name}</h3><p className="text-slate-400 text-sm">{tool.desc}</p></a>)}</div></div></section>
     </ToolLayout>
   );
 }

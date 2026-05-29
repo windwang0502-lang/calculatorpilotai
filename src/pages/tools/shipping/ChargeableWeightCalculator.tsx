@@ -85,7 +85,7 @@ export default function ChargeableWeightCalculator() {
     }
   ];
 
-  const schemaJsonLd = result ? {
+  const schemaJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -114,7 +114,7 @@ export default function ChargeableWeightCalculator() {
         ]
       }
     ]
-  } : null;
+  };
 
   return (
     <ToolLayout toolId="shipping" category="shipping">

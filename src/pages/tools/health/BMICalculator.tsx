@@ -55,8 +55,73 @@ export default function BMICalculator() {
     }
   };
 
+  const faqs = [
+    {
+      question: 'What is BMI and how is it calculated?',
+      answer: 'BMI (Body Mass Index) is a measure of body fat based on height and weight. The formula is: BMI = weight(kg) / height(m)². For example, a person weighing 70 kg and 1.75 m tall has a BMI of 22.9. BMI categories are: Underweight (under 18.5), Normal (18.5-24.9), Overweight (25-29.9), and Obese (30 or higher).'
+    },
+    {
+      question: 'What are the limitations of BMI?',
+      answer: 'BMI is a screening tool but has limitations. It doesn\'t distinguish between muscle and fat mass, so athletes may have high BMI without excess body fat. It doesn\'t account for age, gender, or ethnicity. For example, older adults may have higher body fat percentages at the same BMI as younger people. Use BMI as one indicator among many health metrics.'
+    },
+    {
+      question: 'How accurate is BMI for different body types?',
+      answer: 'BMI is less accurate for muscular individuals (who may be classified as overweight despite low body fat) and for elderly individuals (who may be classified as normal despite higher body fat). Athletes, bodybuilders, and pregnant women should use alternative body composition measurements for more accurate health assessments.'
+    },
+    {
+      question: 'What are healthy BMI ranges by age?',
+      answer: 'For adults aged 18-65, the standard BMI ranges apply regardless of age. However, some research suggests slightly higher BMI (25-27) may be optimal for adults over 65. Always consult with a healthcare provider to determine your healthy weight range based on your individual health history and goals.'
+    },
+    {
+      question: 'How does the calculator estimate daily calorie needs?',
+      answer: 'The calculator uses your BMR (Basal Metabolic Rate) multiplied by an activity factor. BMR is calculated using the Mifflin-St Jeor equation, which estimates the calories your body burns at rest. The activity factor accounts for your exercise level, from sedentary (1.2) to extra active (1.9).'
+    },
+    {
+      question: 'What should I do if my BMI is in the overweight or obese range?',
+      answer: 'BMI is just one health indicator. If your BMI is above normal, consider consulting a healthcare provider for a comprehensive health assessment. They can evaluate other factors like blood pressure, cholesterol, and blood sugar. Small lifestyle changes—walking 10 minutes daily, reducing processed foods—can make significant differences over time.'
+    }
+  ];
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'BMI & Calorie Calculator',
+        description: 'Calculate your Body Mass Index and daily calorie needs based on your age, gender, height, weight, and activity level.',
+        url: 'https://www.calculatorpilotai.com/tools/health/bmi-calculator',
+        applicationCategory: 'HealthApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.calculatorpilotai.com' },
+          { '@type': 'ListItem', position: 2, name: 'Health', item: 'https://www.calculatorpilotai.com/tools/health' },
+          { '@type': 'ListItem', position: 3, name: 'BMI Calculator', item: 'https://www.calculatorpilotai.com/tools/health/bmi-calculator' }
+        ]
+      }
+    ]
+  };
+
+  const relatedTools = [
+    { name: 'BMR Calculator', path: '/tools/health/bmr-calculator', desc: 'Calculate your basal metabolic rate' },
+    { name: 'Calorie Calculator', path: '/tools/health/calorie-calculator', desc: 'Determine your daily calorie needs' },
+    { name: 'Body Fat Calculator', path: '/tools/health/body-fat-calculator', desc: 'Estimate your body fat percentage' },
+  ];
+
   return (
     <ToolLayout toolId="bmi" category="health">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
@@ -143,7 +208,7 @@ export default function BMICalculator() {
               </select>
             </div>
           </div>
-          <button onClick={handleCalculate} className="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-slate-900 focus:ring-offset-2">
+          <button onClick={handleCalculate} className="mt-8 w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:bg-primary/90 transition-colors uppercase tracking-widest focus:ring-2 focus:ring-primary focus:ring-offset-2">
             Analyze Health Metrics
           </button>
         </div>
@@ -168,6 +233,97 @@ export default function BMICalculator() {
           </div>
         )}
       </section>
+
+      {/* SEO Explanation Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">How to Use the BMI Calculator</h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-3">What This Calculator Does</h3>
+              <p className="text-slate-700 leading-relaxed">
+                The BMI Calculator estimates your Body Mass Index and daily calorie needs in one comprehensive tool. It factors in your weight, height, age, gender, and activity level to provide personalized health metrics. BMI is a widely-used screening tool that helps assess whether your weight is in proportion to your height.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">How It Works</h3>
+              <p className="text-slate-700 leading-relaxed">
+                BMI is calculated by dividing your weight in kilograms by the square of your height in meters. The calculator then categorizes your BMI into Underweight, Normal, Overweight, or Obese ranges. For calorie estimation, it uses the Mifflin-St Jeor equation to calculate your BMR, then multiplies by your activity factor to estimate daily energy needs.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">The Formulas</h3>
+              <div className="bg-white border border-slate-200 rounded-lg p-4 font-mono text-sm">
+                <p className="mb-2"><strong>BMI = weight(kg) / height(m)²</strong></p>
+                <p className="mb-2"><strong>BMR (male) = 10 × weight(kg) + 6.25 × height(cm) - 5 × age + 5</strong></p>
+                <p className="mb-2"><strong>BMR (female) = 10 × weight(kg) + 6.25 × height(cm) - 5 × age - 161</strong></p>
+                <p className="text-xs text-slate-500">Daily Calories = BMR × Activity Factor</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Understanding Your Results</h3>
+              <p className="text-slate-700 leading-relaxed mb-3">Your health metrics provide these insights:</p>
+              <ul className="list-disc list-inside text-slate-700 space-y-2">
+                <li><strong>BMI Score:</strong> A number that categorizes your weight relative to your height.</li>
+                <li><strong>Category:</strong> Underweight (under 18.5), Normal (18.5-24.9), Overweight (25-29.9), Obese (30+).</li>
+                <li><strong>Daily Calories:</strong> Estimated calories to maintain your current weight based on activity level.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-3">Common Mistakes to Avoid</h3>
+              <div className="space-y-3 text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Relying solely on BMI:</strong> It doesn\'t measure body fat directly or account for muscle mass.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <p><strong>Ignoring activity level:</strong> Your calorie needs vary dramatically based on how active you are.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 font-bold">✓</span>
+                  <p><strong>Use BMI as a screening tool</strong> — consult healthcare providers for comprehensive assessments.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-2">{faq.question}</h3>
+                <p className="text-slate-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Tools */}
+      <section className="py-12 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Related Health Calculators</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedTools.map((tool, index) => (
+              <a key={index} href={tool.path} className="block p-6 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors">
+                <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
+                <p className="text-slate-400 text-sm">{tool.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </ToolLayout>
   );
 }
@@ -179,7 +335,7 @@ function UnitToggle({ value, onChange, options }: { value: string; onChange: (v:
         <button
           key={opt.value}
           onClick={() => onChange(opt.value)}
-          className={`px-3 py-1.5 uppercase tracking-wider transition-colors ${value === opt.value ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-800'}`}
+          className={`px-3 py-1.5 uppercase tracking-wider transition-colors ${value === opt.value ? 'bg-primary text-primary-foreground' : 'text-slate-500 hover:text-slate-800'}`}
         >
           {opt.label}
         </button>
