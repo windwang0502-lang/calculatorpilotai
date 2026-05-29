@@ -44,6 +44,7 @@ const TermsPage = React.lazy(() => import('./pages/Terms'));
 const ContactPage = React.lazy(() => import('./pages/Contact'));
 const AIDisclosurePage = React.lazy(() => import('./pages/AIDisclosure'));
 const EditorialPolicyPage = React.lazy(() => import('./pages/EditorialPolicy'));
+const ProgrammaticToolPage = React.lazy(() => import('./pages/tools/ProgrammaticToolPage'));
 
 const LazyWrap = (Component: React.LazyExoticComponent<React.FC>) => (
   <Suspense fallback={<div className="flex items-center justify-center min-h-[50vh]"><div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div></div>}>
@@ -103,4 +104,6 @@ export const routes: RouteConfig[] = [
   { name: 'Contact', path: '/contact', element: LazyWrap(ContactPage), public: true },
   { name: 'AI Disclosure', path: '/ai-disclosure', element: LazyWrap(AIDisclosurePage), public: true },
   { name: 'Editorial Policy', path: '/editorial-policy', element: LazyWrap(EditorialPolicyPage), public: true },
+  // Dynamic programmatic routes - MUST be last to preserve static route priority
+  { name: 'Programmatic Tool', path: '/tools/:category/:slug', element: LazyWrap(ProgrammaticToolPage), public: true },
 ];

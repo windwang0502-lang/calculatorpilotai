@@ -4,10 +4,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
+    "build": "node scripts/generate-sitemap.cjs && vite build",
     "preview": "vite preview",
     "lint": "tsgo -p tsconfig.check.json; npx biome lint; .rules/check.sh;npx tailwindcss -i ./src/index.css -o /dev/null 2>&1 | grep -E '^(CssSyntaxError|Error):.*' || true;.rules/testBuild.sh",
-    "seo:check": "npx tsx scripts/seo-check.ts"
+    "seo:check": "npx tsx scripts/seo-check.ts",
+    "sitemap:generate": "node scripts/generate-sitemap.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -88,6 +89,7 @@
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.11",
+    "tsx": "^4.22.3",
     "typescript": "~5.9.3",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-svgr": "^4.5.0"
