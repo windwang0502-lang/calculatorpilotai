@@ -112,7 +112,6 @@ export default function MortgageCalculator() {
 
   return (
     <ToolLayout toolId="mortgage" category="finance">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-6">Mortgage Calculator</h2>

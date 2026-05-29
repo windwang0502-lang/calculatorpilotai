@@ -197,7 +197,6 @@ export default function CompoundInterestCalculator() {
 
   return (
     <ToolLayout toolId="compound-interest" category="finance">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         {/* Calculator Input Section */}
         <div className="bg-white p-6 md:p-8 border border-slate-200 rounded-xl shadow-sm">

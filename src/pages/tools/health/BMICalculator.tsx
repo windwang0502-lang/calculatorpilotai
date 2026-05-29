@@ -121,7 +121,6 @@ export default function BMICalculator() {
 
   return (
     <ToolLayout toolId="bmi" category="health">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
