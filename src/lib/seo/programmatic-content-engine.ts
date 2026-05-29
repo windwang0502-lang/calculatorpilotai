@@ -304,3 +304,104 @@ export function generateAllProgrammaticContent(config: SEOPageConfig): ContentRe
     cta: generateProgrammaticCTA(config),
   };
 }
+
+// Specialized content for loan types and BMI audiences - P5.2A
+const loanTypeContent: Record<string, { intro: string; faqs: { question: string; answer: string }[] }> = {
+  'fha-loan-calculator': {
+    intro: `Our FHA loan calculator helps first-time homebuyers estimate their monthly mortgage payments with FHA loan requirements. FHA loans are government-backed mortgages designed to make home ownership more accessible with lower down payment requirements and more flexible credit standards.`,
+    faqs: [
+      { question: 'What is the minimum down payment for an FHA loan?', answer: 'FHA loans require a minimum down payment of 3.5% for borrowers with credit scores of 580 or higher. Those with credit scores between 500-579 may qualify with a 10% down payment.' },
+      { question: 'What are FHA loan limits in 2026?', answer: 'FHA loan limits vary by county and range from $524,225 to $1,209,750 for single-family homes in high-cost areas. Check your county limits for accurate borrowing limits.' },
+      { question: 'What is FHA MIP and how long do I pay it?', answer: 'FHA requires both an upfront mortgage insurance premium (UFMIP) of 1.75% of the loan amount and annual MIP that varies by loan term, amount, and LTV. Most borrowers pay MIP for the life of the loan.' },
+      { question: 'Can I use an FHA loan for a multi-unit property?', answer: 'Yes, FHA loans can finance 1-4 unit properties as long as you occupy one unit as your primary residence. Multi-unit properties can be cost-effective for house hacking strategies.' },
+    ],
+  },
+  'va-loan-calculator': {
+    intro: `Our VA loan calculator helps eligible veterans, service members, and surviving spouses estimate their VA loan payments. VA loans offer competitive rates with no down payment required and no private mortgage insurance, making them one of the most favorable mortgage options available.`,
+    faqs: [
+      { question: 'Who is eligible for a VA loan?', answer: 'Eligible borrowers include veterans with qualifying service, active-duty service members, National Guard and Reserve members, and surviving spouses of veterans who died in service or from service-connected disabilities.' },
+      { question: 'Do VA loans require a down payment?', answer: 'No, VA loans do not require a down payment for loans at or below the county loan limit. For loans exceeding the limit, a down payment equal to 25% of the amount above the limit is required.' },
+      { question: 'What are VA loan funding fees?', answer: 'VA charges a funding fee that varies based on service type, down payment, and whether it is your first use. The fee typically ranges from 1.4% to 3.6% of the loan amount and can be financed.' },
+      { question: 'Can I use a VA loan more than once?', answer: 'Yes, VA loans can be used multiple times. However, there are entitlement restoration requirements and potential funding fee increases for subsequent uses.' },
+    ],
+  },
+  'usda-loan-calculator': {
+    intro: `Our USDA loan calculator helps eligible buyers in rural and suburban areas estimate their zero-down-payment mortgage payments. USDA loans offer 100% financing for qualified borrowers purchasing homes in designated rural development areas.`,
+    faqs: [
+      { question: 'What are USDA loan income limits?', answer: 'USDA income limits vary by location and household size. Generally, household income cannot exceed 115% of the area median income. Limits are adjusted annually.' },
+      { question: 'What properties qualify for USDA loans?', answer: 'Properties must be located in eligible rural areas as designated by USDA. Most suburban and rural areas qualify. The property must be your primary residence and typically must be modest in size and price.' },
+      { question: 'What are USDA guarantee fees?', answer: 'USDA charges a guarantee fee of 1% upfront and an annual fee of 0.35% of the outstanding loan balance. These fees help support the program and can be financed with the loan.' },
+      { question: 'Can I use USDA loans for new construction?', answer: 'Yes, USDA loans can be used for new construction, including builder-certified new homes meeting energy efficiency standards. The property must meet all USDA property requirements.' },
+    ],
+  },
+  'conventional-loan-calculator': {
+    intro: `Our conventional loan calculator helps estimate monthly payments for conforming mortgages not backed by government agencies. Conventional loans typically offer competitive rates with various term options for well-qualified borrowers.`,
+    faqs: [
+      { question: 'What is the conventional loan limit in 2026?', answer: 'The baseline conforming loan limit for single-family homes is $806,500 in most areas. Higher-cost areas may have limits up to $1,209,750. Limits are adjusted annually based on home prices.' },
+      { question: 'When do I need PMI on a conventional loan?', answer: 'Private mortgage insurance (PMI) is typically required when your down payment is less than 20%. PMI protects the lender if you default and can be removed once you reach 20% equity.' },
+      { question: 'What credit score do I need for a conventional loan?', answer: 'Most lenders require a minimum credit score of 620-640 for conventional loans. However, optimal rates typically require scores of 740 or higher. Requirements vary by lender.' },
+      { question: 'What are conventional loan term options?', answer: 'Conventional loans are available in various terms including 10, 15, 20, 25, and 30 years. Shorter terms offer higher monthly payments but less total interest. Choose based on your budget and goals.' },
+    ],
+  },
+  'jumbo-loan-calculator': {
+    intro: `Our jumbo loan calculator helps estimate payments for mortgages exceeding conforming loan limits. Jumbo loans finance luxury homes and high-value properties in expensive real estate markets.`,
+    faqs: [
+      { question: 'What is considered a jumbo loan in 2026?', answer: 'Jumbo loans exceed the conforming loan limit of $806,500 for most areas. In high-cost markets, loans above $1,209,750 are considered jumbo. Exact thresholds vary by county.' },
+      { question: 'What are jumbo loan interest rates?', answer: 'Jumbo loan rates are typically slightly higher than conforming rates due to increased lender risk. However, rates vary significantly by lender, loan size, and borrower qualifications.' },
+      { question: 'What are jumbo loan requirements?', answer: 'Jumbo loans require stronger borrower profiles including higher credit scores (typically 700+), lower debt-to-income ratios (typically under 43%), and larger cash reserves (6-12 months of payments).' },
+      { question: 'Can I get a fixed-rate jumbo loan?', answer: 'Yes, jumbo loans are available in both fixed-rate and adjustable-rate formats. Fixed-rate jumbos provide payment certainty, while ARMs may offer lower initial rates for shorter-term ownership.' },
+    ],
+  },
+};
+
+const bmiAudienceContent: Record<string, { intro: string; faqs: { question: string; answer: string }[] }> = {
+  'bmi-calculator-men': {
+    intro: `Our BMI calculator for men helps you understand your body mass index with insights tailored to male physiology. Men typically have more muscle mass and less body fat percentage compared to women at the same BMI, making gender-specific calculations valuable.`,
+    faqs: [
+      { question: 'Is BMI calculated differently for men?', answer: 'The basic BMI formula is the same for everyone. However, men generally have denser bones and more muscle mass, so a man and woman with the same BMI may have different body fat percentages.' },
+      { question: 'What is a healthy BMI for men?', answer: 'For adult men, a BMI between 18.5 and 24.9 is considered healthy. However, athletes may have higher BMIs due to muscle mass. Consult a healthcare provider for personalized assessment.' },
+      { question: 'How does muscle mass affect BMI for men?', answer: 'Because muscle weighs more than fat, muscular men may have elevated BMIs despite having low body fat. For athletes or those building muscle, body fat percentage or waist measurements may be more useful.' },
+      { question: 'What waist size should men aim for?', answer: 'For men, a waist circumference under 40 inches (102 cm) is generally considered healthy. Waist size is a good indicator of abdominal fat and related health risks.' },
+    ],
+  },
+  'bmi-calculator-women': {
+    intro: `Our BMI calculator for women provides body mass index calculations with insights specific to female physiology. Women naturally have higher body fat percentages than men, and BMI categories may need context for athletes and those with different body compositions.`,
+    faqs: [
+      { question: 'Is BMI calculated differently for women?', answer: 'The BMI formula is identical for all adults. However, women typically carry more essential body fat (10-13% vs 2-5% for men), which affects health interpretations.' },
+      { question: 'What is a healthy BMI for women?', answer: 'For adult women, a BMI between 18.5 and 24.9 is considered healthy. However, athletes may have healthy BMIs that appear underweight due to muscle mass. Pregnancy also affects BMI calculations.' },
+      { question: 'How does menopause affect BMI?', answer: 'Menopause often leads to increased abdominal fat and metabolic changes. Women over 50 may have slightly higher healthy BMI ranges (25-27) compared to younger adults according to some research.' },
+      { question: 'What waist size should women aim for?', answer: 'For women, a waist circumference under 35 inches (89 cm) is generally considered healthy. Waist measurements are particularly important for postmenopausal women.' },
+    ],
+  },
+  'bmi-calculator-teenagers': {
+    intro: `Our BMI calculator for teenagers helps assess body mass index using age and gender-specific percentiles. Unlike adult BMI, teen BMI is plotted on growth charts accounting for normal developmental changes during adolescence.`,
+    faqs: [
+      { question: 'How is teenage BMI different from adult BMI?', answer: 'Teen BMI uses percentile rankings based on age and gender, not absolute categories. A teen is compared to other teens of the same age and sex rather than using standard adult categories.' },
+      { question: 'What BMI percentile is considered healthy for teens?', answer: 'Teens between the 5th and 85th percentile are generally considered a healthy weight. Below 5th percentile may indicate underweight, while above 85th suggests overweight and above 95th indicates obesity.' },
+      { question: 'Why do teens need special BMI considerations?', answer: 'Teenagers undergo significant physical changes during puberty. Growth spurts, hormonal changes, and varying maturation rates mean BMI must be interpreted within the context of development.' },
+      { question: 'Should teens be concerned about BMI?', answer: 'Rather than focusing on weight, teens should aim for healthy habits: regular physical activity, balanced nutrition, adequate sleep, and positive body image. Consult a pediatrician for personalized guidance.' },
+    ],
+  },
+  'bmi-calculator-seniors': {
+    intro: `Our BMI calculator for seniors provides body mass index insights tailored to adults over 65. Research suggests slightly higher BMI ranges may be healthier for older adults due to the protective effects of extra weight against certain health conditions.`,
+    faqs: [
+      { question: 'What is a healthy BMI for seniors?', answer: 'For adults over 65, a BMI between 25 and 27 is often considered optimal. Research indicates slightly higher BMIs may be protective against osteoporosis, infections, and other age-related conditions.' },
+      { question: 'Why is BMI interpreted differently for seniors?', answer: 'As we age, body composition changes with muscle loss and bone density reduction. Some muscle loss (sarcopenia) is normal, but maintaining adequate nutrition and physical activity is crucial.' },
+      { question: 'What other measurements matter for senior health?', answer: 'For seniors, waist circumference, grip strength, and functional assessments often provide more meaningful health indicators than BMI alone. Talk to your healthcare provider about comprehensive assessments.' },
+      { question: 'How can seniors maintain healthy weight?', answer: 'Combine regular resistance exercise to maintain muscle mass with adequate protein intake (1.0-1.2g per kg body weight). Focus on nutrient-dense foods and stay physically active with activities you enjoy.' },
+    ],
+  },
+};
+
+export function getSpecializedContent(slug: string): {
+  intro?: string;
+  faqs?: { question: string; answer: string }[];
+} | null {
+  if (loanTypeContent[slug]) {
+    return loanTypeContent[slug];
+  }
+  if (bmiAudienceContent[slug]) {
+    return bmiAudienceContent[slug];
+  }
+  return null;
+}

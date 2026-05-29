@@ -13,6 +13,7 @@ import {
   generateProgrammaticHowTo,
   generateProgrammaticFAQ,
   generateProgrammaticCTA,
+  getSpecializedContent,
 } from '@/lib/seo/programmatic-content-engine';
 
 const categoryLabels: Record<SEOCategory, string> = {
@@ -50,22 +51,86 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
     return allPages.find(p => p.slug === slug);
   }).filter(Boolean) as SEOPageConfig[];
 
-  const intro = generateProgrammaticIntro(config);
+  // Get specialized content for loan types and BMI audiences
+  const specializedContent = getSpecializedContent(config.slug);
+  const intro = specializedContent?.intro || generateProgrammaticIntro(config);
   const explanation = generateProgrammaticExplanation(config);
   const howTo = generateProgrammaticHowTo(config);
-  const faqs = generateProgrammaticFAQ(config);
+  const faqs = specializedContent?.faqs || generateProgrammaticFAQ(config);
   const cta = generateProgrammaticCTA(config);
+
+  // Generate schema markup
+  const baseUrl = 'https://www.calculatorpilotai.com';
+  const pageUrl = `${baseUrl}/tools/${config.category}/${config.slug}`;
+
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: config.title,
+        description: config.description,
+        url: pageUrl,
+        applicationCategory: config.category === 'finance' ? 'FinanceApplication' : 'HealthApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+          { '@type': 'ListItem', position: 2, name: categoryLabels[config.category], item: `${baseUrl}/tools/${config.category}` },
+          { '@type': 'ListItem', position: 3, name: config.keyword, item: pageUrl }
+        ]
+      }
+    ]
+  };
 
   const explanationPoints = [
     explanation,
     'Results are estimates and may vary based on your specific inputs',
-    'Consult professionals for important financial decisions',
+    config.category === 'finance' ? 'Consult professionals for important financial decisions' : 'Consult healthcare providers for personalized advice',
   ];
+
+  // Determine parent calculator link for specialized pages
+  const parentLinks: Record<string, { name: string; path: string }> = {
+    'fha-loan-calculator': { name: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
+    'va-loan-calculator': { name: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
+    'usda-loan-calculator': { name: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
+    'conventional-loan-calculator': { name: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
+    'jumbo-loan-calculator': { name: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
+    'bmi-calculator-men': { name: 'BMI Calculator', path: '/tools/health/bmi-calculator' },
+    'bmi-calculator-women': { name: 'BMI Calculator', path: '/tools/health/bmi-calculator' },
+    'bmi-calculator-teenagers': { name: 'BMI Calculator', path: '/tools/health/bmi-calculator' },
+    'bmi-calculator-seniors': { name: 'BMI Calculator', path: '/tools/health/bmi-calculator' },
+  };
+
+  const parentLink = parentLinks[config.slug];
 
   return (
     <ToolLayout toolId={`programmatic-${config.slug}`} category={config.category}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <div className="max-w-4xl mx-auto space-y-8">
         <header className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
+          {parentLink && (
+            <Link
+              to={parentLink.path}
+              className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80 mb-4 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {parentLink.name}
+            </Link>
+          )}
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <span className="px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-primary/10 text-primary rounded-full">
               {categoryLabels[config.category]}
