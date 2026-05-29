@@ -68,6 +68,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/health-guides</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/ai/ai-usage-estimator</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
