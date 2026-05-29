@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner';
 import SiteHeader from '@/components/layouts/SiteHeader';
 import SiteFooter from '@/components/layouts/SiteFooter';
 import { initGA, trackPageView } from '@/lib/analytics/ga';
+import { Analytics } from '@vercel/analytics/react';
 
 import { routes } from './routes';
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <Analytics />
       <RouteTracker />
       <IntersectObserver />
       <div className="flex flex-col min-h-screen">
