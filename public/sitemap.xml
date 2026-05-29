@@ -122,6 +122,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/annual-to-hourly-salary-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/annual-to-monthly-salary-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/auto-loan-calculator</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -152,6 +164,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/fixed-rate-loan-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/hourly-to-annual-salary-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/hourly-to-salary-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/investment-return-calculator</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -170,7 +200,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/monthly-to-annual-salary-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/mortgage-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/personal-loan-calculator</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -183,6 +225,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/simple-interest-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/student-loan-calculator</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -201,6 +249,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/va-loan-calculator</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/variable-rate-loan-calculator</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
