@@ -643,6 +643,69 @@ export const getSEOContent = (tool: string): SEOContent => {
       ],
       lastUpdated: 'May 2026',
     },
+    'compound-interest': {
+      title: 'Compound Interest Calculator - Calculate Investment Growth',
+      description: 'Free compound interest calculator to estimate how your savings grow. Add monthly contributions, adjust compounding frequency, and visualize year-by-year growth.',
+      keywords: ['compound interest calculator', 'investment growth calculator', 'savings calculator', 'compound calculator', 'interest calculator'],
+      intro: 'Calculate how your investments grow over time with compound interest. Add regular monthly contributions, choose your compounding frequency, and see your wealth build year by year.',
+      expertContent: {
+        overview: 'Compound interest is often called the "eighth wonder of the world" for its remarkable ability to grow wealth. Unlike simple interest, which only applies to the principal, compound interest earns interest on both your original investment and accumulated interest. This creates exponential growth that accelerates over time, making it fundamental to successful investing and retirement planning.',
+        howItWorks: 'Our calculator uses the standard compound interest formula A = P(1 + r/n)^(nt) with support for monthly contributions. The variables are: P is principal, r is annual rate, n is compounding frequency, and t is time in years. For monthly contributions, we add the future value of annuity formula. The calculator displays year-by-year growth to help you visualize compound growth.',
+        formula: 'A = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)]\n\nWhere: A = Final balance, P = Principal, r = Annual rate, n = Compounds per year, t = Years, PMT = Monthly contribution',
+        keyConcepts: [
+          { title: 'Compound Frequency', description: 'How often interest is calculated: daily, monthly, quarterly, or annually. More frequent compounding yields slightly higher returns.' },
+          { title: 'Time Horizon', description: 'The most powerful factor in compound growth. At 7% return, money doubles roughly every 10 years. Starting early matters more than contributing more.' },
+          { title: 'Monthly Contributions', description: 'Regular additions dramatically amplify compound growth. Even modest monthly amounts grow substantially over long periods.' },
+          { title: 'Effective Annual Rate', description: 'The true annual return accounting for compounding frequency. Daily compounding provides the highest effective rate.' },
+          { title: 'Rule of 72', description: 'A mental shortcut: divide 72 by your interest rate to estimate years to double. At 7%, about 10.3 years.' },
+        ],
+        tips: [
+          'Start investing as early as possible. Small amounts compound dramatically over 30-40 years.',
+          'Daily vs monthly compounding difference is small but meaningful with larger sums.',
+          'Consistency beats amount: $500/month at 25 beats $1000/month at 35.',
+          'Use Rule of 72: 6% doubles in 12 years, 8% in 9 years.',
+          'Past returns do not guarantee future results. Diversification matters.',
+        ],
+        commonMistakes: [
+          { mistake: 'Underestimating time impact on compound growth.', correction: 'The last decade of a 30-year investment often produces more growth than the first two decades combined.' },
+          { mistake: 'Confusing simple and compound interest.', correction: 'Simple interest applies only to principal; compound interest applies to principal plus accumulated interest.' },
+          { mistake: 'Ignoring inflation\'s effect on purchasing power.', correction: 'A 7% return with 3% inflation is only 4% in real terms.' },
+          { mistake: 'Not accounting for taxes on investment returns.', correction: 'Taxes reduce compound growth significantly. Tax-advantaged accounts preserve more compounding.' },
+        ],
+      },
+      relatedGuides: ['compound-interest-guide', 'investment-basics'],
+      faqs: [
+        { question: 'What is compound interest?', answer: 'Compound interest is interest calculated on both your initial principal and accumulated interest. Unlike simple interest, it grows exponentially because you earn interest on your interest.' },
+        { question: 'How does compounding frequency affect returns?', answer: 'More frequent compounding gives higher returns. Daily is highest, followed by monthly, quarterly, semiannually, and annually. The difference is small but meaningful.' },
+        { question: 'What is the Rule of 72?', answer: 'Divide 72 by your annual interest rate to estimate years to double your money. At 7%, approximately 10.3 years.' },
+        { question: 'Should I start with more principal or contribute regularly?', answer: 'Both matter, but starting early is more valuable. Small contributions compound significantly over long periods.' },
+        { question: 'What is a realistic expected return?', answer: 'Historical stock market averages 7-10% annually. Savings accounts typically earn 0.5-5%. Adjust expectations based on your investment mix.' }
+      ],
+      examples: [
+        {
+          title: 'Retirement Savings with Monthly Contributions',
+          inputs: [
+            { label: 'Initial Investment', value: '$10,000' },
+            { label: 'Monthly Contribution', value: '$500' },
+            { label: 'Annual Return', value: '7%' },
+            { label: 'Time Period', value: '20 years' },
+            { label: 'Compounding', value: 'Monthly' },
+          ],
+          result: 'Final Balance: $312,000 · Total Contributions: $130,000 · Interest Earned: $182,000',
+        },
+        {
+          title: 'Early Start vs Late Start Comparison',
+          inputs: [
+            { label: 'Initial Investment', value: '$5,000' },
+            { label: 'Monthly Contribution', value: '$300' },
+            { label: 'Annual Return', value: '8%' },
+            { label: 'Time Period', value: '30 years' },
+          ],
+          result: 'Final Balance: $544,000 · Total Contributions: $113,000 · Interest Earned: $431,000',
+        },
+      ],
+      lastUpdated: 'May 2026',
+    },
     bmr: {
       title: 'BMR Calculator - Basal Metabolic Rate & Calorie Needs',
       description: 'Calculate your BMR (Basal Metabolic Rate) and daily calorie needs. Uses the Mifflin-St Jeor equation to determine how many calories you burn at rest.',

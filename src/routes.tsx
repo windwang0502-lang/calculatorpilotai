@@ -7,6 +7,7 @@ const LoanCalculator = React.lazy(() => import('./pages/tools/finance/LoanCalcul
 const APRCalculator = React.lazy(() => import('./pages/tools/finance/APRCalculator'));
 const RefinanceCalculator = React.lazy(() => import('./pages/tools/finance/RefinanceCalculator'));
 const InterestCalculator = React.lazy(() => import('./pages/tools/finance/InterestCalculator'));
+const CompoundInterestCalculator = React.lazy(() => import('./pages/tools/finance/CompoundInterestCalculator'));
 const DebtPayoffCalculator = React.lazy(() => import('./pages/tools/finance/DebtPayoffCalculator'));
 const BMICalculator = React.lazy(() => import('./pages/tools/health/BMICalculator'));
 const BMRCalculator = React.lazy(() => import('./pages/tools/health/BMRCalculator'));
@@ -67,6 +68,7 @@ export const routes: RouteConfig[] = [
   { name: 'APR Calculator', path: '/tools/finance/apr-calculator', element: LazyWrap(APRCalculator), public: true },
   { name: 'Refinance Calculator', path: '/tools/finance/refinance-calculator', element: LazyWrap(RefinanceCalculator), public: true },
   { name: 'Interest Calculator', path: '/tools/finance/interest-calculator', element: LazyWrap(InterestCalculator), public: true },
+  { name: 'Compound Interest Calculator', path: '/tools/finance/compound-interest-calculator', element: LazyWrap(CompoundInterestCalculator), public: true },
   { name: 'Debt Payoff Calculator', path: '/tools/finance/debt-payoff-calculator', element: LazyWrap(DebtPayoffCalculator), public: true },
   { name: 'BMI Calculator', path: '/tools/health/bmi-calorie-calculator', element: LazyWrap(BMICalculator), public: true },
   { name: 'BMR Calculator', path: '/tools/health/bmr-calculator', element: LazyWrap(BMRCalculator), public: true },
