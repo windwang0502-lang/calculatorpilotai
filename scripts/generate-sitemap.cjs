@@ -14,6 +14,8 @@ const staticRoutes = [
   { path: '/tools/time', priority: 0.9, changefreq: 'weekly' },
   { path: '/guides', priority: 0.8, changefreq: 'weekly' },
   { path: '/compare', priority: 0.8, changefreq: 'weekly' },
+  { path: '/finance-guides', priority: 0.8, changefreq: 'weekly' },
+  { path: '/finance-guides/mortgage-by-state', priority: 0.8, changefreq: 'weekly' },
   { path: '/about', priority: 0.6, changefreq: 'monthly' },
   { path: '/privacy-policy', priority: 0.5, changefreq: 'monthly' },
   { path: '/terms', priority: 0.5, changefreq: 'monthly' },
