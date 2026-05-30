@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import Breadcrumb from '@/components/common/Breadcrumb';
-import { generateOrganizationSchema } from '@/lib/schema';
+import { generateOrganizationSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import {
   Sparkles,
   CreditCard,
@@ -15,7 +15,35 @@ import {
   RefreshCw,
   Eye,
   CheckCircle,
+  Calculator,
+  BookOpen,
+  Grid3X3,
 } from 'lucide-react';
+import { categories, getPopularTools, getFeaturedTools, getToolStats } from '@/data/tools';
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'About Us' },
+];
+
+const orgSchema = generateOrganizationSchema();
+const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [orgSchema, breadcrumbSchema],
+};
+
+// Dynamic stats from tools registry
+const toolStats = getToolStats();
+const totalCategories = categories.length;
+const totalGuides = 10; // Current number of guides in the system
+
+const platformStats = [
+  { value: `${toolStats.totalTools}+`, label: 'Calculators', icon: Calculator },
+  { value: `${totalCategories}`, label: 'Categories', icon: Grid3X3 },
+  { value: `${totalGuides}+`, label: 'Guides', icon: BookOpen },
+];
 
 const offerings = [
   {
@@ -59,16 +87,15 @@ const trustPoints = [
 
 export default function AboutPage() {
   const canonicalUrl = 'https://www.calculatorpilotai.com/about';
-  const orgSchema = generateOrganizationSchema();
 
   return (
     <>
       <PageMeta
         title="About Us - Free AI-Powered Calculators and Tools"
-        description="Learn about our free AI-powered calculators and tools for finance, health, shipping, and productivity."
+        description="Learn about CalcWise AI, our mission to provide free AI-powered calculators for everyone, and explore our suite of tools for finance, health, shipping, and productivity."
         canonical={canonicalUrl}
         ogType="website"
-        jsonLd={orgSchema}
+        jsonLd={jsonLd}
       />
       <div className="min-h-screen bg-slate-50">
         <main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
@@ -114,6 +141,24 @@ export default function AboutPage() {
               <p className="text-slate-600 leading-relaxed">
                 In a world where information overload is common, we cut through the noise by delivering focused, accurate, and actionable results. Every tool on our platform is designed to solve real problems quickly and transparently, without unnecessary complexity or hidden fees.
               </p>
+            </div>
+          </section>
+
+          {/* Platform Statistics */}
+          <section className="mb-12">
+            <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-8 md:p-10">
+              <h2 className="text-xl font-bold mb-6 text-center">Platform Statistics</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {platformStats.map((stat, i) => (
+                  <div key={i} className="text-center">
+                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-3">
+                      <stat.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <div className="text-3xl font-black text-white mb-1">{stat.value}</div>
+                    <div className="text-sm text-slate-400">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 

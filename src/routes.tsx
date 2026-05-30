@@ -60,6 +60,8 @@ const TermsPage = React.lazy(() => import('./pages/Terms'));
 const ContactPage = React.lazy(() => import('./pages/Contact'));
 const AIDisclosurePage = React.lazy(() => import('./pages/AIDisclosure'));
 const EditorialPolicyPage = React.lazy(() => import('./pages/EditorialPolicy'));
+const DisclaimerPage = React.lazy(() => import('./pages/Disclaimer'));
+const OurMissionPage = React.lazy(() => import('./pages/OurMission'));
 const ProgrammaticToolPage = React.lazy(() => import('./pages/tools/ProgrammaticToolPage'));
 const MortgageByStateHub = React.lazy(() => import('./pages/finance-guides/MortgageByStateHub'));
 const FinanceGuidesHub = React.lazy(() => import('./pages/finance-guides/FinanceGuidesHub'));
@@ -139,6 +141,8 @@ export const routes: RouteConfig[] = [
   { name: 'Contact', path: '/contact', element: LazyWrap(ContactPage), public: true },
   { name: 'AI Disclosure', path: '/ai-disclosure', element: LazyWrap(AIDisclosurePage), public: true },
   { name: 'Editorial Policy', path: '/editorial-policy', element: LazyWrap(EditorialPolicyPage), public: true },
+  { name: 'Disclaimer', path: '/disclaimer', element: LazyWrap(DisclaimerPage), public: true },
+  { name: 'Our Mission', path: '/our-mission', element: LazyWrap(OurMissionPage), public: true },
   { name: 'Mortgage by State Hub', path: '/finance-guides/mortgage-by-state', element: LazyWrap(MortgageByStateHub), public: true },
   { name: 'Finance Guides Hub', path: '/finance-guides', element: LazyWrap(FinanceGuidesHub), public: true },
   { name: 'Health Guides Hub', path: '/health-guides', element: LazyWrap(HealthGuidesHub), public: true },

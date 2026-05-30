@@ -40,10 +40,12 @@ export default function SiteFooter() {
             <div className="space-y-2">
               <Link to="/about" className="block text-sm text-slate-500 hover:text-primary transition-colors">About Us</Link>
               <Link to="/contact" className="block text-sm text-slate-500 hover:text-primary transition-colors">Contact</Link>
+              <Link to="/our-mission" className="block text-sm text-slate-500 hover:text-primary transition-colors">Our Mission</Link>
               <Link to="/privacy-policy" className="block text-sm text-slate-500 hover:text-primary transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="block text-sm text-slate-500 hover:text-primary transition-colors">Terms of Use</Link>
-              <Link to="/ai-disclosure" className="block text-sm text-slate-500 hover:text-primary transition-colors">AI Disclosure</Link>
+              <Link to="/disclaimer" className="block text-sm text-slate-500 hover:text-primary transition-colors">Disclaimer</Link>
               <Link to="/editorial-policy" className="block text-sm text-slate-500 hover:text-primary transition-colors">Editorial Policy</Link>
+              <Link to="/ai-disclosure" className="block text-sm text-slate-500 hover:text-primary transition-colors">AI Disclosure</Link>
             </div>
           </div>
           <div>

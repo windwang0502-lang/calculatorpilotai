@@ -1,5 +1,5 @@
 import PageMeta from '@/components/common/PageMeta';
-import { generateBreadcrumbSchema } from '@/lib/schema';
+import { generateBreadcrumbSchema, generateArticleSchema } from '@/lib/schema';
 import { Link } from 'react-router-dom';
 import { BookOpen, CheckCircle, Clock, Users, FileText, Shield } from 'lucide-react';
 
@@ -12,6 +12,13 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     generateBreadcrumbSchema(breadcrumbItems),
+    generateArticleSchema({
+      headline: 'Editorial Policy - CalcWise AI',
+      description: 'Learn how CalcWise AI creates, reviews, and maintains accurate content across all our calculators and guides.',
+      url: 'https://www.calculatorpilotai.com/editorial-policy',
+      datePublished: '2026-05-27',
+      dateModified: '2026-05-30',
+    }),
   ],
 };
 

@@ -14,6 +14,12 @@ import {
   Bot,
   Truck,
   Clock,
+  Shield,
+  Lock,
+  RefreshCw,
+  Eye,
+  CheckCircle,
+  BookOpen,
 } from 'lucide-react';
 import { categories, getPopularTools, getFeaturedTools, getToolStats } from '@/data/tools';
 
@@ -221,6 +227,77 @@ export default function HomePage() {
                   <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Why Trust CalcWise AI Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+            <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-12">
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-4">
+                  <Shield className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-slate-300">E-E-A-T Verified</span>
+                </div>
+                <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-3">Why Trust CalcWise AI</h2>
+                <p className="text-slate-400 max-w-2xl mx-auto">
+                  We are committed to providing accurate, transparent, and reliable tools. Here's what sets us apart.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="bg-white/5 rounded-xl p-6 text-center">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-4">
+                    <Eye className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-bold mb-2">Transparent Formulas</h3>
+                  <p className="text-sm text-slate-400">Every calculation shows exactly how results are computed. No black boxes.</p>
+                </div>
+                <div className="bg-white/5 rounded-xl p-6 text-center">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-4">
+                    <Lock className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <h3 className="font-bold mb-2">100% Free Access</h3>
+                  <p className="text-sm text-slate-400">Every tool is completely free. No hidden fees, subscriptions, or paywalls.</p>
+                </div>
+                <div className="bg-white/5 rounded-xl p-6 text-center">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="font-bold mb-2">Privacy Focused</h3>
+                  <p className="text-sm text-slate-400">All calculations run locally in your browser. We never store your data.</p>
+                </div>
+                <div className="bg-white/5 rounded-xl p-6 text-center">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-4">
+                    <RefreshCw className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <h3 className="font-bold mb-2">Continuously Updated</h3>
+                  <p className="text-sm text-slate-400">We regularly update our tools to ensure accuracy and add new features.</p>
+                </div>
+              </div>
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                  <div>
+                    <div className="text-2xl font-black text-primary">100%</div>
+                    <div className="text-sm text-slate-400">Browser-Based</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-primary">0</div>
+                    <div className="text-sm text-slate-400">Data Stored</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-primary">Free</div>
+                    <div className="text-sm text-slate-400">Forever</div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-8 text-center">
+                <Link
+                  to="/editorial-policy"
+                  className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  Read our Editorial Policy →
+                </Link>
+              </div>
             </div>
           </section>
 
