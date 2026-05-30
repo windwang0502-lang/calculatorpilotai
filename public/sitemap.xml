@@ -590,6 +590,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/shipping/dim-divisor-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/shipping/dimensional-weight-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -608,12 +614,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.calculatorpilotai.com/tools/shipping/freight-density-calculator</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.calculatorpilotai.com/tools/shipping/fuel-surcharge-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -627,6 +627,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/shipping/oversize-charge-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/shipping/package-cubic-feet-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
