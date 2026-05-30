@@ -24,16 +24,21 @@ const nutritionWellness = [
   { name: 'Basal Metabolic Rate Guide', path: '/tools/health/basal-metabolic-rate-guide', desc: 'Understanding your metabolism' },
 ];
 
-// Health Calculators
+// Health Calculators - All health calculators
 const healthCalculators = [
   { name: 'BMI Calculator', path: '/tools/health/bmi-calculator', desc: 'Calculate your body mass index' },
   { name: 'Calorie Calculator', path: '/tools/health/calorie-calculator', desc: 'Daily calorie needs estimator' },
+  { name: 'BMR Calculator', path: '/tools/health/bmr-calculator', desc: 'Basal metabolic rate calculator' },
   { name: 'Ideal Weight Calculator', path: '/tools/health/ideal-weight-calculator', desc: 'Find your healthy weight' },
   { name: 'Water Intake Calculator', path: '/tools/health/water-intake-calculator', desc: 'Daily hydration needs' },
   { name: 'Protein Calculator', path: '/tools/health/protein-calculator', desc: 'Daily protein needs' },
+  { name: 'Body Fat Calculator', path: '/tools/health/body-fat-percentage-calculator', desc: 'Estimate body fat percentage' },
+  { name: 'Target Heart Rate Calculator', path: '/tools/health/target-heart-rate-calculator', desc: 'Exercise heart rate zones' },
 ];
 
 const allGuides = [...bmiResources, ...weightManagement, ...nutritionWellness];
+
+const healthDisclaimer = "This tool provides general wellness information only and is not medical advice. Always consult a qualified healthcare professional before making health, nutrition, or weight-management decisions.";
 
 const schemaJsonLd = {
   '@context': 'https://schema.org',
