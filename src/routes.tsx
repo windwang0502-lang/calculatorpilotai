@@ -44,6 +44,20 @@ const EmailGenerator = React.lazy(() => import('./pages/tools/ai/EmailGenerator'
 const TitleGenerator = React.lazy(() => import('./pages/tools/ai/TitleGenerator'));
 const TokenCalculator = React.lazy(() => import('./pages/tools/ai/TokenCalculator'));
 const CalorieCalculator = React.lazy(() => import('./pages/tools/health/CalorieCalculator'));
+const LeanBodyMassCalculator = React.lazy(() => import('./pages/tools/health/LeanBodyMassCalculator'));
+const WaistToHipRatioCalculator = React.lazy(() => import('./pages/tools/health/WaistToHipRatioCalculator'));
+const WaistToHeightRatioCalculator = React.lazy(() => import('./pages/tools/health/WaistToHeightRatioCalculator'));
+const IdealBodyFatCalculator = React.lazy(() => import('./pages/tools/health/IdealBodyFatCalculator'));
+const MacroCalculator = React.lazy(() => import('./pages/tools/health/MacroCalculator'));
+const MaintenanceCalorieCalculator = React.lazy(() => import('./pages/tools/health/MaintenanceCalorieCalculator'));
+const WeightLossCalorieCalculator = React.lazy(() => import('./pages/tools/health/WeightLossCalorieCalculator'));
+const WeightGainCalorieCalculator = React.lazy(() => import('./pages/tools/health/WeightGainCalorieCalculator'));
+const ProteinIntakeCalculator = React.lazy(() => import('./pages/tools/health/ProteinIntakeCalculator'));
+const TargetHeartRateCalculator = React.lazy(() => import('./pages/tools/health/TargetHeartRateCalculator'));
+const OneRepMaxCalculator = React.lazy(() => import('./pages/tools/health/OneRepMaxCalculator'));
+const RunningPaceCalculator = React.lazy(() => import('./pages/tools/health/RunningPaceCalculator'));
+const VO2MaxCalculator = React.lazy(() => import('./pages/tools/health/VO2MaxCalculator'));
+const CalorieBurnCalculator = React.lazy(() => import('./pages/tools/health/CalorieBurnCalculator'));
 const DimWeightCalculator = React.lazy(() => import('./pages/tools/shipping/DimWeightCalculator'));
 const FreightClassCalculator = React.lazy(() => import('./pages/tools/shipping/FreightClassCalculator'));
 const ShippingCostEstimator = React.lazy(() => import('./pages/tools/shipping/ShippingCostEstimator'));
@@ -139,6 +153,20 @@ export const routes: RouteConfig[] = [
   { name: 'Title Generator', path: '/tools/ai/title-generator', element: LazyWrap(TitleGenerator), public: true },
   { name: 'Token Calculator', path: '/tools/ai/token-calculator', element: LazyWrap(TokenCalculator), public: true },
   { name: 'Calorie Calculator', path: '/tools/health/calorie-calculator', element: LazyWrap(CalorieCalculator), public: true },
+  { name: 'Lean Body Mass Calculator', path: '/tools/health/lean-body-mass-calculator', element: LazyWrap(LeanBodyMassCalculator), public: true },
+  { name: 'Waist to Hip Ratio Calculator', path: '/tools/health/waist-to-hip-ratio-calculator', element: LazyWrap(WaistToHipRatioCalculator), public: true },
+  { name: 'Waist to Height Ratio Calculator', path: '/tools/health/waist-to-height-ratio-calculator', element: LazyWrap(WaistToHeightRatioCalculator), public: true },
+  { name: 'Ideal Body Fat Calculator', path: '/tools/health/ideal-body-fat-calculator', element: LazyWrap(IdealBodyFatCalculator), public: true },
+  { name: 'Macro Calculator', path: '/tools/health/macro-calculator', element: LazyWrap(MacroCalculator), public: true },
+  { name: 'Maintenance Calorie Calculator', path: '/tools/health/maintenance-calorie-calculator', element: LazyWrap(MaintenanceCalorieCalculator), public: true },
+  { name: 'Weight Loss Calorie Calculator', path: '/tools/health/weight-loss-calorie-calculator', element: LazyWrap(WeightLossCalorieCalculator), public: true },
+  { name: 'Weight Gain Calorie Calculator', path: '/tools/health/weight-gain-calorie-calculator', element: LazyWrap(WeightGainCalorieCalculator), public: true },
+  { name: 'Protein Intake Calculator', path: '/tools/health/protein-intake-calculator', element: LazyWrap(ProteinIntakeCalculator), public: true },
+  { name: 'Target Heart Rate Calculator', path: '/tools/health/target-heart-rate-calculator', element: LazyWrap(TargetHeartRateCalculator), public: true },
+  { name: 'One Rep Max Calculator', path: '/tools/health/one-rep-max-calculator', element: LazyWrap(OneRepMaxCalculator), public: true },
+  { name: 'Running Pace Calculator', path: '/tools/health/running-pace-calculator', element: LazyWrap(RunningPaceCalculator), public: true },
+  { name: 'VO2 Max Calculator', path: '/tools/health/vo2-max-calculator', element: LazyWrap(VO2MaxCalculator), public: true },
+  { name: 'Calorie Burn Calculator', path: '/tools/health/calorie-burn-calculator', element: LazyWrap(CalorieBurnCalculator), public: true },
   { name: 'Shipping Calculator', path: '/tools/shipping/dim-weight-calculator', element: LazyWrap(DimWeightCalculator), public: true },
   { name: 'Freight Class Calculator', path: '/tools/shipping/freight-class-calculator', element: LazyWrap(FreightClassCalculator), public: true },
   { name: 'Shipping Cost Estimator', path: '/tools/shipping/shipping-cost-estimator', element: LazyWrap(ShippingCostEstimator), public: true },
