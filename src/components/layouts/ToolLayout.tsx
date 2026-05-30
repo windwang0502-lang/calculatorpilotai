@@ -1,5 +1,6 @@
 import React from 'react';
-import { getSEOContent, getRelatedTools, SEOContent } from '@/lib/seo';
+import { getSEOContent, SEOContent } from '@/lib/seo';
+import { getToolBySlug, getRelatedTools } from '@/data/tools';
 import { Link, useLocation } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import Breadcrumb from '@/components/common/Breadcrumb';
@@ -31,7 +32,8 @@ const GUIDE_MAP: Record<string, { title: string; path: string }> = {
 
 export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, children }) => {
   const content = getSEOContent(toolId);
-  const related = getRelatedTools(category);
+  const currentTool = getToolBySlug(toolId);
+  const relatedFromRegistry = currentTool ? getRelatedTools(currentTool, 6) : [];
   const location = useLocation();
   const canonicalUrl = `https://www.calculatorpilotai.com${location.pathname}`;
 
@@ -220,10 +222,10 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
           <div className="p-6 bg-muted/30 border rounded-lg">
             <h2 className="text-xl font-bold mb-4">Related Tools</h2>
             <div className="space-y-3">
-              {related.map((tool, index) => (
+              {relatedFromRegistry.map((tool) => (
                 <Link
-                  key={index}
-                  to={tool.path}
+                  key={tool.slug}
+                  to={tool.route}
                   className="block p-3 hover:bg-white hover:shadow-sm border border-transparent hover:border-border transition-all rounded"
                 >
                   <span className="font-medium text-sm text-foreground">{tool.name}</span>

@@ -8,7 +8,6 @@ import {
   Flag,
   TrendingUp,
   Grid3X3,
-  Calendar,
   ArrowRight,
   CreditCard,
   Heart,
@@ -16,65 +15,23 @@ import {
   Truck,
   Clock,
 } from 'lucide-react';
+import { categories, getPopularTools, getFeaturedTools, getToolStats } from '@/data/tools';
 
-const popularTools = [
-  {
-    title: 'Mortgage Calculator',
-    desc: 'Estimate your monthly mortgage payment, total interest, and total cost over the life of your loan.',
-    cta: 'Calculate Now',
-    path: '/tools/finance/mortgage-calculator',
-    cat: 'Finance',
-    icon: CreditCard,
-  },
-  {
-    title: 'Loan Calculator',
-    desc: 'Calculate your loan monthly payment, total interest, and payoff date with flexible payment frequencies.',
-    cta: 'Calculate Now',
-    path: '/tools/finance/loan-calculator',
-    cat: 'Finance',
-    icon: CreditCard,
-  },
-  {
-    title: 'BMI & Calorie Calculator',
-    desc: 'Calculate your Body Mass Index and daily caloric needs based on the scientifically validated Mifflin-St Jeor equation.',
-    cta: 'Check Health',
-    path: '/tools/health/bmi-calorie-calculator',
-    cat: 'Health',
-    icon: Heart,
-  },
-  {
-    title: 'AI Text Detector',
-    desc: 'Analyze any text to estimate the probability of AI generation using deterministic heuristic features.',
-    cta: 'Analyze Text',
-    path: '/tools/ai/ai-detector',
-    cat: 'AI',
-    icon: Bot,
-  },
-  {
-    title: 'Shipping DIM Weight Calculator',
-    desc: 'Determine whether your package will be billed by actual weight or dimensional weight.',
-    cta: 'Calculate Shipping',
-    path: '/tools/shipping/dim-weight-calculator',
-    cat: 'Shipping',
-    icon: Truck,
-  },
-  {
-    title: 'Age Calculator',
-    desc: 'Calculate your exact age in years, months, and days from your birthdate with leap-year-aware precision.',
-    cta: 'Calculate Age',
-    path: '/tools/time/age-calculator',
-    cat: 'Time',
-    icon: Calendar,
-  },
-];
+const popularTools = getPopularTools().map(tool => ({
+  title: tool.name,
+  desc: tool.description,
+  cta: 'Calculate Now',
+  path: tool.route,
+  cat: tool.category.charAt(0).toUpperCase() + tool.category.slice(1),
+  icon: categories.find(c => c.id === tool.category)?.icon || Calculator,
+}));
 
-const categories = [
-  { name: 'Finance Tools', path: '/tools/finance', desc: 'Mortgage calculators, interest analyzers, and financial planning tools.', icon: CreditCard },
-  { name: 'Health Tools', path: '/tools/health', desc: 'BMI, calorie, and body composition calculators with AI health insights.', icon: Heart },
-  { name: 'AI Tools', path: '/tools/ai', desc: 'AI prompt generation, text humanization, image prompts, email and title generators.', icon: Bot },
-  { name: 'Shipping Tools', path: '/tools/shipping', desc: 'Dimensional weight and billable weight calculators for logistics.', icon: Truck },
-  { name: 'Time Tools', path: '/tools/time', desc: 'Age calculators and date difference tools with precision accuracy.', icon: Clock },
-];
+const categoriesData = categories.map(cat => ({
+  name: cat.name + ' Tools',
+  path: cat.path,
+  desc: cat.description,
+  icon: cat.icon,
+}));
 
 const trustBadges = [
   { icon: UserCheck, text: 'Free to Use' },
@@ -83,9 +40,11 @@ const trustBadges = [
   { icon: Flag, text: 'Built for US Users' },
 ];
 
+const toolStats = getToolStats();
+
 const stats = [
-  { value: '40+', label: 'Free Tools' },
-  { value: '5', label: 'Tool Categories' },
+  { value: `${toolStats.totalTools}+`, label: 'Free Tools' },
+  { value: Object.keys(toolStats.byCategory).length.toString(), label: 'Tool Categories' },
   { value: 'Weekly', label: 'Updated' },
 ];
 
@@ -220,7 +179,7 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Browse by Category</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 categories-grid">
-              {categories.map((cat, i) => (
+              {categoriesData.map((cat, i) => (
                 <Link key={i} to={cat.path} className="group bg-slate-50 p-6 border border-slate-200 rounded-2xl hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center category-card">
                   <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-4 group-hover:border-primary group-hover:bg-primary/5 transition-colors icon-container-14">
                     <cat.icon className="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors" />

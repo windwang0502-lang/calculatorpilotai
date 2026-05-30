@@ -91,6 +91,33 @@ export const generateArticleSchema = ({
   mainEntityOfPage: url,
 });
 
+export const generateCollectionPageSchema = ({
+  name,
+  description,
+  url,
+  itemList,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  itemList: { name: string; url: string }[];
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name,
+  description,
+  url,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: itemList.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  },
+});
+
 export const generateOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",

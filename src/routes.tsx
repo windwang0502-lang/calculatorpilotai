@@ -44,6 +44,11 @@ const OversizeChargeCalculator = React.lazy(() => import('./pages/tools/shipping
 const FreightClassEstimator = React.lazy(() => import('./pages/tools/shipping/FreightClassEstimator'));
 const ShipmentCostEstimator = React.lazy(() => import('./pages/tools/shipping/ShipmentCostEstimator'));
 const AllTools = React.lazy(() => import('./pages/tools/AllTools'));
+const FinanceCategoryPage = React.lazy(() => import('./pages/tools/finance/FinanceCategoryPage'));
+const HealthCategoryPage = React.lazy(() => import('./pages/tools/health/HealthCategoryPage'));
+const ShippingCategoryPage = React.lazy(() => import('./pages/tools/shipping/ShippingCategoryPage'));
+const TimeCategoryPage = React.lazy(() => import('./pages/tools/time/TimeCategoryPage'));
+const AICategoryPage = React.lazy(() => import('./pages/tools/ai/AICategoryPage'));
 const CategoryPage = React.lazy(() => import('./pages/tools/CategoryPage'));
 const Guides = React.lazy(() => import('./pages/guides/Guides'));
 const GuideDetailPage = React.lazy(() => import('./pages/guides/GuideDetailPage'));
@@ -118,6 +123,11 @@ export const routes: RouteConfig[] = [
   { name: 'Freight Class Estimator', path: '/tools/shipping/freight-class-estimator', element: LazyWrap(FreightClassEstimator), public: true },
   { name: 'Shipment Cost Estimator', path: '/tools/shipping/shipment-cost-estimator', element: LazyWrap(ShipmentCostEstimator), public: true },
   { name: 'All Tools', path: '/tools', element: LazyWrap(AllTools), public: true },
+  { name: 'Finance Category', path: '/tools/finance', element: LazyWrap(FinanceCategoryPage), public: true },
+  { name: 'Health Category', path: '/tools/health', element: LazyWrap(HealthCategoryPage), public: true },
+  { name: 'Shipping Category', path: '/tools/shipping', element: LazyWrap(ShippingCategoryPage), public: true },
+  { name: 'Time Category', path: '/tools/time', element: LazyWrap(TimeCategoryPage), public: true },
+  { name: 'AI Category', path: '/tools/ai', element: LazyWrap(AICategoryPage), public: true },
   { name: 'Category', path: '/tools/:category', element: LazyWrap(CategoryPage), public: true },
   { name: 'Guides', path: '/guides', element: LazyWrap(Guides), public: true },
   { name: 'Guide Detail', path: '/guides/:slug', element: LazyWrap(GuideDetailPage), public: true },
