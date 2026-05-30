@@ -43,6 +43,7 @@ const ShippingVolumeCalculator = React.lazy(() => import('./pages/tools/shipping
 const OversizeChargeCalculator = React.lazy(() => import('./pages/tools/shipping/OversizeChargeCalculator'));
 const FreightClassEstimator = React.lazy(() => import('./pages/tools/shipping/FreightClassEstimator'));
 const ShipmentCostEstimator = React.lazy(() => import('./pages/tools/shipping/ShipmentCostEstimator'));
+const AllTools = React.lazy(() => import('./pages/tools/AllTools'));
 const CategoryPage = React.lazy(() => import('./pages/tools/CategoryPage'));
 const Guides = React.lazy(() => import('./pages/guides/Guides'));
 const GuideDetailPage = React.lazy(() => import('./pages/guides/GuideDetailPage'));
