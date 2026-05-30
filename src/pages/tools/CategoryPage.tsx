@@ -40,6 +40,15 @@ export default function CategoryPage() {
     { title: 'Chargeable Weight Calculator', path: '/tools/shipping/chargeable-weight-calculator', cat: 'shipping' },
     { title: 'Pallet Calculator', path: '/tools/shipping/pallet-calculator', cat: 'shipping' },
     { title: 'Shipping Cost Calculator', path: '/tools/shipping/shipping-cost-calculator', cat: 'shipping' },
+    { title: 'FedEx DIM Weight Calculator', path: '/tools/shipping/fedex-dim-weight-calculator', cat: 'shipping' },
+    { title: 'UPS DIM Weight Calculator', path: '/tools/shipping/ups-dim-weight-calculator', cat: 'shipping' },
+    { title: 'Shipping Volume Calculator', path: '/tools/shipping/shipping-volume-calculator', cat: 'shipping' },
+    { title: 'Oversize Charge Calculator', path: '/tools/shipping/oversize-charge-calculator', cat: 'shipping' },
+    { title: 'Freight Class Estimator', path: '/tools/shipping/freight-class-estimator', cat: 'shipping' },
+    { title: 'Freight Density Calculator', path: '/tools/shipping/freight-density-calculator', cat: 'shipping' },
+    { title: 'Package Cubic Feet Calculator', path: '/tools/shipping/package-cubic-feet-calculator', cat: 'shipping' },
+    { title: 'DIM Divisor Calculator', path: '/tools/shipping/dim-divisor-calculator', cat: 'shipping' },
+    { title: 'Shipment Cost Estimator', path: '/tools/shipping/shipment-cost-estimator', cat: 'shipping' },
   ];
 
   const tools = allTools.filter(t => t.cat === category);

@@ -84,7 +84,7 @@ const trustBadges = [
 ];
 
 const stats = [
-  { value: '30+', label: 'Free Tools' },
+  { value: '40+', label: 'Free Tools' },
   { value: '5', label: 'Tool Categories' },
   { value: 'Weekly', label: 'Updated' },
 ];
