@@ -41,8 +41,8 @@ const FedExDimWeightCalculator = React.lazy(() => import('./pages/tools/shipping
 const UPSDimWeightCalculator = React.lazy(() => import('./pages/tools/shipping/UPSDimWeightCalculator'));
 const ShippingVolumeCalculator = React.lazy(() => import('./pages/tools/shipping/ShippingVolumeCalculator'));
 const OversizeChargeCalculator = React.lazy(() => import('./pages/tools/shipping/OversizeChargeCalculator'));
-const PackageCubicFeetCalculator = React.lazy(() => import('./pages/tools/shipping/PackageCubicFeetCalculator'));
-const DimDivisorCalculator = React.lazy(() => import('./pages/tools/shipping/DimDivisorCalculator'));
+const FreightClassEstimator = React.lazy(() => import('./pages/tools/shipping/FreightClassEstimator'));
+const ShipmentCostEstimator = React.lazy(() => import('./pages/tools/shipping/ShipmentCostEstimator'));
 const CategoryPage = React.lazy(() => import('./pages/tools/CategoryPage'));
 const Guides = React.lazy(() => import('./pages/guides/Guides'));
 const GuideDetailPage = React.lazy(() => import('./pages/guides/GuideDetailPage'));
@@ -114,8 +114,8 @@ export const routes: RouteConfig[] = [
   { name: 'UPS DIM Weight Calculator', path: '/tools/shipping/ups-dim-weight-calculator', element: LazyWrap(UPSDimWeightCalculator), public: true },
   { name: 'Shipping Volume Calculator', path: '/tools/shipping/shipping-volume-calculator', element: LazyWrap(ShippingVolumeCalculator), public: true },
   { name: 'Oversize Charge Calculator', path: '/tools/shipping/oversize-charge-calculator', element: LazyWrap(OversizeChargeCalculator), public: true },
-  { name: 'Package Cubic Feet Calculator', path: '/tools/shipping/package-cubic-feet-calculator', element: LazyWrap(PackageCubicFeetCalculator), public: true },
-  { name: 'DIM Divisor Calculator', path: '/tools/shipping/dim-divisor-calculator', element: LazyWrap(DimDivisorCalculator), public: true },
+  { name: 'Freight Class Estimator', path: '/tools/shipping/freight-class-estimator', element: LazyWrap(FreightClassEstimator), public: true },
+  { name: 'Shipment Cost Estimator', path: '/tools/shipping/shipment-cost-estimator', element: LazyWrap(ShipmentCostEstimator), public: true },
   { name: 'All Tools', path: '/tools', element: LazyWrap(AllTools), public: true },
   { name: 'Category', path: '/tools/:category', element: LazyWrap(CategoryPage), public: true },
   { name: 'Guides', path: '/guides', element: LazyWrap(Guides), public: true },

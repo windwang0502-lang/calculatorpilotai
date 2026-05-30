@@ -590,12 +590,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.calculatorpilotai.com/tools/shipping/dim-divisor-calculator</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.calculatorpilotai.com/tools/shipping/dimensional-weight-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -609,6 +603,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/shipping/freight-class-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/shipping/freight-class-estimator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -651,6 +651,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/shipping/pallet-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/shipping/shipment-cost-estimator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
