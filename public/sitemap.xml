@@ -146,6 +146,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/annual-income-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/annual-to-hourly-salary-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -176,6 +182,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/biweekly-salary-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/california-mortgage-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -201,6 +213,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/credit-card-payoff-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/extra-payment-mortgage-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -314,6 +332,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/monthly-paycheck-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/monthly-to-annual-salary-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -369,6 +393,18 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/personal-loan-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/salary-after-tax-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/salary-per-paycheck-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -728,13 +764,43 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/auto-loan-calculator-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/compound-growth-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/compound-interest-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/debt-payoff-strategy-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/down-payment-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/financial-independence-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/first-time-home-buyer-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -752,7 +818,43 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/investment-return-calculator-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/loan-interest-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/loan-types-explained</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/mortgage-affordability-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/mortgage-payment-breakdown</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/passive-income-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/personal-loan-calculator-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -771,6 +873,18 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/finance/renting-vs-buying</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/retirement-savings-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/finance/student-loan-calculator-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
