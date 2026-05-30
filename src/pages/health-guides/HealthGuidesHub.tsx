@@ -7,6 +7,11 @@ const bmiResources = [
   { name: 'BMI Chart for Men', path: '/tools/health/bmi-chart-men', desc: 'Male body mass index reference guide' },
   { name: 'BMI Chart for Women', path: '/tools/health/bmi-chart-women', desc: 'Female body mass index reference guide' },
   { name: 'BMI Chart for Children', path: '/tools/health/bmi-chart-children', desc: 'Youth BMI growth charts' },
+  { name: 'BMI Chart by Age', path: '/tools/health/bmi-chart-by-age', desc: 'Adult BMI reference by age' },
+  { name: 'BMI Chart by Height', path: '/tools/health/bmi-chart-by-height', desc: 'Find your healthy weight by height' },
+  { name: 'BMI Chart for Athletes', path: '/tools/health/bmi-chart-for-athletes', desc: 'Body composition for active people' },
+  { name: 'BMI Chart for Seniors', path: '/tools/health/bmi-chart-for-seniors', desc: 'Healthy weight for older adults' },
+  { name: 'BMI Chart for Teens', path: '/tools/health/bmi-chart-for-teens', desc: 'Youth BMI percentiles explained' },
   { name: 'Healthy Weight Range Guide', path: '/tools/health/healthy-weight-range-guide', desc: 'Find your ideal weight zone' },
 ];
 
@@ -16,12 +21,22 @@ const weightManagement = [
   { name: 'Calorie Deficit Calculator Guide', path: '/tools/health/calorie-deficit-calculator-guide', desc: 'Safe weight loss planning' },
   { name: 'Calorie Surplus Calculator Guide', path: '/tools/health/calorie-surplus-calculator-guide', desc: 'Healthy weight gain planning' },
   { name: 'Body Fat Percentage Guide', path: '/tools/health/body-fat-percentage-guide', desc: 'Understanding body composition' },
+  { name: 'Body Fat Percentage Chart', path: '/tools/health/body-fat-percentage-chart-guide', desc: 'Complete body fat reference' },
+  { name: 'Healthy Weight by Height', path: '/tools/health/healthy-weight-by-height-guide', desc: 'Ideal range for your height' },
+  { name: 'Ideal Weight by Age', path: '/tools/health/ideal-weight-by-age-guide', desc: 'How needs change with age' },
+  { name: 'Weight Loss Calorie Guide', path: '/tools/health/weight-loss-calorie-calculator-guide', desc: 'Find your calorie deficit' },
+  { name: 'Weight Gain Calorie Guide', path: '/tools/health/weight-gain-calorie-calculator-guide', desc: 'Build muscle safely' },
 ];
 
 // Nutrition & Wellness
 const nutritionWellness = [
   { name: 'Daily Water Intake Guide', path: '/tools/health/daily-water-intake-guide', desc: 'How much water should you drink' },
   { name: 'Basal Metabolic Rate Guide', path: '/tools/health/basal-metabolic-rate-guide', desc: 'Understanding your metabolism' },
+  { name: 'Protein Intake by Weight', path: '/tools/health/protein-intake-by-weight-guide', desc: 'Daily protein needs calculator' },
+  { name: 'Protein for Muscle Gain', path: '/tools/health/protein-intake-for-muscle-gain-guide', desc: 'Build more muscle' },
+  { name: 'Water Intake by Weight', path: '/tools/health/daily-water-intake-by-weight-guide', desc: 'Personalized hydration' },
+  { name: 'Macro Calculator Guide', path: '/tools/health/macro-calculator-guide', desc: 'Balance your macros' },
+  { name: 'Maintenance Calorie Guide', path: '/tools/health/maintenance-calorie-guide', desc: 'Find your TDEE' },
 ];
 
 // Health Calculators - All health calculators

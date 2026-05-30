@@ -788,7 +788,37 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/bmi-chart-by-age</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/bmi-chart-by-height</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/health/bmi-chart-children</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/bmi-chart-for-athletes</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/bmi-chart-for-seniors</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/bmi-chart-for-teens</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -807,6 +837,12 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/health/bmi-vs-body-fat-percentage</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/body-fat-percentage-chart-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -836,7 +872,19 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/daily-water-intake-by-weight-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/health/daily-water-intake-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/healthy-weight-by-height-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -854,13 +902,31 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/ideal-weight-by-age-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/health/ideal-weight-calculator-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/macro-calculator-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/health/macro-nutrients-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/maintenance-calorie-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -873,6 +939,18 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/health/pregnancy-week-by-week</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/protein-intake-by-weight-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/protein-intake-for-muscle-gain-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -897,6 +975,18 @@
   </url>
   <url>
     <loc>https://www.calculatorpilotai.com/tools/health/understanding-bmi</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/weight-gain-calorie-calculator-guide</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/health/weight-loss-calorie-calculator-guide</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
