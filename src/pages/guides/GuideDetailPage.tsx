@@ -2,7 +2,68 @@ import { useParams, Link } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
-import { Calculator, ArrowRight, BookOpen, Lightbulb } from 'lucide-react';
+import { Calculator, ArrowRight, BookOpen, Lightbulb, Grid3X3, TrendingUp } from 'lucide-react';
+import { getToolByRoute, categories } from '@/data/tools';
+
+// Category mapping for guide slugs
+const GUIDE_CATEGORIES: Record<string, string> = {
+  'what-is-mortgage': 'Finance',
+  'how-to-reduce-mortgage-interest': 'Finance',
+  'what-is-mortgage-insurance': 'Finance',
+  'how-mortgage-interest-works': 'Finance',
+  'how-much-house-can-i-afford': 'Finance',
+  'what-is-loan-amortization': 'Finance',
+  'fixed-vs-adjustable-rate-mortgage-guide': 'Finance',
+  'understanding-bmi': 'Health',
+  'how-to-improve-bmi': 'Health',
+  'understanding-shipping-dim-weight': 'Shipping',
+  'how-shipping-costs-are-calculated': 'Shipping',
+  'how-to-reduce-shipping-costs': 'Shipping',
+  'international-shipping-guide': 'Shipping',
+  'understanding-ai-tokens': 'AI',
+  'how-to-reduce-ai-costs': 'AI',
+  'what-is-prompt-engineering': 'AI',
+  'understanding-context-windows': 'AI',
+  'how-to-calculate-age': 'Time',
+  'understanding-business-days': 'Time',
+  'how-time-zones-work': 'Time',
+  'what-is-leap-year': 'Time',
+};
+
+// Category paths
+const CATEGORY_PATHS: Record<string, string> = {
+  'Finance': '/tools/finance',
+  'Health': '/tools/health',
+  'Shipping': '/tools/shipping',
+  'AI': '/tools/ai',
+  'Time': '/tools/time',
+};
+
+// Tool route mapping
+const TOOL_ROUTES: Record<string, string> = {
+  'loan-calculator': '/tools/finance/loan-calculator',
+  'apr-calculator': '/tools/finance/apr-calculator',
+  'refinance-calculator': '/tools/finance/refinance-calculator',
+  'interest-calculator': '/tools/finance/interest-calculator',
+  'mortgage-calculator': '/tools/finance/mortgage-calculator',
+  'bmi-calorie-calculator': '/tools/health/bmi-calorie-calculator',
+  'bmr-calculator': '/tools/health/bmr-calculator',
+  'body-fat-calculator': '/tools/health/body-fat-calculator',
+  'protein-calculator': '/tools/health/protein-calculator',
+  'dim-weight-calculator': '/tools/shipping/dim-weight-calculator',
+  'freight-class-calculator': '/tools/shipping/freight-class-calculator',
+  'shipping-cost-estimator': '/tools/shipping/shipping-cost-estimator',
+  'token-calculator': '/tools/ai/token-calculator',
+  'prompt-generator': '/tools/ai/prompt-generator',
+  'context-window-calculator': '/tools/ai/context-window-calculator',
+  'rag-chunk-size-calculator': '/tools/ai/rag-chunk-size-calculator',
+  'claude-cost-calculator': '/tools/ai/claude-cost-calculator',
+  'openai-cost-calculator': '/tools/ai/openai-cost-calculator',
+  'api-cost-calculator': '/tools/ai/api-cost-calculator',
+  'age-calculator': '/tools/time/age-calculator',
+  'date-difference-calculator': '/tools/time/date-difference-calculator',
+  'countdown-calculator': '/tools/time/countdown-calculator',
+};
 
 const GUIDE_CONTENTS: Record<string, { title: string; author: string; datePublished: string; dateModified: string; readTime: string; category: string; paragraphs: string[]; toolPath: string; toolName: string; relatedGuides: string[]; relatedTools: string[]; faqs: { question: string; answer: string }[] }> = {
   'what-is-mortgage': {
@@ -598,6 +659,8 @@ const getGuide = (slug?: string) => {
 export default function GuideDetailPage() {
   const { slug } = useParams();
   const guide = getGuide(slug);
+  const guideCategory = GUIDE_CATEGORIES[slug ?? ''] || guide.category;
+  const categoryPath = CATEGORY_PATHS[guideCategory] || '/tools';
   const canonicalUrl = `https://www.calculatorpilotai.com/guides/${slug ?? ''}`.replace(/\/$/, '');
   const breadcrumbItems = [
     { name: 'Home', url: '/' },
@@ -620,24 +683,49 @@ export default function GuideDetailPage() {
     ],
   };
 
+  // Get related tools
+  const relatedToolItems = guide.relatedTools
+    .map((toolSlug) => {
+      const route = TOOL_ROUTES[toolSlug];
+      if (!route) return null;
+      const tool = getToolByRoute(route);
+      return tool ? { name: tool.name, route: tool.route } : null;
+    })
+    .filter(Boolean) as { name: string; route: string }[];
+
   return (
     <>
       <PageMeta title={guide.title} description={guide.paragraphs[0]} canonical={canonicalUrl} ogType="article" jsonLd={jsonLd} />
-      <div className="max-w-3xl mx-auto px-4 py-8 md:py-20">
+      <div className="max-w-3xl mx-auto px-4 py-8 md:py-12">
         <Breadcrumb items={breadcrumbItems} />
         <article className="prose prose-lg max-w-none">
           <header className="mb-8 pb-6 border-b border-slate-200">
-            <div className="flex items-center gap-2 text-sm text-slate-500 mb-3">
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
-                {guide.category}
-              </span>
-              <span>•</span>
+            <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 mb-3">
+              <Link to={categoryPath} className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+                {guideCategory}
+              </Link>
+              <span className="text-slate-300">•</span>
               <span>{guide.readTime}</span>
-              <span>•</span>
+              <span className="text-slate-300">•</span>
               <span>Updated {new Date(guide.dateModified).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
             </div>
             <h1 className="text-4xl font-black tracking-tight mb-4">{guide.title}</h1>
           </header>
+
+          {/* Category Navigation */}
+          <div className="mb-8 p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-2">
+                <Grid3X3 className="w-4 h-4 text-slate-500" />
+                <span className="text-sm text-slate-600">
+                  Browse more <Link to={categoryPath} className="text-primary font-semibold hover:underline">{guideCategory}</Link> tools
+                </span>
+              </div>
+              <Link to="/calculators" className="text-sm text-primary font-semibold hover:underline">
+                View All Calculators →
+              </Link>
+            </div>
+          </div>
 
           {guide.paragraphs.map((p, i) => (
             <p key={i} className="text-lg leading-relaxed text-slate-700 mb-6">
@@ -645,6 +733,7 @@ export default function GuideDetailPage() {
             </p>
           ))}
 
+          {/* Calculator CTA */}
           <section className="mt-12 p-8 border-2 border-primary/20 rounded-xl bg-primary/5">
             <div className="flex items-center gap-2 mb-3">
               <Calculator className="w-5 h-5 text-primary" />
@@ -656,6 +745,25 @@ export default function GuideDetailPage() {
             </Link>
           </section>
 
+          {/* Related Calculators */}
+          {relatedToolItems.length > 0 && (
+            <section className="mt-12">
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-primary" />
+                Related Calculators
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedToolItems.map((tool) => (
+                  <Link key={tool.route} to={tool.route} className="flex items-center gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl hover:border-primary/50 hover:bg-white transition-all">
+                    <Calculator className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm font-semibold text-slate-700">{tool.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Related Guides */}
           <section className="mt-12">
             <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-primary" />
@@ -678,6 +786,15 @@ export default function GuideDetailPage() {
             </div>
           </section>
 
+          {/* All Guides Link */}
+          <div className="mt-12 p-6 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl text-center">
+            <p className="text-white/80 mb-3">Explore our complete collection of guides</p>
+            <Link to="/guides" className="inline-flex items-center gap-2 bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors">
+              Browse All Guides <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* FAQ Section */}
           <section className="mt-12">
             <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
             <div className="space-y-4">

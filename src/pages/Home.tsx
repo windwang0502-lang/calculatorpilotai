@@ -20,8 +20,10 @@ import {
   Eye,
   CheckCircle,
   BookOpen,
+  Star,
+  Zap,
 } from 'lucide-react';
-import { categories, getPopularTools, getFeaturedTools, getToolStats } from '@/data/tools';
+import { categories, getPopularTools, getFeaturedTools, getToolStats, getNewTools } from '@/data/tools';
 
 const popularTools = getPopularTools().map(tool => ({
   title: tool.name,
@@ -31,6 +33,33 @@ const popularTools = getPopularTools().map(tool => ({
   cat: tool.category.charAt(0).toUpperCase() + tool.category.slice(1),
   icon: categories.find(c => c.id === tool.category)?.icon || Calculator,
 }));
+
+const featuredTools = getFeaturedTools().slice(0, 6).map(tool => ({
+  title: tool.name,
+  desc: tool.description,
+  cta: 'Try Now',
+  path: tool.route,
+  cat: tool.category.charAt(0).toUpperCase() + tool.category.slice(1),
+  icon: categories.find(c => c.id === tool.category)?.icon || Calculator,
+}));
+
+const newTools = getNewTools().slice(0, 6).map(tool => ({
+  title: tool.name,
+  desc: tool.description,
+  cta: 'New Tool',
+  path: tool.route,
+  cat: tool.category.charAt(0).toUpperCase() + tool.category.slice(1),
+  icon: categories.find(c => c.id === tool.category)?.icon || Calculator,
+  isNew: true,
+}));
+
+// Featured guides
+const featuredGuides = [
+  { title: 'What Is a Mortgage', path: '/guides/what-is-mortgage', cat: 'Finance', icon: CreditCard },
+  { title: 'Understanding BMI', path: '/guides/understanding-bmi', cat: 'Health', icon: Heart },
+  { title: 'Understanding AI Tokens', path: '/guides/understanding-ai-tokens', cat: 'AI', icon: Bot },
+  { title: 'How Time Zones Work', path: '/guides/how-time-zones-work', cat: 'Time', icon: Clock },
+];
 
 const categoriesData = categories.map(cat => ({
   name: cat.name + ' Tools',
@@ -148,8 +177,8 @@ export default function HomePage() {
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Popular Tools</p>
                 <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Most Used Calculators</h2>
               </div>
-              <Link to="/tools" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
-                View All Tools <ArrowRight className="w-4 h-4" />
+              <Link to="/calculators" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                View All <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 popular-tools-grid">
@@ -172,9 +201,102 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-8 text-center md:hidden">
-              <Link to="/tools" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
-                View All Tools <ArrowRight className="w-4 h-4" />
+              <Link to="/calculators" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                View All <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+          </section>
+
+          {/* Featured Calculators Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24 bg-white">
+            <div className="flex items-end justify-between mb-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Featured</p>
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Featured Calculators</h2>
+              </div>
+              <Link to="/popular-calculators" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                View Popular <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredTools.map((tool, i) => (
+                <Link key={i} to={tool.path} className="group bg-slate-50 p-6 border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-300 rounded-xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <tool.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{tool.cat}</span>
+                      <h3 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">{tool.title}</h3>
+                    </div>
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed">{tool.desc}</p>
+                  <div className="mt-4 flex items-center text-sm font-semibold text-primary">
+                    {tool.cta} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* New Calculators Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+            <div className="flex items-end justify-between mb-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2 flex items-center gap-2">
+                  <Zap className="w-4 h-4" /> Just Added
+                </p>
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">New Calculators</h2>
+              </div>
+              <Link to="/tools" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                Browse All <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {newTools.map((tool, i) => (
+                <Link key={i} to={tool.path} className="group bg-gradient-to-br from-emerald-50 to-teal-50 p-6 border border-emerald-200 hover:border-emerald-400 hover:shadow-lg transition-all duration-300 rounded-xl relative overflow-hidden">
+                  {tool.isNew && (
+                    <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-lg">
+                      New
+                    </div>
+                  )}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center group-hover:bg-emerald-200 transition-colors">
+                      <tool.icon className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600">{tool.cat}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">{tool.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{tool.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Featured Guides Section */}
+          <section className="max-w-6xl mx-auto px-4 py-16 md:py-24 bg-white">
+            <div className="flex items-end justify-between mb-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" /> Guides
+                </p>
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Featured Guides</h2>
+              </div>
+              <Link to="/guides" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                All Guides <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featuredGuides.map((guide, i) => (
+                <Link key={i} to={guide.path} className="group bg-slate-50 p-6 border border-slate-200 hover:border-primary hover:shadow-lg transition-all duration-300 rounded-xl text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                    <guide.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{guide.cat}</span>
+                  <h3 className="text-base font-bold text-slate-900 mt-2 group-hover:text-primary transition-colors">{guide.title}</h3>
+                  <p className="text-xs text-slate-500 mt-2">Learn more →</p>
+                </Link>
+              ))}
             </div>
           </section>
 

@@ -109,6 +109,7 @@ const ProgrammaticToolPage = React.lazy(() => import('./pages/tools/Programmatic
 const MortgageByStateHub = React.lazy(() => import('./pages/finance-guides/MortgageByStateHub'));
 const FinanceGuidesHub = React.lazy(() => import('./pages/finance-guides/FinanceGuidesHub'));
 const HealthGuidesHub = React.lazy(() => import('./pages/health-guides/HealthGuidesHub'));
+const HtmlSitemap = React.lazy(() => import('./pages/HtmlSitemap'));
 
 const LazyWrap = (Component: React.LazyExoticComponent<React.FC>) => (
   <Suspense fallback={<div className="flex items-center justify-center min-h-[50vh]"><div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div></div>}>
@@ -232,6 +233,7 @@ export const routes: RouteConfig[] = [
   { name: 'Mortgage by State Hub', path: '/finance-guides/mortgage-by-state', element: LazyWrap(MortgageByStateHub), public: true },
   { name: 'Finance Guides Hub', path: '/finance-guides', element: LazyWrap(FinanceGuidesHub), public: true },
   { name: 'Health Guides Hub', path: '/health-guides', element: LazyWrap(HealthGuidesHub), public: true },
+  { name: 'HTML Sitemap', path: '/html-sitemap', element: LazyWrap(HtmlSitemap), public: true },
   // Dynamic programmatic routes - MUST be last to preserve static route priority
   { name: 'Programmatic Tool', path: '/tools/:category/:slug', element: LazyWrap(ProgrammaticToolPage), public: true },
 ];

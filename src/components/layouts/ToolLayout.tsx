@@ -1,11 +1,11 @@
 import React from 'react';
 import { getSEOContent, SEOContent } from '@/lib/seo';
-import { getToolBySlug, getRelatedTools } from '@/data/tools';
+import { getToolBySlug, getRelatedTools, getToolsByCategory, getPopularTools } from '@/data/tools';
 import { Link, useLocation } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import { generateFAQSchema, generateWebAppSchema, generateBreadcrumbSchema } from '@/lib/schema';
-import { BookOpen, Lightbulb, AlertTriangle, Calculator, TrendingUp } from 'lucide-react';
+import { BookOpen, Lightbulb, AlertTriangle, Calculator, TrendingUp, ArrowRight } from 'lucide-react';
 
 interface ToolLayoutProps {
   toolId: string;
@@ -28,12 +28,22 @@ const GUIDE_MAP: Record<string, { title: string; path: string }> = {
   'how-shipping-costs-are-calculated': { title: 'How Shipping Costs Are Calculated', path: '/guides/how-shipping-costs-are-calculated' },
   'how-to-reduce-shipping-costs': { title: 'How to Reduce Shipping Costs', path: '/guides/how-to-reduce-shipping-costs' },
   'international-shipping-guide': { title: 'International Shipping Guide', path: '/guides/international-shipping-guide' },
+  'understanding-ai-tokens': { title: 'Understanding AI Tokens', path: '/guides/understanding-ai-tokens' },
+  'how-to-reduce-ai-costs': { title: 'How to Reduce AI Costs', path: '/guides/how-to-reduce-ai-costs' },
+  'what-is-prompt-engineering': { title: 'What Is Prompt Engineering', path: '/guides/what-is-prompt-engineering' },
+  'understanding-context-windows': { title: 'Understanding Context Windows', path: '/guides/understanding-context-windows' },
+  'how-to-calculate-age': { title: 'How to Calculate Age', path: '/guides/how-to-calculate-age' },
+  'understanding-business-days': { title: 'Understanding Business Days', path: '/guides/understanding-business-days' },
+  'how-time-zones-work': { title: 'How Time Zones Work', path: '/guides/how-time-zones-work' },
+  'what-is-leap-year': { title: 'What Is a Leap Year', path: '/guides/what-is-leap-year' },
 };
 
 export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, children }) => {
   const content = getSEOContent(toolId);
   const currentTool = getToolBySlug(toolId);
   const relatedFromRegistry = currentTool ? getRelatedTools(currentTool, 6) : [];
+  const sameCategoryTools = currentTool ? getToolsByCategory(currentTool.category).filter(t => t.slug !== tool.slug).slice(0, 4) : [];
+  const popularTools = getPopularTools().filter(t => t.slug !== toolId).slice(0, 4);
   const location = useLocation();
   const canonicalUrl = `https://www.calculatorpilotai.com${location.pathname}`;
 
@@ -219,6 +229,32 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
         </div>
 
         <aside className="md:col-span-4 space-y-8 sticky top-8">
+          {/* Popular Calculators */}
+          <div className="p-6 bg-slate-900 text-white rounded-lg">
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-primary" />
+              Popular Calculators
+            </h2>
+            <div className="space-y-3">
+              {popularTools.map((tool) => (
+                <Link
+                  key={tool.slug}
+                  to={tool.route}
+                  className="block p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
+                >
+                  <span className="font-medium text-sm text-white/90">{tool.name}</span>
+                </Link>
+              ))}
+            </div>
+            <Link
+              to="/popular-calculators"
+              className="flex items-center justify-center gap-2 mt-4 text-sm text-primary hover:text-primary/80 transition-colors font-semibold"
+            >
+              View All Popular <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Related Tools */}
           <div className="p-6 bg-muted/30 border rounded-lg">
             <h2 className="text-xl font-bold mb-4">Related Tools</h2>
             <div className="space-y-3">
@@ -234,6 +270,34 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
             </div>
           </div>
 
+          {/* Same Category */}
+          {sameCategoryTools.length > 0 && (
+            <div className="p-6 bg-blue-50 border border-blue-100 rounded-lg">
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <Calculator className="w-5 h-5 text-blue-600" />
+                More {category.charAt(0).toUpperCase() + category.slice(1)} Tools
+              </h2>
+              <div className="space-y-3">
+                {sameCategoryTools.map((tool) => (
+                  <Link
+                    key={tool.slug}
+                    to={tool.route}
+                    className="block p-3 bg-white hover:shadow-sm border border-transparent hover:border-blue-200 transition-all rounded"
+                  >
+                    <span className="font-medium text-sm text-foreground">{tool.name}</span>
+                  </Link>
+                ))}
+              </div>
+              <Link
+                to={`/tools/${category}`}
+                className="flex items-center justify-center gap-2 mt-4 text-sm text-blue-600 hover:text-blue-700 transition-colors font-semibold"
+              >
+                Browse All {category.charAt(0).toUpperCase() + category.slice(1)} <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          )}
+
+          {/* Related Guides */}
           <div className="p-6 bg-primary/5 border border-primary/10 rounded-lg">
             <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-primary" />
@@ -265,6 +329,17 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
                 </>
               )}
             </div>
+          </div>
+
+          {/* All Tools Link */}
+          <div className="p-6 bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-lg text-center">
+            <p className="text-sm text-muted-foreground mb-3">Explore our complete collection</p>
+            <Link
+              to="/calculators"
+              className="inline-flex items-center gap-2 bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors text-sm"
+            >
+              All Calculators <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </aside>
       </div>
