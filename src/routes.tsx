@@ -43,6 +43,21 @@ const ImagePromptGenerator = React.lazy(() => import('./pages/tools/ai/ImageProm
 const EmailGenerator = React.lazy(() => import('./pages/tools/ai/EmailGenerator'));
 const TitleGenerator = React.lazy(() => import('./pages/tools/ai/TitleGenerator'));
 const TokenCalculator = React.lazy(() => import('./pages/tools/ai/TokenCalculator'));
+const AIAPICostCalculator = React.lazy(() => import('./pages/tools/ai/AIAPICostCalculator'));
+const AIInferenceCostCalculator = React.lazy(() => import('./pages/tools/ai/AIInferenceCostCalculator'));
+const AITrainingCostCalculator = React.lazy(() => import('./pages/tools/ai/AITrainingCostCalculator'));
+const ClaudeCostCalculator = React.lazy(() => import('./pages/tools/ai/ClaudeCostCalculator'));
+const ContextWindowCalculator = React.lazy(() => import('./pages/tools/ai/ContextWindowCalculator'));
+const EmbeddingCostCalculator = React.lazy(() => import('./pages/tools/ai/EmbeddingCostCalculator'));
+const FineTuningCostCalculator = React.lazy(() => import('./pages/tools/ai/FineTuningCostCalculator'));
+const GPUCostCalculator = React.lazy(() => import('./pages/tools/ai/GPUCostCalculator'));
+const GeminiCostCalculator = React.lazy(() => import('./pages/tools/ai/GeminiCostCalculator'));
+const OpenAICostCalculator = React.lazy(() => import('./pages/tools/ai/OpenAICostCalculator'));
+const PromptLengthCalculator = React.lazy(() => import('./pages/tools/ai/PromptLengthCalculator'));
+const RAGChunkSizeCalculator = React.lazy(() => import('./pages/tools/ai/RAGChunkSizeCalculator'));
+const TokenToWordCalculator = React.lazy(() => import('./pages/tools/ai/TokenToWordCalculator'));
+const VectorDatabaseStorageCalculator = React.lazy(() => import('./pages/tools/ai/VectorDatabaseStorageCalculator'));
+const WordToTokenCalculator = React.lazy(() => import('./pages/tools/ai/WordToTokenCalculator'));
 const CalorieCalculator = React.lazy(() => import('./pages/tools/health/CalorieCalculator'));
 const LeanBodyMassCalculator = React.lazy(() => import('./pages/tools/health/LeanBodyMassCalculator'));
 const WaistToHipRatioCalculator = React.lazy(() => import('./pages/tools/health/WaistToHipRatioCalculator'));
@@ -152,6 +167,21 @@ export const routes: RouteConfig[] = [
   { name: 'Email Generator', path: '/tools/ai/email-generator', element: LazyWrap(EmailGenerator), public: true },
   { name: 'Title Generator', path: '/tools/ai/title-generator', element: LazyWrap(TitleGenerator), public: true },
   { name: 'Token Calculator', path: '/tools/ai/token-calculator', element: LazyWrap(TokenCalculator), public: true },
+  { name: 'AI API Cost Calculator', path: '/tools/ai/api-cost-calculator', element: LazyWrap(AIAPICostCalculator), public: true },
+  { name: 'AI Inference Cost Calculator', path: '/tools/ai/inference-cost-calculator', element: LazyWrap(AIInferenceCostCalculator), public: true },
+  { name: 'AI Training Cost Calculator', path: '/tools/ai/training-cost-calculator', element: LazyWrap(AITrainingCostCalculator), public: true },
+  { name: 'Claude Cost Calculator', path: '/tools/ai/claude-cost-calculator', element: LazyWrap(ClaudeCostCalculator), public: true },
+  { name: 'Context Window Calculator', path: '/tools/ai/context-window-calculator', element: LazyWrap(ContextWindowCalculator), public: true },
+  { name: 'Embedding Cost Calculator', path: '/tools/ai/embedding-cost-calculator', element: LazyWrap(EmbeddingCostCalculator), public: true },
+  { name: 'Fine-Tuning Cost Calculator', path: '/tools/ai/fine-tuning-cost-calculator', element: LazyWrap(FineTuningCostCalculator), public: true },
+  { name: 'GPU Cost Calculator', path: '/tools/ai/gpu-cost-calculator', element: LazyWrap(GPUCostCalculator), public: true },
+  { name: 'Gemini Cost Calculator', path: '/tools/ai/gemini-cost-calculator', element: LazyWrap(GeminiCostCalculator), public: true },
+  { name: 'OpenAI Cost Calculator', path: '/tools/ai/openai-cost-calculator', element: LazyWrap(OpenAICostCalculator), public: true },
+  { name: 'Prompt Length Calculator', path: '/tools/ai/prompt-length-calculator', element: LazyWrap(PromptLengthCalculator), public: true },
+  { name: 'RAG Chunk Size Calculator', path: '/tools/ai/rag-chunk-size-calculator', element: LazyWrap(RAGChunkSizeCalculator), public: true },
+  { name: 'Token to Word Calculator', path: '/tools/ai/token-to-word-calculator', element: LazyWrap(TokenToWordCalculator), public: true },
+  { name: 'Vector DB Storage Calculator', path: '/tools/ai/vector-storage-calculator', element: LazyWrap(VectorDatabaseStorageCalculator), public: true },
+  { name: 'Word to Token Calculator', path: '/tools/ai/word-to-token-calculator', element: LazyWrap(WordToTokenCalculator), public: true },
   { name: 'Calorie Calculator', path: '/tools/health/calorie-calculator', element: LazyWrap(CalorieCalculator), public: true },
   { name: 'Lean Body Mass Calculator', path: '/tools/health/lean-body-mass-calculator', element: LazyWrap(LeanBodyMassCalculator), public: true },
   { name: 'Waist to Hip Ratio Calculator', path: '/tools/health/waist-to-hip-ratio-calculator', element: LazyWrap(WaistToHipRatioCalculator), public: true },

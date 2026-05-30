@@ -92,7 +92,37 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/claude-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/context-window-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/ai/embedding-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/fine-tuning-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/gemini-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/gpu-cost-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -104,7 +134,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/inference-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/openai-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/prompt-length-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/ai/prompt-token-optimizer</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/rag-chunk-size-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -128,7 +182,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/token-to-word-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/training-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.calculatorpilotai.com/tools/ai/translation-cost-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/vector-storage-calculator</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.calculatorpilotai.com/tools/ai/word-to-token-calculator</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
