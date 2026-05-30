@@ -37,6 +37,11 @@ const ShippingCostCalculator = React.lazy(() => import('./pages/tools/shipping/S
 const PackageVolumeCalculator = React.lazy(() => import('./pages/tools/shipping/PackageVolumeCalculator'));
 const ChargeableWeightCalculator = React.lazy(() => import('./pages/tools/shipping/ChargeableWeightCalculator'));
 const PalletCalculator = React.lazy(() => import('./pages/tools/shipping/PalletCalculator'));
+const FedExDimWeightCalculator = React.lazy(() => import('./pages/tools/shipping/FedExDimWeightCalculator'));
+const UPSDimWeightCalculator = React.lazy(() => import('./pages/tools/shipping/UPSDimWeightCalculator'));
+const ShippingVolumeCalculator = React.lazy(() => import('./pages/tools/shipping/ShippingVolumeCalculator'));
+const OversizeChargeCalculator = React.lazy(() => import('./pages/tools/shipping/OversizeChargeCalculator'));
+const FreightDensityCalculator = React.lazy(() => import('./pages/tools/shipping/FreightDensityCalculator'));
 const AllTools = React.lazy(() => import('./pages/tools/AllTools'));
 const CategoryPage = React.lazy(() => import('./pages/tools/CategoryPage'));
 const Guides = React.lazy(() => import('./pages/guides/Guides'));
@@ -105,6 +110,11 @@ export const routes: RouteConfig[] = [
   { name: 'Package Volume Calculator', path: '/tools/shipping/package-volume-calculator', element: LazyWrap(PackageVolumeCalculator), public: true },
   { name: 'Chargeable Weight Calculator', path: '/tools/shipping/chargeable-weight-calculator', element: LazyWrap(ChargeableWeightCalculator), public: true },
   { name: 'Pallet Calculator', path: '/tools/shipping/pallet-calculator', element: LazyWrap(PalletCalculator), public: true },
+  { name: 'FedEx DIM Weight Calculator', path: '/tools/shipping/fedex-dim-weight-calculator', element: LazyWrap(FedExDimWeightCalculator), public: true },
+  { name: 'UPS DIM Weight Calculator', path: '/tools/shipping/ups-dim-weight-calculator', element: LazyWrap(UPSDimWeightCalculator), public: true },
+  { name: 'Shipping Volume Calculator', path: '/tools/shipping/shipping-volume-calculator', element: LazyWrap(ShippingVolumeCalculator), public: true },
+  { name: 'Oversize Charge Calculator', path: '/tools/shipping/oversize-charge-calculator', element: LazyWrap(OversizeChargeCalculator), public: true },
+  { name: 'Freight Density Calculator', path: '/tools/shipping/freight-density-calculator', element: LazyWrap(FreightDensityCalculator), public: true },
   { name: 'All Tools', path: '/tools', element: LazyWrap(AllTools), public: true },
   { name: 'Category', path: '/tools/:category', element: LazyWrap(CategoryPage), public: true },
   { name: 'Guides', path: '/guides', element: LazyWrap(Guides), public: true },
