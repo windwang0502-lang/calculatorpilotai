@@ -9,6 +9,20 @@ const RefinanceCalculator = React.lazy(() => import('./pages/tools/finance/Refin
 const InterestCalculator = React.lazy(() => import('./pages/tools/finance/InterestCalculator'));
 const CompoundInterestCalculator = React.lazy(() => import('./pages/tools/finance/CompoundInterestCalculator'));
 const DebtPayoffCalculator = React.lazy(() => import('./pages/tools/finance/DebtPayoffCalculator'));
+const ROICalculator = React.lazy(() => import('./pages/tools/finance/ROICalculator'));
+const InvestmentCalculator = React.lazy(() => import('./pages/tools/finance/InvestmentCalculator'));
+const RetirementCalculator = React.lazy(() => import('./pages/tools/finance/RetirementCalculator'));
+const FourOhOneKCalculator = React.lazy(() => import('./pages/tools/finance/FourOhOneKCalculator'));
+const FIRECalculator = React.lazy(() => import('./pages/tools/finance/FIRECalculator'));
+const SavingsGoalCalculator = React.lazy(() => import('./pages/tools/finance/SavingsGoalCalculator'));
+const PersonalLoanCalculator = React.lazy(() => import('./pages/tools/finance/PersonalLoanCalculator'));
+const AutoLoanCalculator = React.lazy(() => import('./pages/tools/finance/AutoLoanCalculator'));
+const StudentLoanCalculator = React.lazy(() => import('./pages/tools/finance/StudentLoanCalculator'));
+const LoanInterestCalculator = React.lazy(() => import('./pages/tools/finance/LoanInterestCalculator'));
+const SalesTaxCalculator = React.lazy(() => import('./pages/tools/finance/SalesTaxCalculator'));
+const IncomeTaxCalculator = React.lazy(() => import('./pages/tools/finance/IncomeTaxCalculator'));
+const VATCalculator = React.lazy(() => import('./pages/tools/finance/VATCalculator'));
+const TaxRefundCalculator = React.lazy(() => import('./pages/tools/finance/TaxRefundCalculator'));
 const BMICalculator = React.lazy(() => import('./pages/tools/health/BMICalculator'));
 const BMRCalculator = React.lazy(() => import('./pages/tools/health/BMRCalculator'));
 const BodyFatCalculator = React.lazy(() => import('./pages/tools/health/BodyFatCalculator'));
@@ -90,6 +104,20 @@ export const routes: RouteConfig[] = [
   { name: 'Interest Calculator', path: '/tools/finance/interest-calculator', element: LazyWrap(InterestCalculator), public: true },
   { name: 'Compound Interest Calculator', path: '/tools/finance/compound-interest-calculator', element: LazyWrap(CompoundInterestCalculator), public: true },
   { name: 'Debt Payoff Calculator', path: '/tools/finance/debt-payoff-calculator', element: LazyWrap(DebtPayoffCalculator), public: true },
+  { name: 'ROI Calculator', path: '/tools/finance/roi-calculator', element: LazyWrap(ROICalculator), public: true },
+  { name: 'Investment Calculator', path: '/tools/finance/investment-calculator', element: LazyWrap(InvestmentCalculator), public: true },
+  { name: 'Retirement Calculator', path: '/tools/finance/retirement-calculator', element: LazyWrap(RetirementCalculator), public: true },
+  { name: '401k Calculator', path: '/tools/finance/401k-calculator', element: LazyWrap(FourOhOneKCalculator), public: true },
+  { name: 'FIRE Calculator', path: '/tools/finance/fire-calculator', element: LazyWrap(FIRECalculator), public: true },
+  { name: 'Savings Goal Calculator', path: '/tools/finance/savings-goal-calculator', element: LazyWrap(SavingsGoalCalculator), public: true },
+  { name: 'Personal Loan Calculator', path: '/tools/finance/personal-loan-calculator', element: LazyWrap(PersonalLoanCalculator), public: true },
+  { name: 'Auto Loan Calculator', path: '/tools/finance/auto-loan-calculator', element: LazyWrap(AutoLoanCalculator), public: true },
+  { name: 'Student Loan Calculator', path: '/tools/finance/student-loan-calculator', element: LazyWrap(StudentLoanCalculator), public: true },
+  { name: 'Loan Interest Calculator', path: '/tools/finance/loan-interest-calculator', element: LazyWrap(LoanInterestCalculator), public: true },
+  { name: 'Sales Tax Calculator', path: '/tools/finance/sales-tax-calculator', element: LazyWrap(SalesTaxCalculator), public: true },
+  { name: 'Income Tax Calculator', path: '/tools/finance/income-tax-calculator', element: LazyWrap(IncomeTaxCalculator), public: true },
+  { name: 'VAT Calculator', path: '/tools/finance/vat-calculator', element: LazyWrap(VATCalculator), public: true },
+  { name: 'Tax Refund Calculator', path: '/tools/finance/tax-refund-calculator', element: LazyWrap(TaxRefundCalculator), public: true },
   { name: 'BMI Calculator', path: '/tools/health/bmi-calorie-calculator', element: LazyWrap(BMICalculator), public: true },
   { name: 'BMR Calculator', path: '/tools/health/bmr-calculator', element: LazyWrap(BMRCalculator), public: true },
   { name: 'Body Fat Calculator', path: '/tools/health/body-fat-calculator', element: LazyWrap(BodyFatCalculator), public: true },
