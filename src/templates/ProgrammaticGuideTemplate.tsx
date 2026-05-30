@@ -38,6 +38,15 @@ const healthCalculatorLinks = [
   { name: 'Water Intake Calculator', path: '/tools/health/water-intake-calculator' },
 ];
 
+// Finance calculators for internal linking
+const financeCalculatorLinks = [
+  { name: 'Mortgage Calculator', path: '/tools/finance/mortgage-calculator' },
+  { name: 'Loan Calculator', path: '/tools/finance/loan-calculator' },
+  { name: 'Salary to Hourly Calculator', path: '/tools/finance/salary-to-hourly-calculator' },
+  { name: 'Compound Interest Calculator', path: '/tools/finance/compound-interest-calculator' },
+  { name: 'Investment Return Calculator', path: '/tools/finance/investment-return-calculator' },
+];
+
 const healthDisclaimer = "This tool provides general wellness information only and is not medical advice. Always consult a qualified healthcare professional before making health, nutrition, or weight-management decisions.";
 
 interface ProgrammaticGuideTemplateProps {
@@ -287,6 +296,55 @@ export function ProgrammaticGuideTemplate({ config }: ProgrammaticGuideTemplateP
               <p className="text-sm text-amber-800">{healthDisclaimer}</p>
             </div>
           </div>
+        )}
+
+        {/* Finance Hub Link for Finance Category */}
+        {config.category === 'finance' && (
+          <section className="bg-white p-6 border border-slate-200 rounded-xl shadow-sm">
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Finance Calculators
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {financeCalculatorLinks.map((calc) => (
+                <Link
+                  key={calc.path}
+                  to={calc.path}
+                  className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg hover:bg-primary/5 transition-colors group"
+                >
+                  <svg className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-sm font-medium text-slate-700 group-hover:text-primary transition-colors">
+                    {calc.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2">
+              <Link
+                to="/finance-guides"
+                className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Browse All Finance Guides
+              </Link>
+              <Link
+                to="/finance-guides/mortgage-by-state"
+                className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Mortgage by State Hub
+              </Link>
+            </div>
+          </section>
         )}
 
         <div className="text-center pt-4">

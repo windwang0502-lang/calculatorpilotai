@@ -51,6 +51,7 @@ const AIDisclosurePage = React.lazy(() => import('./pages/AIDisclosure'));
 const EditorialPolicyPage = React.lazy(() => import('./pages/EditorialPolicy'));
 const ProgrammaticToolPage = React.lazy(() => import('./pages/tools/ProgrammaticToolPage'));
 const MortgageByStateHub = React.lazy(() => import('./pages/finance-guides/MortgageByStateHub'));
+const FinanceGuidesHub = React.lazy(() => import('./pages/finance-guides/FinanceGuidesHub'));
 const HealthGuidesHub = React.lazy(() => import('./pages/health-guides/HealthGuidesHub'));
 
 const LazyWrap = (Component: React.LazyExoticComponent<React.FC>) => (
@@ -117,6 +118,7 @@ export const routes: RouteConfig[] = [
   { name: 'AI Disclosure', path: '/ai-disclosure', element: LazyWrap(AIDisclosurePage), public: true },
   { name: 'Editorial Policy', path: '/editorial-policy', element: LazyWrap(EditorialPolicyPage), public: true },
   { name: 'Mortgage by State Hub', path: '/finance-guides/mortgage-by-state', element: LazyWrap(MortgageByStateHub), public: true },
+  { name: 'Finance Guides Hub', path: '/finance-guides', element: LazyWrap(FinanceGuidesHub), public: true },
   { name: 'Health Guides Hub', path: '/health-guides', element: LazyWrap(HealthGuidesHub), public: true },
   // Dynamic programmatic routes - MUST be last to preserve static route priority
   { name: 'Programmatic Tool', path: '/tools/:category/:slug', element: LazyWrap(ProgrammaticToolPage), public: true },
