@@ -214,8 +214,8 @@ export default function HomePage() {
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">Featured</p>
                 <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Featured Calculators</h2>
               </div>
-              <Link to="/popular-calculators" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
-                View Popular <ArrowRight className="w-4 h-4" />
+              <Link to="/calculators" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+                View All <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -248,7 +248,7 @@ export default function HomePage() {
                 </p>
                 <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">New Calculators</h2>
               </div>
-              <Link to="/tools" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
+              <Link to="/calculators" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
                 Browse All <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
