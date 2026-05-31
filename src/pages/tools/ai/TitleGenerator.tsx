@@ -236,29 +236,6 @@ export default function TitleGenerator() {
     setTimeout(() => setCopied(''), 2000);
   };
 
-  const schemaJsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'SoftwareApplication',
-        name: 'Title Generator',
-        description: 'Generate SEO and platform-specific title ideas with scoring and best-pick recommendations.',
-        url: 'https://www.calculatorpilotai.com/tools/ai/title-generator',
-        applicationCategory: 'BusinessApplication',
-        operatingSystem: 'Any',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      },
-      {
-        '@type': 'FAQPage',
-        mainEntity: faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-        })),
-      },
-    ],
-  };
-
   const relatedTools = [
     { name: 'Prompt Generator', path: '/tools/ai/prompt-generator', desc: 'Generate high-quality prompts for multiple use cases' },
     { name: 'Email Generator', path: '/tools/ai/email-generator', desc: 'Draft structured emails quickly' },
@@ -267,7 +244,6 @@ export default function TitleGenerator() {
 
   return (
     <ToolLayout toolId="title-generator" category="ai">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <section className="space-y-8">
         <div className="bg-white p-8 border rounded-lg shadow-sm">
           <h2 className="text-2xl font-bold mb-6">SEO Title Generator</h2>
@@ -437,10 +413,14 @@ export default function TitleGenerator() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
+            {[
+              { q: 'How do I choose the best title?', a: 'Look for titles with scores above 85%. Consider your platform and audience when making your final selection.' },
+              { q: 'Can I use these titles for SEO?', a: 'Yes, the SEO and Blog platform options are optimized for search engine visibility and click-through rates.' },
+              { q: 'How many variations should I test?', a: 'We recommend A/B testing at least 2-3 title variations to see which performs best with your specific audience.' },
+            ].map((faq, index) => (
               <div key={index} className="bg-white border border-slate-200 rounded-lg p-6">
-                <h3 className="font-bold text-lg mb-2">{faq.question}</h3>
-                <p className="text-slate-700">{faq.answer}</p>
+                <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
+                <p className="text-slate-700">{faq.a}</p>
               </div>
             ))}
           </div>
