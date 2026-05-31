@@ -12,6 +12,7 @@ const faqs = [
 export default function AICategoryPage() {
   return (
     <CategoryLandingPage
+      category="ai"
       intro="Harness the power of AI for content creation, analysis, and optimization. From text detection to prompt generation, image prompting to humanization — our AI tools help you work smarter with artificial intelligence."
       faqs={faqs}
     />

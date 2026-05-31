@@ -12,6 +12,7 @@ const faqs = [
 export default function FinanceCategoryPage() {
   return (
     <CategoryLandingPage
+      category="finance"
       intro="Make informed financial decisions with our suite of finance calculators. From mortgage payments to loan calculations, debt payoff strategies to compound interest growth — our AI-enhanced tools help you plan for your financial future with confidence."
       faqs={faqs}
     />

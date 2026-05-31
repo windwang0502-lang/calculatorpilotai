@@ -8,10 +8,12 @@ import { ArrowRight, ChevronRight, HelpCircle } from 'lucide-react';
 interface CategoryPageProps {
   intro: string;
   faqs: { q: string; a: string }[];
+  category?: string;
 }
 
-export default function CategoryLandingPage({ intro, faqs }: CategoryPageProps) {
-  const { category } = useParams<{ category: string }>();
+export default function CategoryLandingPage({ intro, faqs, category: categoryProp }: CategoryPageProps) {
+  const { category: categoryParam } = useParams<{ category: string }>();
+  const category = categoryProp || categoryParam;
   const categoryData = category ? getCategoryById(category as any) : null;
 
   if (!categoryData) {

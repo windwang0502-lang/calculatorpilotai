@@ -12,6 +12,7 @@ const faqs = [
 export default function TimeCategoryPage() {
   return (
     <CategoryLandingPage
+      category="time"
       intro="Master time calculations with precision tools. Whether you need to calculate exact ages, count down to special events, or determine business day deadlines, our time calculators deliver accurate results with clear, easy-to-understand breakdowns."
       faqs={faqs}
     />

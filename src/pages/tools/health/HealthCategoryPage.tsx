@@ -12,6 +12,7 @@ const faqs = [
 export default function HealthCategoryPage() {
   return (
     <CategoryLandingPage
+      category="health"
       intro="Track your health journey with precision. Our health calculators provide accurate body composition metrics, nutrition estimates, and personalized recommendations. Combined with AI insights, you get a complete picture of your health status and actionable steps forward."
       faqs={faqs}
     />

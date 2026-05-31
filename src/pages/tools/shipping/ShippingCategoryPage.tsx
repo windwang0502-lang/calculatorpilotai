@@ -12,6 +12,7 @@ const faqs = [
 export default function ShippingCategoryPage() {
   return (
     <CategoryLandingPage
+      category="shipping"
       intro="Optimize your logistics with precision shipping calculators. From dimensional weight to freight class calculations, pallet planning to cost estimation — our tools help businesses and individuals ship smarter, faster, and more economically."
       faqs={faqs}
     />
