@@ -42,7 +42,7 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
   const content = getSEOContent(toolId);
   const currentTool = getToolBySlug(toolId);
   const relatedFromRegistry = currentTool ? getRelatedTools(currentTool, 6) : [];
-  const sameCategoryTools = currentTool ? getToolsByCategory(currentTool.category).filter(t => t.slug !== tool.slug).slice(0, 4) : [];
+  const sameCategoryTools = currentTool ? getToolsByCategory(currentTool.category).filter(t => t.slug !== currentTool.slug).slice(0, 4) : [];
   const popularTools = getPopularTools().filter(t => t.slug !== toolId).slice(0, 4);
   const location = useLocation();
   const canonicalUrl = `https://www.calculatorpilotai.com${location.pathname}`;
