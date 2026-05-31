@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ToolLayout } from '@/components/layouts/ToolLayout';
 import {
@@ -15,6 +15,7 @@ import {
   generateProgrammaticCTA,
   getSpecializedContent,
 } from '@/lib/seo/programmatic-content-engine';
+import { trackToolView, trackToolClick } from '@/lib/analytics';
 
 const categoryLabels: Record<SEOCategory, string> = {
   finance: 'Finance',
@@ -38,6 +39,11 @@ interface BaseTemplateProps {
 }
 
 export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
+  // Track tool view on mount
+  useEffect(() => {
+    trackToolView(config.slug, config.category);
+  }, [config.slug, config.category]);
+
   const relatedInCategory = getSEOPagesByCategory(config.category)
     .filter(p => p.slug !== config.slug)
     .slice(0, 4);
@@ -293,6 +299,7 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
                 <Link
                   key={page.slug}
                   to={`/tools/${config.category}/${page.slug}`}
+                  onClick={() => trackToolClick(page.slug, 'category')}
                   className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors group"
                 >
                   <svg className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -408,6 +415,7 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
                     <Link
                       key={page.slug}
                       to={`/tools/${page.category}/${page.slug}`}
+                      onClick={() => trackToolClick(page.slug, 'category')}
                       className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg hover:bg-primary/5 transition-colors group"
                     >
                       <svg className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -435,6 +443,7 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
                     <Link
                       key={page.slug}
                       to={`/tools/${page.category}/${page.slug}`}
+                      onClick={() => trackToolClick(page.slug, 'category')}
                       className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg hover:bg-primary/5 transition-colors group"
                     >
                       <svg className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -461,6 +470,7 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
                   <Link
                     key={page.slug}
                     to={`/tools/${page.category}/${page.slug}`}
+                    onClick={() => trackToolClick(page.slug, 'category')}
                     className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg hover:bg-primary/5 transition-colors group"
                   >
                     <svg className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search, X, ArrowRight } from 'lucide-react';
 import { searchTools, SearchableTool } from '@/data/toolSearchData';
 import { ToolCategory } from '@/data/tools';
+import { trackSearch, trackToolClick } from '@/lib/analytics';
 
 interface GlobalSearchProps {
   isOpen: boolean;
@@ -35,6 +36,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       const searchResults = searchTools(query, 8);
       setResults(searchResults);
       setSelectedIndex(0);
+      trackSearch(query, searchResults.length);
     } else {
       setResults([]);
     }
@@ -53,6 +55,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       case 'Enter':
         e.preventDefault();
         if (results[selectedIndex]) {
+          trackToolClick(results[selectedIndex].slug, 'search');
           navigate(results[selectedIndex].route);
           onClose();
           setQuery('');
@@ -67,6 +70,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   }, [results, selectedIndex, navigate, onClose]);
 
   const handleResultClick = (tool: SearchableTool) => {
+    trackToolClick(tool.slug, 'search');
     navigate(tool.route);
     onClose();
     setQuery('');

@@ -4,7 +4,7 @@ import IntersectObserver from '@/components/common/IntersectObserver';
 import { Toaster } from '@/components/ui/sonner';
 import SiteHeader from '@/components/layouts/SiteHeader';
 import SiteFooter from '@/components/layouts/SiteFooter';
-import { initGA, trackPageView } from '@/lib/analytics/ga';
+import { initAnalytics, trackPageView } from '@/lib/analytics';
 import { Analytics } from '@vercel/analytics/react';
 
 import { routes } from './routes';
@@ -19,7 +19,7 @@ function RouteTracker() {
 
 const App: React.FC = () => {
   useEffect(() => {
-    initGA();
+    initAnalytics();
   }, []);
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { getPopularTools, Tool, ToolCategory } from '@/data/tools';
+import { trackToolClick } from '@/lib/analytics';
 
 interface PopularToolsProps {
   limit?: number;
@@ -45,6 +46,7 @@ export default function PopularTools({
           <Link
             key={tool.slug}
             to={tool.route}
+            onClick={() => trackToolClick(tool.slug, 'popular')}
             className={`block bg-white/10 hover:bg-white/20 rounded-lg transition-colors ${
               variant === 'grid' ? 'p-3' : 'p-3'
             }`}
@@ -91,6 +93,7 @@ export function CompactPopularTools({ limit = 4, excludeSlug }: CompactPopularTo
         <Link
           key={tool.slug}
           to={tool.route}
+          onClick={() => trackToolClick(tool.slug, 'popular')}
           className="flex items-center justify-between p-2 hover:bg-slate-100 rounded-lg transition-colors group"
         >
           <span className="text-sm text-slate-700 group-hover:text-primary transition-colors">
@@ -125,6 +128,7 @@ export function InlinePopularTools({ limit = 6, excludeSlug }: InlinePopularTool
         <Link
           key={tool.slug}
           to={tool.route}
+          onClick={() => trackToolClick(tool.slug, 'popular')}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-primary hover:text-white text-slate-700 rounded-full text-sm transition-colors"
         >
           <span>{tool.name}</span>
