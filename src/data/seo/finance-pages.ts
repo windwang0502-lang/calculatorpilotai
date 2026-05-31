@@ -227,20 +227,6 @@ export const financePages: SEOPageConfig[] = [
     relatedGuides: ["savings-strategies", "apy-vs-interest-rate"],
     relatedCompare: ["high-yield-savings-vs-cd", "money-market-vs-savings"],
   },
-  {
-    slug: "savings-yield-calculator",
-    keyword: "savings yield calculator",
-    title: "Savings Yield Calculator - APY and Interest Earnings",
-    description: "Calculate the annual percentage yield (APY) on your savings accounts. See how compound interest grows your money over time.",
-    category: "finance",
-    intent: "calculator",
-    competition: "medium",
-    priority: "P1",
-    pageType: "calculator",
-    relatedTools: ["compound-interest-calculator", "cd-rate-calculator"],
-    relatedGuides: ["savings-strategies", "apy-vs-interest-rate"],
-    relatedCompare: ["high-yield-savings-vs-cd", "money-market-vs-savings"],
-  },
   // GUIDES (5)
   {
     slug: "how-mortgages-work",
