@@ -1,4 +1,5 @@
 import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -18,31 +19,43 @@ const PageMeta = ({
   ogImage = 'https://www.calculatorpilotai.com/og-image.png',
   ogType = 'website',
   jsonLd,
-}: PageMetaProps) => (
-  <Helmet>
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    {canonical && <link rel="canonical" href={canonical} />}
-    <meta name="robots" content="index, follow" />
+}: PageMetaProps) => {
+  const [fallbackCanonical, setFallbackCanonical] = useState<string | null>(null);
 
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content={ogType} />
-    {canonical && <meta property="og:url" content={canonical} />}
-    <meta property="og:image" content={ogImage} />
+  useEffect(() => {
+    if (!canonical) {
+      setFallbackCanonical(window.location.href);
+    }
+  }, [canonical]);
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+  const resolvedCanonical = canonical || fallbackCanonical;
 
-    {jsonLd && (
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
-    )}
-  </Helmet>
-);
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      {resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
+      <meta name="robots" content="index, follow" />
+
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={ogType} />
+      {resolvedCanonical && <meta property="og:url" content={resolvedCanonical} />}
+      <meta property="og:image" content={ogImage} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
+
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      )}
+    </Helmet>
+  );
+};
 
 export const AppWrapper = ({ children }: { children: React.ReactNode }) => (
   <HelmetProvider>

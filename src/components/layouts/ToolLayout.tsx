@@ -4,7 +4,6 @@ import { getToolBySlug, getRelatedTools, getToolsByCategory, getPopularTools } f
 import { Link, useLocation } from 'react-router-dom';
 import PageMeta from '@/components/common/PageMeta';
 import Breadcrumb from '@/components/common/Breadcrumb';
-import { generateFAQSchema, generateWebAppSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { BookOpen, Lightbulb, AlertTriangle, Calculator, TrendingUp, ArrowRight } from 'lucide-react';
 
 interface ToolLayoutProps {
@@ -47,24 +46,6 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
   const location = useLocation();
   const canonicalUrl = `https://www.calculatorpilotai.com${location.pathname}`;
 
-  const faqSchema = generateFAQSchema(content.faqs);
-  const webAppSchema = generateWebAppSchema({
-    name: content.title.split(' - ')[0],
-    description: content.description,
-    url: canonicalUrl,
-  });
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://www.calculatorpilotai.com/' },
-    { name: 'Tools', url: 'https://www.calculatorpilotai.com/tools' },
-    { name: category.charAt(0).toUpperCase() + category.slice(1), url: `https://www.calculatorpilotai.com/tools/${category}` },
-    { name: content.title.split(' - ')[0], url: canonicalUrl },
-  ]);
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [faqSchema, webAppSchema, breadcrumbSchema],
-  };
-
   return (
     <>
       <PageMeta
@@ -72,7 +53,6 @@ export const ToolLayout: React.FC<ToolLayoutProps> = ({ toolId, category, childr
         description={content.description}
         canonical={canonicalUrl}
         ogType="website"
-        jsonLd={jsonLd}
       />
       <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
       <header className="mb-12">

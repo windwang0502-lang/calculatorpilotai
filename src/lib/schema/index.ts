@@ -59,7 +59,7 @@ export const generateArticleSchema = ({
   image = "https://www.calculatorpilotai.com/og-image.png",
   datePublished = "2026-05-27",
   dateModified = "2026-05-27",
-  authorName = "CalcWise AI",
+  authorName = "CalculatorPilot AI",
 }: {
   headline: string;
   description: string;
@@ -82,7 +82,7 @@ export const generateArticleSchema = ({
   },
   publisher: {
     "@type": "Organization",
-    name: "CalcWise AI",
+    name: "CalculatorPilot AI",
     logo: {
       "@type": "ImageObject",
       url: "https://www.calculatorpilotai.com/logo.png",
@@ -121,7 +121,7 @@ export const generateCollectionPageSchema = ({
 export const generateOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "CalcWise AI",
+  name: "CalculatorPilot AI",
   url: "https://www.calculatorpilotai.com",
   logo: "https://www.calculatorpilotai.com/logo.png",
 });

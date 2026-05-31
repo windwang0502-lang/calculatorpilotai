@@ -65,41 +65,6 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
   const faqs = specializedContent?.faqs || generateProgrammaticFAQ(config);
   const cta = generateProgrammaticCTA(config);
 
-  // Generate schema markup
-  const baseUrl = 'https://www.calculatorpilotai.com';
-  const pageUrl = `${baseUrl}/tools/${config.category}/${config.slug}`;
-
-  const schemaJsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebApplication',
-        name: config.title,
-        description: config.description,
-        url: pageUrl,
-        applicationCategory: config.category === 'finance' ? 'FinanceApplication' : 'HealthApplication',
-        operatingSystem: 'Any',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
-      },
-      {
-        '@type': 'FAQPage',
-        mainEntity: faqs.map(faq => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: { '@type': 'Answer', text: faq.answer }
-        }))
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
-          { '@type': 'ListItem', position: 2, name: categoryLabels[config.category], item: `${baseUrl}/tools/${config.category}` },
-          { '@type': 'ListItem', position: 3, name: config.keyword, item: pageUrl }
-        ]
-      }
-    ]
-  };
-
   const explanationPoints = [
     explanation,
     'Results are estimates and may vary based on your specific inputs',
@@ -180,7 +145,6 @@ export function ProgrammaticCalculatorTemplate({ config }: BaseTemplateProps) {
 
   return (
     <ToolLayout toolId={`programmatic-${config.slug}`} category={config.category}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }} />
       <div className="max-w-4xl mx-auto space-y-8">
         <header className="bg-white p-8 border border-slate-200 rounded-xl shadow-sm">
           {parentLink && (
