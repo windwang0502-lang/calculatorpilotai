@@ -185,19 +185,19 @@ export default function APRCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">APR</span>
-                <div className="text-xl md:text-2xl lg:text-3xl font-mono font-bold text-primary tabular-nums leading-none overflow-wrap-anywhere">{formatPercent(result.apr)}</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-mono font-bold text-primary tabular-nums leading-none whitespace-nowrap">{formatPercent(result.apr)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Monthly Payment</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(result.monthlyPayment)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap">{formatCurrency(result.monthlyPayment)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total Cost</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(result.totalCost)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap">{formatCurrency(result.totalCost)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-amber-50 border border-amber-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-2">Rate Difference</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-amber-600 tabular-nums leading-none overflow-wrap-anywhere">{formatPercent(result.rateDifference, { showSign: true })}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-amber-600 tabular-nums leading-none whitespace-nowrap">{formatPercent(result.rateDifference, { showSign: true })}</div>
               </div>
             </div>
 

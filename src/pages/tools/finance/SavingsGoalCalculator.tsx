@@ -206,19 +206,19 @@ export default function SavingsGoalCalculator() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Goal Amount</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(goalAmount)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap">{formatCurrency(goalAmount)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Interest Earned</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-emerald-600 tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(result.totalInterest)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-emerald-600 tabular-nums leading-none whitespace-nowrap">{formatCurrency(result.totalInterest)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Target Date</span>
-                <div className="text-base md:text-lg font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">{result.goalAchieved}</div>
+                <div className="text-base md:text-lg font-mono font-bold tabular-nums leading-none">{result.goalAchieved}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Remaining to Save</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(goalAmount - currentSavings)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap">{formatCurrency(goalAmount - currentSavings)}</div>
               </div>
             </div>
           </div>

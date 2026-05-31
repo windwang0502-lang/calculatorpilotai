@@ -161,25 +161,25 @@ export default function ROICalculator() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total ROI</span>
-                <div className={`text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere ${result.roi >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                <div className={`text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap ${result.roi >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                   {formatPercent(result.roi)}
                 </div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Annualized ROI</span>
-                <div className={`text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere ${result.annualRoi >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                <div className={`text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap ${result.annualRoi >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                   {formatPercent(result.annualRoi)}
                 </div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total Gain</span>
-                <div className={`text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere ${result.totalGain >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                <div className={`text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap ${result.totalGain >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                   {formatCurrency(result.totalGain)}
                 </div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Final Value</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap">
                   {formatCurrency(result.totalValue)}
                 </div>
               </div>

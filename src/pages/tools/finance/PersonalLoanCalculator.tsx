@@ -201,15 +201,15 @@ export default function PersonalLoanCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <div className="p-4 sm:p-5 bg-slate-900 text-white rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Monthly Payment</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-black tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(result.monthlyPayment)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-black tabular-nums leading-none whitespace-nowrap">{formatCurrency(result.monthlyPayment)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total Interest</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-rose-600 tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(result.totalInterest)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold text-rose-600 tabular-nums leading-none whitespace-nowrap">{formatCurrency(result.totalInterest)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Total Payment</span>
-                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere">{formatCurrency(result.totalPayment)}</div>
+                <div className="text-base md:text-lg lg:text-xl font-mono font-bold tabular-nums leading-none whitespace-nowrap">{formatCurrency(result.totalPayment)}</div>
               </div>
               <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Debt-Free By</span>
