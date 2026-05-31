@@ -225,26 +225,26 @@ export default function RefinanceCalculator() {
 
         {result && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
-              <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Current Payment</span>
-                <div className={`${getResultTextSize(formatCurrency(result.currentPayment))} font-mono font-bold tabular-nums leading-none whitespace-nowrap`}>{formatCurrency(result.currentPayment)}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatCurrency(result.currentPayment)}</div>
               </div>
-              <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
+              <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">New Payment</span>
-                <div className={`${getResultTextSize(formatCurrency(result.newPayment))} font-mono font-bold text-emerald-600 tabular-nums leading-none whitespace-nowrap`}>{formatCurrency(result.newPayment)}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold text-emerald-600 tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatCurrency(result.newPayment)}</div>
               </div>
-              <div className="p-4 sm:p-5 bg-emerald-50 border border-emerald-200 rounded-xl text-center min-w-0">
+              <div className="p-4 sm:p-5 bg-emerald-50 border border-emerald-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest block mb-2">Monthly Savings</span>
-                <div className={`${getResultTextSize(formatCurrency(result.monthlySavings))} font-mono font-bold text-emerald-600 tabular-nums leading-none whitespace-nowrap`}>{formatCurrency(result.monthlySavings)}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold text-emerald-600 tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatCurrency(result.monthlySavings)}</div>
               </div>
-              <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
+              <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Break-Even</span>
-                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-none">{result.breakEvenMonths} mo</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{result.breakEvenMonths} mo</div>
               </div>
-              <div className="p-4 sm:p-5 bg-primary/5 border border-primary/20 rounded-xl text-center min-w-0 sm:col-span-2 lg:col-span-1">
+              <div className="p-4 sm:p-5 bg-primary/5 border border-primary/20 rounded-xl text-center sm:col-span-2 xl:col-span-1">
                 <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-2">Lifetime Savings</span>
-                <div className={`${getResultTextSize(formatCurrency(result.lifetimeSavings))} font-mono font-bold text-primary tabular-nums leading-none whitespace-nowrap`}>{formatCurrency(result.lifetimeSavings)}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold text-primary tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatCurrency(result.lifetimeSavings)}</div>
               </div>
             </div>
 
