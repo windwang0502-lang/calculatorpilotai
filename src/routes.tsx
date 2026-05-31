@@ -113,6 +113,8 @@ const MortgageByStateHub = React.lazy(() => import('./pages/finance-guides/Mortg
 const FinanceGuidesHub = React.lazy(() => import('./pages/finance-guides/FinanceGuidesHub'));
 const HealthGuidesHub = React.lazy(() => import('./pages/health-guides/HealthGuidesHub'));
 const HtmlSitemap = React.lazy(() => import('./pages/HtmlSitemap'));
+const PopularCalculatorsPage = React.lazy(() => import('./pages/PopularCalculatorsPage'));
+const CalculatorsPage = React.lazy(() => import('./pages/CalculatorsPage'));
 
 const LazyWrap = (Component: React.LazyExoticComponent<React.FC>) => (
   <Suspense fallback={<div className="flex items-center justify-center min-h-[50vh]"><div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div></div>}>
@@ -224,6 +226,8 @@ export const routes: RouteConfig[] = [
   { name: 'Time Category', path: '/tools/time', element: LazyWrap(TimeCategoryPage), public: true },
   { name: 'AI Category', path: '/tools/ai', element: LazyWrap(AICategoryPage), public: true },
   { name: 'Category', path: '/tools/:category', element: LazyWrap(CategoryPage), public: true },
+  { name: 'Popular Calculators', path: '/popular-calculators', element: LazyWrap(PopularCalculatorsPage), public: true },
+  { name: 'Calculators', path: '/calculators', element: LazyWrap(CalculatorsPage), public: true },
   { name: 'Guides', path: '/guides', element: LazyWrap(Guides), public: true },
   { name: 'Guide Detail', path: '/guides/:slug', element: LazyWrap(GuideDetailPage), public: true },
   { name: 'Compare', path: '/compare', element: LazyWrap(Compare), public: true },
