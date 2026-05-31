@@ -737,6 +737,369 @@ export const calculateWaterIntake = (
   };
 };
 
+// Wave1A Engine Functions
+
+// DTI (Debt-to-Income) Calculator
+export interface DTIResult {
+  frontEndRatio: number;
+  backEndRatio: number;
+  frontEndStatus: string;
+  backEndStatus: string;
+  monthlyDebtPayments: number;
+  housingPayment: number;
+  grossMonthlyIncome: number;
+  maxHousingPayment: number;
+  maxTotalDebt: number;
+}
+
+export const calculateDTI = (
+  grossAnnualIncome: number,
+  housingPayment: number,
+  otherDebts: number[]
+): DTIResult => {
+  const grossMonthlyIncome = grossAnnualIncome / 12;
+  const monthlyDebtPayments = otherDebts.reduce((sum, debt) => sum + debt, 0);
+  const totalMonthlyDebt = housingPayment + monthlyDebtPayments;
+
+  // Front-end ratio: housing payment / gross income
+  const frontEndRatio = grossMonthlyIncome > 0 ? (housingPayment / grossMonthlyIncome) * 100 : 0;
+
+  // Back-end ratio: total debt / gross income
+  const backEndRatio = grossMonthlyIncome > 0 ? (totalMonthlyDebt / grossMonthlyIncome) * 100 : 0;
+
+  // Status thresholds
+  let frontEndStatus: string;
+  if (frontEndRatio <= 28) frontEndStatus = 'Excellent';
+  else if (frontEndRatio <= 31) frontEndStatus = 'Good';
+  else if (frontEndRatio <= 35) frontEndStatus = 'Acceptable';
+  else frontEndStatus = 'High Risk';
+
+  let backEndStatus: string;
+  if (backEndRatio <= 36) backEndStatus = 'Excellent';
+  else if (backEndRatio <= 43) backEndStatus = 'Good';
+  else if (backEndRatio <= 50) backEndStatus = 'Acceptable';
+  else backEndStatus = 'High Risk';
+
+  // Maximum recommended payments
+  const maxHousingPayment = grossMonthlyIncome * 0.28;
+  const maxTotalDebt = grossMonthlyIncome * 0.36;
+
+  return {
+    frontEndRatio: Math.round(frontEndRatio * 100) / 100,
+    backEndRatio: Math.round(backEndRatio * 100) / 100,
+    frontEndStatus,
+    backEndStatus,
+    monthlyDebtPayments: Math.round(monthlyDebtPayments * 100) / 100,
+    housingPayment: Math.round(housingPayment * 100) / 100,
+    grossMonthlyIncome: Math.round(grossMonthlyIncome * 100) / 100,
+    maxHousingPayment: Math.round(maxHousingPayment * 100) / 100,
+    maxTotalDebt: Math.round(maxTotalDebt * 100) / 100,
+  };
+};
+
+// Mortgage Affordability Calculator
+export interface AffordabilityResult {
+  maxHomePrice: number;
+  maxLoanAmount: number;
+  downPayment: number;
+  downPaymentPercent: number;
+  estimatedMonthlyPayment: number;
+  monthlyPropertyTax: number;
+  monthlyInsurance: number;
+  monthlyPMI: number;
+  totalMonthlyHousing: number;
+}
+
+export const calculateAffordability = (
+  annualIncome: number,
+  monthlyDebts: number,
+  interestRate: number,
+  loanTermYears: number,
+  downPaymentPercent: number,
+  propertyTaxRate: number,
+  homeInsuranceAnnual: number
+): AffordabilityResult => {
+  const monthlyIncome = annualIncome / 12;
+
+  // Using 28/36 rule
+  const maxHousingRatio = 0.28;
+  const maxDebtRatio = 0.36;
+
+  // Maximum total debt payment (housing + other debts)
+  const maxTotalDebt = monthlyIncome * maxDebtRatio;
+
+  // Maximum housing payment
+  const maxHousingPayment = maxTotalDebt - monthlyDebts;
+
+  // Calculate loan amount from maximum payment using mortgage formula
+  const monthlyRate = interestRate / 100 / 12;
+  const numPayments = loanTermYears * 12;
+
+  let maxLoanAmount: number;
+  if (monthlyRate === 0) {
+    maxLoanAmount = maxHousingPayment * numPayments;
+  } else {
+    // Rearranging mortgage formula to solve for principal
+    const paymentToIncomeRatio = maxHousingPayment / monthlyIncome;
+    maxLoanAmount = maxHousingPayment * (Math.pow(1 + monthlyRate, numPayments) - 1) /
+      (monthlyRate * Math.pow(1 + monthlyRate, numPayments));
+  }
+
+  // Adjust for down payment
+  const downPaymentDecimal = downPaymentPercent / 100;
+  const maxHomePrice = maxLoanAmount / (1 - downPaymentDecimal);
+  const downPayment = maxHomePrice - maxLoanAmount;
+
+  // Calculate monthly costs
+  const monthlyPropertyTax = (maxHomePrice * propertyTaxRate / 100) / 12;
+  const monthlyInsurance = homeInsuranceAnnual / 12;
+
+  // PMI calculation (typically 0.5-1% of loan annually for < 20% down)
+  let monthlyPMI = 0;
+  if (downPaymentPercent < 20) {
+    monthlyPMI = (maxLoanAmount * 0.008) / 12; // Assume 0.8% annual PMI
+  }
+
+  // Estimate principal & interest
+  const estimatedMonthlyPayment = maxLoanAmount > 0 ?
+    (() => {
+      if (monthlyRate === 0) return maxLoanAmount / numPayments;
+      return (maxLoanAmount * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) /
+        (Math.pow(1 + monthlyRate, numPayments) - 1);
+    })() : 0;
+
+  const totalMonthlyHousing = estimatedMonthlyPayment + monthlyPropertyTax + monthlyInsurance + monthlyPMI;
+
+  return {
+    maxHomePrice: Math.round(maxHomePrice),
+    maxLoanAmount: Math.round(maxLoanAmount),
+    downPayment: Math.round(downPayment),
+    downPaymentPercent,
+    estimatedMonthlyPayment: Math.round(estimatedMonthlyPayment * 100) / 100,
+    monthlyPropertyTax: Math.round(monthlyPropertyTax * 100) / 100,
+    monthlyInsurance: Math.round(monthlyInsurance * 100) / 100,
+    monthlyPMI: Math.round(monthlyPMI * 100) / 100,
+    totalMonthlyHousing: Math.round(totalMonthlyHousing * 100) / 100,
+  };
+};
+
+// TDEE (Total Daily Energy Expenditure) Calculator
+export interface TDEEResult {
+  bmr: number;
+  tdee: number;
+  caloriesToLose: { mild: number; moderate: number; extreme: number }
+  caloriesToGain: { mild: number; moderate: number }
+  protein: number;
+  fat: number;
+  carbs: number;
+  proteinMild: number; fatMild: number; carbsMild: number;
+  proteinModerate: number; fatModerate: number; carbsModerate: number;
+}
+
+export const calculateTDEE = (
+  weight: number, // kg
+  height: number, // cm
+  age: number,
+  gender: 'male' | 'female',
+  activityLevel: 1.2 | 1.375 | 1.55 | 1.725 | 1.9
+): TDEEResult => {
+  // Mifflin-St Jeor Equation for BMR
+  let bmr: number;
+  if (gender === 'male') {
+    bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+  } else {
+    bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+  }
+
+  // TDEE = BMR × Activity Multiplier
+  const tdee = bmr * activityLevel;
+
+  // Calorie targets
+  const caloriesToLose = {
+    mild: Math.round(tdee - 250),
+    moderate: Math.round(tdee - 500),
+    extreme: Math.round(tdee - 1000),
+  };
+
+  const caloriesToGain = {
+    mild: Math.round(tdee + 250),
+    moderate: Math.round(tdee + 500),
+  };
+
+  // Macro calculations (standard percentages)
+  const protein = Math.round(weight * 2.0); // 2g per kg bodyweight
+  const fat = Math.round((tdee * 0.25) / 9); // 25% of calories from fat
+  const carbs = Math.round((tdee - (protein * 4) - (fat * 9)) / 4);
+
+  // Mild deficit macros
+  const proteinMild = Math.round(weight * 2.2);
+  const fatMild = Math.round((caloriesToLose.mild * 0.25) / 9);
+  const carbsMild = Math.round((caloriesToLose.mild - (proteinMild * 4) - (fatMild * 9)) / 4);
+
+  // Moderate deficit macros
+  const proteinModerate = Math.round(weight * 2.4);
+  const fatModerate = Math.round((caloriesToLose.moderate * 0.25) / 9);
+  const carbsModerate = Math.round((caloriesToLose.moderate - (proteinModerate * 4) - (fatModerate * 9)) / 4);
+
+  return {
+    bmr: Math.round(bmr),
+    tdee: Math.round(tdee),
+    caloriesToLose,
+    caloriesToGain,
+    protein,
+    fat,
+    carbs,
+    proteinMild,
+    fatMild,
+    carbsMild,
+    proteinModerate,
+    fatModerate,
+    carbsModerate,
+  };
+};
+
+// USPS Rate Calculator
+export interface USPSRateResult {
+  service: string;
+  estimatedDays: string;
+  cost: number;
+  maxWeight: number;
+  options: USPSServiceOption[];
+}
+
+export interface USPSServiceOption {
+  service: string;
+  estimatedDays: string;
+  cost: number;
+  maxWeight: number;
+}
+
+export const calculateUSPSRate = (
+  weight: number, // oz
+  zone: number, // 1-8
+  packageType: 'envelope' | 'pak' | 'small_box' | 'medium_box' | 'large_box'
+): USPSRateResult => {
+  // USPS 2024 Rate Estimates (domestic)
+  const weightLbs = weight / 16;
+  const baseRates: Record<string, { min: number; max: number; maxOz: number }> = {
+    'envelope': { min: 1.20, max: 3.50, maxOz: 16 },
+    'pak': { min: 2.10, max: 4.50, maxOz: 16 },
+    'small_box': { min: 3.50, max: 9.50, maxOz: 160 },
+    'medium_box': { min: 5.00, max: 16.50, maxOz: 160 },
+    'large_box': { min: 7.50, max: 24.00, maxOz: 160 },
+  };
+
+  const serviceLevels = [
+    { name: 'USPS Ground Advantage', days: '2-5 days', baseCost: 3.50, perLb: 0.50, zoneAdjust: 0.02 },
+    { name: 'USPS Priority Mail 3-Day', days: '1-3 days', baseCost: 8.50, perLb: 1.20, zoneAdjust: 0.05 },
+    { name: 'USPS Priority Mail Express', days: '1-2 days', baseCost: 26.95, perLb: 0.50, zoneAdjust: 0.10 },
+  ];
+
+  const typeConfig = baseRates[packageType] || baseRates['small_box'];
+
+  // Calculate rates for each service
+  const options: USPSServiceOption[] = serviceLevels.map(service => {
+    let cost = service.baseCost + (weightLbs * service.perLb) + (zone * service.zoneAdjust);
+    // Add surcharge for larger packages
+    if (packageType === 'large_box') cost += 3.00;
+    else if (packageType === 'medium_box') cost += 1.50;
+
+    return {
+      service: service.name,
+      estimatedDays: service.days,
+      cost: Math.round(cost * 100) / 100,
+      maxWeight: typeConfig.maxOz / 16,
+    };
+  });
+
+  const primaryOption = options[0];
+
+  return {
+    service: primaryOption.service,
+    estimatedDays: primaryOption.estimatedDays,
+    cost: primaryOption.cost,
+    maxWeight: primaryOption.maxWeight,
+    options,
+  };
+};
+
+// Timesheet Calculator
+export interface TimesheetResult {
+  regularHours: number;
+  overtimeHours: number;
+  totalHours: number;
+  regularPay: number;
+  overtimePay: number;
+  totalPay: number;
+  dailyBreakdown: { day: string; hours: number; pay: number }[];
+}
+
+export const calculateTimesheet = (
+  hoursPerDay: number[],
+  hourlyRate: number,
+  overtimeThreshold: number, // hours per week before OT kicks in
+  overtimeMultiplier: number, // 1.5 for time-and-a-half
+  standardWorkWeek: number = 40
+): TimesheetResult => {
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  let totalHours = 0;
+  let regularHours = 0;
+  let overtimeHours = 0;
+
+  const dailyBreakdown = hoursPerDay.map((hours, index) => {
+    totalHours += hours;
+    return {
+      day: days[index] || `Day ${index + 1}`,
+      hours,
+      pay: 0,
+    };
+  });
+
+  // Calculate regular vs overtime
+  if (totalHours > standardWorkWeek) {
+    regularHours = standardWorkWeek;
+    overtimeHours = totalHours - standardWorkWeek;
+  } else {
+    regularHours = totalHours;
+    overtimeHours = 0;
+  }
+
+  // Calculate pay
+  const regularPay = regularHours * hourlyRate;
+  const overtimePay = overtimeHours * hourlyRate * overtimeMultiplier;
+  const totalPay = regularPay + overtimePay;
+
+  // Update daily breakdown with pay
+  let accumulatedHours = 0;
+  dailyBreakdown.forEach(day => {
+    let dayRegularHours = day.hours;
+    let dayOvertimeHours = 0;
+
+    const hoursOverThreshold = accumulatedHours + day.hours - standardWorkWeek;
+    if (hoursOverThreshold > 0 && accumulatedHours < standardWorkWeek) {
+      dayRegularHours = Math.min(day.hours, standardWorkWeek - accumulatedHours);
+      dayOvertimeHours = day.hours - dayRegularHours;
+    } else if (accumulatedHours >= standardWorkWeek) {
+      dayRegularHours = 0;
+      dayOvertimeHours = day.hours;
+    }
+
+    day.pay = dayRegularHours * hourlyRate + dayOvertimeHours * hourlyRate * overtimeMultiplier;
+    accumulatedHours += day.hours;
+  });
+
+  return {
+    regularHours: Math.round(regularHours * 100) / 100,
+    overtimeHours: Math.round(overtimeHours * 100) / 100,
+    totalHours: Math.round(totalHours * 100) / 100,
+    regularPay: Math.round(regularPay * 100) / 100,
+    overtimePay: Math.round(overtimePay * 100) / 100,
+    totalPay: Math.round(totalPay * 100) / 100,
+    dailyBreakdown,
+  };
+};
+
 // Re-export shipping engines
 export {
   calculateFreightClass,

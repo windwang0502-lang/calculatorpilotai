@@ -36,6 +36,12 @@ const CountdownCalculator = React.lazy(() => import('./pages/tools/time/Countdow
 const TimeDurationCalculator = React.lazy(() => import('./pages/tools/time/TimeDurationCalculator'));
 const AgeAtDateCalculator = React.lazy(() => import('./pages/tools/time/AgeAtDateCalculator'));
 const WorkHoursCalculator = React.lazy(() => import('./pages/tools/time/WorkHoursCalculator'));
+const TimesheetCalculator = React.lazy(() => import('./pages/tools/time/TimesheetCalculator'));
+const DTICalculator = React.lazy(() => import('./pages/tools/finance/DTICalculator'));
+const MortgageAffordabilityCalculator = React.lazy(() => import('./pages/tools/finance/MortgageAffordabilityCalculator'));
+const TDEECalculator = React.lazy(() => import('./pages/tools/health/TDEECalculator'));
+const USPSRateCalculator = React.lazy(() => import('./pages/tools/shipping/USPSRateCalculator'));
+const LLMComparisonCalculator = React.lazy(() => import('./pages/tools/ai/LLMComparisonCalculator'));
 const AIDetector = React.lazy(() => import('./pages/tools/ai/AIDetector'));
 const PromptGenerator = React.lazy(() => import('./pages/tools/ai/PromptGenerator'));
 const AIHumanizer = React.lazy(() => import('./pages/tools/ai/AIHumanizer'));
@@ -166,6 +172,12 @@ export const routes: RouteConfig[] = [
   { name: 'Time Duration Calculator', path: '/tools/time/time-duration-calculator', element: LazyWrap(TimeDurationCalculator), public: true },
   { name: 'Age At Date Calculator', path: '/tools/time/age-at-date-calculator', element: LazyWrap(AgeAtDateCalculator), public: true },
   { name: 'Work Hours Calculator', path: '/tools/time/work-hours-calculator', element: LazyWrap(WorkHoursCalculator), public: true },
+  { name: 'Timesheet Calculator', path: '/tools/time/timesheet-calculator', element: LazyWrap(TimesheetCalculator), public: true },
+  { name: 'DTI Calculator', path: '/tools/finance/dti-calculator', element: LazyWrap(DTICalculator), public: true },
+  { name: 'Mortgage Affordability Calculator', path: '/tools/finance/mortgage-affordability-calculator', element: LazyWrap(MortgageAffordabilityCalculator), public: true },
+  { name: 'TDEE Calculator', path: '/tools/health/tdee-calculator', element: LazyWrap(TDEECalculator), public: true },
+  { name: 'USPS Rate Calculator', path: '/tools/shipping/usps-rate-calculator', element: LazyWrap(USPSRateCalculator), public: true },
+  { name: 'LLM Comparison Calculator', path: '/tools/ai/llm-comparison-calculator', element: LazyWrap(LLMComparisonCalculator), public: true },
   { name: 'AI Detector', path: '/tools/ai/ai-detector', element: LazyWrap(AIDetector), public: true },
   { name: 'Prompt Generator', path: '/tools/ai/prompt-generator', element: LazyWrap(PromptGenerator), public: true },
   { name: 'AI Humanizer', path: '/tools/ai/ai-humanizer', element: LazyWrap(AIHumanizer), public: true },
