@@ -171,25 +171,25 @@ export default function PackageVolumeCalculator() {
         {/* Results Section */}
         {result && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+              <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Cubic Inches</span>
-                <div className={`${getResultTextSize(formatNumber(result.cubicInches, { decimals: 2 }))} font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere`}>{formatNumber(result.cubicInches, { decimals: 2 })}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(result.cubicInches, { decimals: 2 })}</div>
                 <span className="text-xs text-slate-500">in³</span>
               </div>
-              <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
+              <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Cubic Feet</span>
-                <div className={`${getResultTextSize(formatNumber(result.cubicFeet, { decimals: 4 }))} font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere`}>{formatNumber(result.cubicFeet, { decimals: 4 })}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(result.cubicFeet, { decimals: 4 })}</div>
                 <span className="text-xs text-slate-500">ft³</span>
               </div>
-              <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center min-w-0">
+              <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Cubic Cm</span>
-                <div className={`${getResultTextSize(formatNumber(result.cubicCentimeters, { decimals: 2 }))} font-mono font-bold tabular-nums leading-none overflow-wrap-anywhere`}>{formatNumber(result.cubicCentimeters, { decimals: 2 })}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(result.cubicCentimeters, { decimals: 2 })}</div>
                 <span className="text-xs text-slate-500">cm³</span>
               </div>
-              <div className="p-5 bg-primary/5 border border-primary/20 rounded-xl text-center min-w-0">
+              <div className="p-5 bg-primary/5 border border-primary/20 rounded-xl text-center">
                 <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-2">Cubic Meters</span>
-                <div className={`${getResultTextSize(formatNumber(result.cubicMeters, { decimals: 6 }))} font-mono font-bold text-primary tabular-nums leading-none overflow-wrap-anywhere`}>{formatNumber(result.cubicMeters, { decimals: 6 })}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold text-primary tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(result.cubicMeters, { decimals: 6 })}</div>
                 <span className="text-xs text-primary/80">m³</span>
               </div>
             </div>

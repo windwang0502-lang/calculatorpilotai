@@ -40,6 +40,13 @@ export default function ShippingCalculator() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleCalculate = () => {
+    if (!validate()) return;
+    const res = calculateShipping(lengthIn, widthIn, heightIn, weightLb, metricDivisor);
+    setResult(res);
+    setInsight(generateShippingInsight(res));
+  };
+
   const faqs = [
     { question: 'What is DIM weight?', answer: 'DIM (dimensional) weight is a carrier pricing method based on package volume, not just scale weight.' },
     { question: 'Which weight is billed?', answer: 'Carriers bill the greater of actual weight and dimensional weight.' },
@@ -162,15 +169,15 @@ export default function ShippingCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">DIM Weight</span>
-                <div className={`${getResultTextSize(formatNumber(toDisplayW(result.dimWeight), { decimals: 2 }))} font-mono font-bold tabular-nums leading-tight tracking-tight`}>{formatNumber(toDisplayW(result.dimWeight), { decimals: 2 })} {weightLabel}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(toDisplayW(result.dimWeight), { decimals: 2 })} {weightLabel}</div>
               </div>
               <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl text-center">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest block mb-2">Actual Weight</span>
-                <div className={`${getResultTextSize(formatNumber(toDisplayW(weightLb), { decimals: 2 }))} font-mono font-bold tabular-nums leading-tight tracking-tight`}>{formatNumber(toDisplayW(weightLb), { decimals: 2 })} {weightLabel}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(toDisplayW(weightLb), { decimals: 2 })} {weightLabel}</div>
               </div>
               <div className="p-6 bg-primary/10 border border-primary/20 rounded-xl text-center">
                 <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-2">Billable Weight</span>
-                <div className={`${getResultTextSize(formatNumber(toDisplayW(result.billableWeight), { decimals: 2 }))} font-mono font-bold text-primary tabular-nums leading-tight tracking-tight`}>{formatNumber(toDisplayW(result.billableWeight), { decimals: 2 })} {weightLabel}</div>
+                <div className="text-xl sm:text-2xl font-mono font-bold text-primary tabular-nums leading-tight whitespace-nowrap overflow-hidden">{formatNumber(toDisplayW(result.billableWeight), { decimals: 2 })} {weightLabel}</div>
               </div>
             </div>
             <AIInsightPanel insight={insight} />
