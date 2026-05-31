@@ -221,9 +221,35 @@ export function getRecentlyAddedTools(limit = 5): Tool[] {
 
 export function getRelatedTools(tool: Tool, limit = 4): Tool[] {
   const sameCategory = getToolsByCategory(tool.category).filter(t => t.slug !== tool.slug);
+
+  // If same category has enough tools, only use same category
+  if (sameCategory.length >= limit) {
+    return sameCategory.slice(0, limit);
+  }
+
+  // Fill remaining slots from other categories, prioritizing by popularity and keyword similarity
   const otherCategories = allTools.filter(t => t.category !== tool.category && t.slug !== tool.slug);
 
-  return [...sameCategory, ...otherCategories].slice(0, limit);
+  // Extract keywords from tool name for matching
+  const toolKeywords = tool.name.toLowerCase().split(/[\s\-]+/);
+
+  // Score other tools by relevance
+  const scored = otherCategories.map(t => {
+    let score = t.popular ? 2 : 0; // Prioritize popular tools
+    const toolNameLower = t.name.toLowerCase();
+    for (const keyword of toolKeywords) {
+      if (toolNameLower.includes(keyword)) {
+        score += 1;
+      }
+    }
+    return { tool: t, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+
+  const fillers = scored.slice(0, limit - sameCategory.length).map(s => s.tool);
+
+  return [...sameCategory, ...fillers].slice(0, limit);
 }
 
 export function getCategoryById(id: ToolCategory): Category | undefined {
