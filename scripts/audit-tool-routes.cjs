@@ -303,8 +303,69 @@ function checkDuplicates() {
   return [];
 }
 
+// Check for common undefined variable patterns
+function checkCommonPatterns() {
+  const categories = ['finance', 'health', 'shipping', 'ai', 'time'];
+  const issues = [];
+
+  categories.forEach(cat => {
+    const dir = path.join(ROOT, 'src/pages/tools', cat);
+    if (!fs.existsSync(dir)) return;
+
+    fs.readdirSync(dir).forEach(file => {
+      if (!file.endsWith('.tsx') || file.includes('Category')) return;
+
+      const content = fs.readFileSync(path.join(dir, file), 'utf8');
+
+      // Check for faqs usage without definition
+      if (content.includes('faqs.map') || content.includes('faqs[')) {
+        if (!content.match(/const\s+faqs\s*=/)) {
+          issues.push({
+            type: 'UNDEFINED_VARIABLE',
+            file: `./pages/tools/${cat}/${file}`,
+            variable: 'faqs',
+            message: `Component '${file}' uses 'faqs' variable but it's not defined`
+          });
+        }
+      }
+
+      // Check for unused imports
+      const imports = content.match(/import\s+.*?from\s+['"](.+?)['"]/g) || [];
+      imports.forEach(imp => {
+        const match = imp.match(/import\s+(.*?)\s+from\s+['"](.+?)['"]/);
+        if (match) {
+          const importedItems = match[1].replace(/\{|\}/g, '').split(',').map(i => i.trim());
+          const importPath = match[2];
+
+          importedItems.forEach(item => {
+            if (item && !content.includes(item) && item !== 'React' && item !== 'useState' && item !== 'useEffect') {
+              // This is a potential unused import, but we'll skip for now as it may be intentional
+            }
+          });
+        }
+      });
+    });
+  });
+
+  return issues;
+}
+
 const allIssues = runAudit();
 const duplicates = checkDuplicates();
+const commonIssues = checkCommonPatterns();
+
+console.log('\n' + '-'.repeat(70));
+console.log('COMMON PATTERN CHECKS');
+console.log('-'.repeat(70));
+
+if (commonIssues.length > 0) {
+  console.log(`\nISSUES FOUND (${commonIssues.length}):`);
+  commonIssues.forEach(issue => {
+    console.log(`  - ${issue.message}`);
+  });
+} else {
+  console.log('\nNo common pattern issues found.');
+}
 
 console.log('\n' + '='.repeat(70));
 if (allIssues.length === 0 && duplicates.length === 0) {
